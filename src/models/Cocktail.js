@@ -6,10 +6,13 @@ const Cocktail = db.define('cocktail', {
         type: Sequelize.STRING,
     },
     instructions: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
     },
     photo: {
         type: Sequelize.STRING
+    },
+    ingredientList: {
+        type: Sequelize.ARRAY(Sequelize.STRING) 
     }
 })
 

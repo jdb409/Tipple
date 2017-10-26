@@ -1,19 +1,17 @@
-// const router = require('express').Router();
-// const Cocktail = require('../db/Cocktail');
-// const Ingredient = require('../db/Ingredient');
+const router = require('express').Router();
+const Cocktail = require('../models/Cocktail');
+const Ingredient = require('../models/Ingredient');
 
-// router.get('/', (req, res, next) => {
-//     Ingredient.findOne({
-//         where: {
-//             name: 'Whiskey'
-//         }
-//     })
-//         .then(campari => {
-//             return campari.getCocktails({ include: [{ all: true }] })
-//                 .then(cocktails => {
-//                     res.send(cocktails[2]);
-//                 })
-//         }).catch(console.log)
-// })
+router.get('/', (req, res, next) => {
+    Ingredient.findAll({
+        where: {
+            name: 'Gin'
+        }
+    })
+        .then(gin => {
+            console.log(gin.length);
+            res.send(gin);
+        })
+})
 
-// module.exports = router;
+module.exports = router;

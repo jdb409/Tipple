@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "npm run webpack",
     "webpack": "./node_modules/webpack/bin/webpack.js",
-    "start":  "npm run webpack -- -w & nodemon --ignore src/ --ignore dist/ server.js",
+    "start": "npm run webpack -- -w & nodemon --ignore src/ --ignore dist/ server.js",
     "seed": "nodemon ./src/models/index"
   },
   "keywords": [],
@@ -30,6 +30,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "sequelize": "^4.17.2",
+    "underscore": "^1.8.3",
     "webpack": "^3.8.1"
   }
 }
