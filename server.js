@@ -10,12 +10,15 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
 
 app.use('/api/cocktails', require('./src/routes/cocktail'))
 
+app.use((err, req, res, next) => {
+    res.send(err);
+})
 // db.sync({ force: true })
 //     .then(() => {
 //         db.seed()
 //             .then(() => {
-                app.listen(port, () => {
-                    console.log(`listening on ${port}`)
-                })
+app.listen(port, () => {
+    console.log(`listening on ${port}`)
+})
     //         })
     // });

@@ -15,30 +15,48 @@ db.seed = () => {
     const promiseCocktails = [];
     let ingredients = [];
     for (let d in cocktails) {
-        ingredients.push(cocktails[d].ingredients);
+        // console.log(cocktails[d].ingredients);
+        // console.log(d);
+        cocktails[d].justIng = [];
+        cocktails[d].ingredients.forEach(arr => {
+
+            if (arr.ingredient && arr.ingredient.length > 1) {
+                // console.log(arr.ingredient.length);
+                ingredients.push(arr.ingredient);
+                cocktails[d].justIng.push(arr.ingredient);
+            }
+        })
+
     }
+
+
     ingredients = _.flatten(ingredients);
     ingredients = _.uniq(ingredients)
-    console.log(ingredients.length);
+
+    // console.log('ingredient', ingredients);
 
     ingredients.forEach(ing => {
+        // console.log('asdfds', ing);
         Ingredient.create({ name: ing })
             .catch(console.log)
     });
 
     for (let drink in cocktails) {
+        // console.log(cocktails[drink].ingredients);
         promiseCocktails.push(Cocktail.create({
-            name: drink,
+            name: drink.toLowerCase(),
             instructions: cocktails[drink].instructions,
             photo: cocktails[drink].photo,
-            ingredientList: cocktails[drink].ingredients
+            ingredientList: cocktails[drink].justIng
         }).then(cocktail => {
             const promises = [];
-            cocktails[drink].ingredients.forEach((ingredient, index) => {
+            cocktails[drink].ingredients.forEach(ingredient => {
+                // console.log('inside', ingredient)
                 promises.push(
-                    Ingredient.findOne({ where: { name: ingredient } })
+                    Ingredient.findOne({ where: { name: ingredient.ingredient } })
                         .then(ing => {
-                            cocktail.addIngredient(ing, { through: { quantity: cocktails[drink].quantity[index + 1] } })
+    
+                            cocktail.addIngredient(ing, { through: { quantity: ingredient.quantity } })
                         }).catch(() => {
                             console.log('esdafsdf');
                         })

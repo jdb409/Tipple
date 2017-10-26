@@ -2,16 +2,17 @@ const router = require('express').Router();
 const Cocktail = require('../models/Cocktail');
 const Ingredient = require('../models/Ingredient');
 
-router.get('/', (req, res, next) => {
-    Ingredient.findAll({
+router.get('/:name', (req, res, next) => {
+    Cocktail.findOne({
         where: {
-            name: 'Gin'
+            name: req.params.name
         }
-    })
-        .then(gin => {
-            console.log(gin.length);
-            res.send(gin);
-        })
+    }).then(cocktail => {
+        return cocktail.getIngredients()
+            .then(ing => {
+                res.send({ cocktail, ing })
+            }).catch(next);
+    }).catch(next);
 })
 
 module.exports = router;
