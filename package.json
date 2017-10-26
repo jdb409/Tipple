@@ -7,7 +7,7 @@
     "postinstall": "npm run webpack",
     "webpack": "./node_modules/webpack/bin/webpack.js",
     "start:dev": "npm run webpack -- -w & nodemon --ignore src/ --ignore dist/ server.js",
-    "start": "npm run webpack -- -w & nodemon --ignore src/ --ignore dist/ server.js"
+    "start":  "DATABASE_URL=postgres://localhost/cocktail_db nodemon server.js npm run webpack -- -w & nodemon --ignore src/ --ignore dist/ server.js"
   },
   "keywords": [],
   "author": "",
