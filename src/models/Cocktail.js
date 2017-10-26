@@ -5,7 +5,7 @@ const Cocktail = db.define('cocktail', {
     name: {
         type: Sequelize.STRING,
     },
-    instruction: {
+    instructions: {
         type: Sequelize.STRING
     },
     photo: {

@@ -20,6 +20,7 @@ const axios = require('axios');
 // //         // })
 // //     });
 
+
 fs.readFile(path.join(__dirname, 'cocktaildb'), 'utf-8', (err, cocktails) => {
     if (err) return err;
 
@@ -51,7 +52,7 @@ fs.readFile(path.join(__dirname, 'cocktaildb'), 'utf-8', (err, cocktails) => {
                             seed[name].ingredients.push(drink.data.drinks[0][`strIngredient${i}`])
                         }
 
-                        if (drink.data.drinks[0][`strMeasure${i}`] && drink.data.drinks[0][`strMeasure${i}`].length > 2) {
+                        if (drink.data.drinks[0][`strMeasure${i}`] && drink.data.drinks[0][`strMeasure${i}`].length > 1) {
                             seed[name].quantity.push(drink.data.drinks[0][`strMeasure${i}`])
                         }
                         i++;
@@ -59,7 +60,7 @@ fs.readFile(path.join(__dirname, 'cocktaildb'), 'utf-8', (err, cocktails) => {
                 }
             });
             console.log(seed);
-            fs.writeFile(path.join(__dirname, 'data'), JSON.stringify(seed), (err) => {
+            fs.writeFile(path.join(__dirname, 'dataFormat.js'), JSON.stringify(seed), (err) => {
                 if (err) throw err;
                 console.log('written');
 

@@ -1,4 +1,4 @@
-var seed = {
+const seed = {
 
     '3-Mile Long Island Iced Tea': {
         'instructions': 'Fill 14oz glass with ice and alcohol. Fill 2/3 glass with cola and remainder with sweet & sour. Top with dash of bitters and lemon wedge.',
@@ -18,9 +18,7 @@ var seed = {
             '1/2 oz ',
             '1/2 oz ',
             '1/2 oz ',
-            '1/2 oz ',
-            '1-2 dash ',
-            '1 wedge '
+            '1/2 oz '
         ],
         'photo': 'http://www.thecocktaildb.com/images/media/drink/rrtssw1472668972.jpg'
     },
@@ -3841,4 +3839,6 @@ var seed = {
 
 const drinks = Object.keys(seed);
 
-console.log(drinks[0], seed[drinks[0]])
+console.log(drinks[0])
+
+module.exports = seed;

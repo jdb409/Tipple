@@ -1,58 +1,43 @@
 const db = require('./conn');
 const Cocktail = require('./Cocktail');
 const Ingredient = require('./Ingredient');
+const cocktails = require('./dataFormat')
 
 const Mix = db.define('mix', {
     quantity: db.Sequelize.STRING
 })
 
-Ingredient.belongsToMany(Cocktail, { through: Mix });
 Cocktail.belongsToMany(Ingredient, { through: Mix });
+Ingredient.belongsToMany(Cocktail, { through: Mix });
 
-const seed = () => {
-    const manhattan = Cocktail.create({ name: 'Manhattan' });
-    const boulvardier = Cocktail.create({ name: 'Boulvardier' });
-    const goldRush = Cocktail.create({ name: 'Gold Rush' });
-    const whiskeySour = Cocktail.create({ name: 'Whiskey Sour' });
-    const negroni = Cocktail.create({ name: 'Negroni' });
-
-    const whiskey = Ingredient.create({ name: 'Whiskey' });
-    const lemon = Ingredient.create({ name: 'Lemon Juice' });
-    const sweetVermouth = Ingredient.create({ name: 'Sweet Vermouth' });
-    const angostura = Ingredient.create({ name: 'Angostura' });
-    const campari = Ingredient.create({ name: 'Campari' });
-    const gin = Ingredient.create({ name: 'Gin' });
-    const simpleSyryp = Ingredient.create({ name: 'Simple Syrup' });
-    const eggWhite = Ingredient.create({ name: 'Egg White' });
-
-    return Promise.all([manhattan, boulvardier, goldRush, whiskeySour, negroni, whiskey, sweetVermouth,
-        angostura, campari, gin, lemon, simpleSyryp, eggWhite])
-        .then(([manhattan, boulvardier, goldRush,
-            whiskeySour, negroni, whiskey, sweetVermouth,
-            angostura, campari, gin, lemon, simpleSyryp, eggWhite]) => {
-
-            // manhattan.setIngredients([whiskey, sweetVermouth, angostura]);
-            manhattan.addIngredient(whiskey, { through: { quantity: '2 oz' } });
-            boulvardier.setIngredients([whiskey, sweetVermouth, campari]);
-            goldRush.setIngredients([whiskey, simpleSyryp, lemon]);
-            whiskeySour.setIngredients([whiskey, simpleSyryp, lemon, eggWhite]);
-            negroni.setIngredients([gin, campari, sweetVermouth])
-
-        }).catch(console.log)
-
-}
-
-
-db.sync({ force: true })
-    .then(() => {
-        console.log('db synced');
-        return seed()
-            .then(() => {
-                console.log('db seeded');
+db.seed = () => {
+    const promiseCocktails = [];
+    for (let drink in cocktails) {
+        promiseCocktails.push(Cocktail.create({
+            name: drink,
+            instructions: cocktails[drink].instructions,
+            photo: cocktails[drink].photo
+        }).then(cocktail => {
+            const promises = [];
+            cocktails[drink].ingredients.forEach((ingredient, index) => {
+                promises.push(
+                    Ingredient.create({ name: ingredient })
+                        .then(ingredient => {
+                            cocktail.addIngredient(ingredient, { through: { quantity: cocktails[drink].quantity[index + 1] } })
+                        })
+                )
             })
+            Promise.all(promises)
+                .then(() => {
 
-    });
-
-db.sync({ force: true })
+                }).catch(console.log)
+        })
+        )
+    }
+    return Promise.all(promiseCocktails)
+    .then(()=> {
+        console.log('huzzah');
+    })
+}
 
 module.exports = db;
