@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { HashRouter as Router } from 'react-router-dom';
-import store from './store/store';
+import store from './store';
 
 import Main from './components/Main';
-// import store from './store';
+
 
 ReactDOM.render(
     <Provider store={store}>

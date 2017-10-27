@@ -14,6 +14,7 @@ class Main extends Component {
         return (
             <div>
                 <h1> Make Me a Drink</h1>
+                <SearchBar />
             </div>
         );
     }

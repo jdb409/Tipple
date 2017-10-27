@@ -21,13 +21,10 @@ router.post('/findCocktail', (req, res, next) => {
 router.get('/:name', (req, res, next) => {
     Cocktail.findOne({
         where: {
-            name: req.params.name
+            name: req.params.name.toLowerCase()
         }
     }).then(cocktail => {
-        return cocktail.getIngredients()
-            .then(ing => {
-                res.send({ cocktail, ing })
-            }).catch(next);
+        res.send(cocktail);
     }).catch(next);
 })
 
