@@ -37,8 +37,10 @@ db.seed = () => {
 
     ingredients.forEach(ing => {
         // console.log('asdfds', ing);
-        Ingredient.create({ name: ing })
-            .catch(console.log)
+        if (ing) {
+            Ingredient.create({ name: ing.toLowerCase() })
+                .catch(console.log)
+        }
     });
 
     for (let drink in cocktails) {
@@ -52,15 +54,18 @@ db.seed = () => {
             const promises = [];
             cocktails[drink].ingredients.forEach(ingredient => {
                 // console.log('inside', ingredient)
-                promises.push(
-                    Ingredient.findOne({ where: { name: ingredient.ingredient } })
-                        .then(ing => {
-    
-                            cocktail.addIngredient(ing, { through: { quantity: ingredient.quantity } })
-                        }).catch(() => {
-                            console.log('esdafsdf');
-                        })
-                )
+                if (ingredient.ingredient) {
+                    promises.push(
+
+                        Ingredient.findOne({ where: { name: ingredient.ingredient.toLowerCase() } })
+                            .then(ing => {
+
+                                cocktail.addIngredient(ing, { through: { quantity: ingredient.quantity } })
+                            }).catch(() => {
+                                console.log('esdafsdf');
+                            })
+                    )
+                }
             })
             Promise.all(promises)
                 .then(() => {
