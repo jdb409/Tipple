@@ -1,0 +1,28 @@
+body{
+    background-color: #e1e8fa;
+}
+
+.bg{
+    background-color: #adc6fa;
+    background-image: url("https://www.transparenttextures.com/patterns/groovepaper.png");
+    height: 50%;   
+ }
+ 
+ .search{
+     background-color: #e1e8fa;
+     height: 60%;
+ }
+
+.header{
+    transform: scale(1.15,1.15);
+}
+ .dark-theme {
+    --styled-select-menu-outer__margin: 10px 0 0 0;
+    --styled-select-menu-outer__padding: 0;
+    --styled-select-menu-outer__background-color: #555;
+    --styled-select-menu-outer__border-color: black;
+    --styled-select-menu-outer__border-style: solid;
+    --styled-select-menu-outer__border-width: 3px;
+    --styled-select-placeholder__font-size: 1.25em;
+
+ }

@@ -38,7 +38,7 @@ db.seed = () => {
     ingredients.forEach(ing => {
         // console.log('asdfds', ing);
         if (ing) {
-            Ingredient.create({ name: ing.toLowerCase() })
+            Ingredient.create({ name: ing })
                 .catch(console.log)
         }
     });
@@ -46,7 +46,7 @@ db.seed = () => {
     for (let drink in cocktails) {
         // console.log(cocktails[drink].ingredients);
         promiseCocktails.push(Cocktail.create({
-            name: drink.toLowerCase(),
+            name: drink,
             instructions: cocktails[drink].instructions,
             photo: cocktails[drink].photo,
             ingredientList: cocktails[drink].justIng
@@ -57,7 +57,7 @@ db.seed = () => {
                 if (ingredient.ingredient) {
                     promises.push(
 
-                        Ingredient.findOne({ where: { name: ingredient.ingredient.toLowerCase() } })
+                        Ingredient.findOne({ where: { name: ingredient.ingredient } })
                             .then(ing => {
 
                                 cocktail.addIngredient(ing, { through: { quantity: ingredient.quantity } })
