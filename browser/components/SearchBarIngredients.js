@@ -34,7 +34,7 @@ class SearchBarCocktailIngredients extends Component {
         const { cocktails, ingredients } = this.props;
         return (
             <div>
-                <h1 className='display-5'>sSearch by Ingredient</h1>
+                <h1 className='display-5'>Search by Ingredient</h1>
                 <form onSubmit={handleSubmit} style={{ 'width': '50%' }}>
                     <Select
                         options={ingredients.length && ingredients}
@@ -67,14 +67,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBarCocktailIngredients);
-
-
-// <h1>{cocktail.name} <span><img style={{ 'width': '50%' }} src={cocktail.photo} /></span></h1>
-// <h2>{cocktail.instructions}</h2>
-// <h3>
-//     {cocktail.ingredientList && cocktail.ingredientList.map(ing => {
-//         return (
-//             <p key={ing}>{ing}</p>
-//         );
-//     })}
-// </h3>

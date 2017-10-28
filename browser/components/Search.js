@@ -47,7 +47,7 @@ class Search extends Component {
                             <div className="card-block row search">
                                 <div className="card-block align-self-center">
 
-                                    <div className='col-md-12 offset-sm-3'>
+                                    <div className='col-sm-12 offset-sm-3'>
                                         <Route exact path='/barcart' component={SearchByInventory} />
                                         <Route exact path='/' component={SearchBarCocktail} />
                                         <Route exact path='/ingredients' component={SearchBarIngredients} />
@@ -63,7 +63,7 @@ class Search extends Component {
                     <Route render={(route) => <SingleCocktail cocktail={cocktail} route={route} />} />
                     :
                     null}
-                {search === '/ingredients' ?
+                {search === '/ingredients' || '/barcart' ?
                     <Route render={(route) => <CocktailList cocktails={cocktails} route={route} />} />
                     :
                     null}

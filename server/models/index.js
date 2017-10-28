@@ -34,7 +34,7 @@ db.seed = () => {
     ingredients = _.uniq(ingredients)
 
     // console.log('ingredient', ingredients);
-
+    
     ingredients.forEach(ing => {
         // console.log('asdfds', ing);
         if (ing) {

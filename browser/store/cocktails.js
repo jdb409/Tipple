@@ -41,6 +41,18 @@ export const getCocktailsByIngredient = (id) => {
     }
 }
 
+export const getCocktailsByInventory = (ingredients) => {
+    console.log('thunk', ingredients)
+    return (dispatch) => {
+        axios.post(`/api/cocktails/findCocktails`, { ingredients })
+            .then(res => res.data)
+            .then(cocktails => {
+                console.log('inventory', cocktails)
+                dispatch(getCocktails(cocktails));
+            })
+    }
+}
+
 //Reducer
 
 export default function (state = {}, action) {
