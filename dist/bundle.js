@@ -31185,9 +31185,13 @@ var _ingredients = __webpack_require__(36);
 
 var _ingredients2 = _interopRequireDefault(_ingredients);
 
+var _barcart = __webpack_require__(200);
+
+var _barcart2 = _interopRequireDefault(_barcart);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var reducer = (0, _redux.combineReducers)({ cocktail: _cocktail2.default, cocktails: _cocktails2.default, ingredients: _ingredients2.default });
+var reducer = (0, _redux.combineReducers)({ cocktail: _cocktail2.default, cocktails: _cocktails2.default, ingredients: _ingredients2.default, barcart: _barcart2.default });
 
 var middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger.createLogger)({ collapsed: true }));
 
@@ -32257,6 +32261,10 @@ var _CocktailList = __webpack_require__(198);
 
 var _CocktailList2 = _interopRequireDefault(_CocktailList);
 
+var _Inventory = __webpack_require__(201);
+
+var _Inventory2 = _interopRequireDefault(_Inventory);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -32302,73 +32310,98 @@ var Search = function (_Component) {
                     { className: 'bg container-fluid' },
                     _react2.default.createElement(
                         'div',
-                        { className: 'row h-100 header' },
+                        { className: 'row' },
                         _react2.default.createElement(
                             'div',
-                            { className: 'col-sm-6 align-self-center offset-sm-3' },
+                            { className: 'col-10 box' },
                             _react2.default.createElement(
                                 'div',
-                                { className: 'card text-center card-inverse card-warning' },
+                                { className: 'row h-100 header' },
                                 _react2.default.createElement(
                                     'div',
-                                    { className: 'card-header' },
+                                    { className: 'col-sm-6 align-self-center offset-sm-3' },
                                     _react2.default.createElement(
-                                        'ul',
-                                        { className: 'nav nav-tabs card-header-tabs' },
+                                        'div',
+                                        { className: 'card text-center card-inverse card-warning' },
                                         _react2.default.createElement(
-                                            'li',
-                                            { className: 'nav-item' },
+                                            'div',
+                                            { className: 'card-header' },
                                             _react2.default.createElement(
-                                                _reactRouterDom.Link,
-                                                { to: '/barcart', className: 'nav-link active' },
-                                                'Bar Cart'
+                                                'ul',
+                                                { className: 'nav nav-tabs card-header-tabs' },
+                                                _react2.default.createElement(
+                                                    'li',
+                                                    { className: 'nav-item' },
+                                                    _react2.default.createElement(
+                                                        _reactRouterDom.Link,
+                                                        { to: '/barcart', className: 'nav-link active' },
+                                                        'Bar Cart'
+                                                    )
+                                                ),
+                                                _react2.default.createElement(
+                                                    'li',
+                                                    { className: 'nav-item' },
+                                                    _react2.default.createElement(
+                                                        _reactRouterDom.Link,
+                                                        { to: '/', className: 'nav-link' },
+                                                        'Search by Cocktail'
+                                                    )
+                                                ),
+                                                _react2.default.createElement(
+                                                    'li',
+                                                    { className: 'nav-item' },
+                                                    _react2.default.createElement(
+                                                        _reactRouterDom.Link,
+                                                        { to: '/ingredients', className: 'nav-link' },
+                                                        'Search by Ingredient'
+                                                    )
+                                                )
                                             )
-                                        ),
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'row' },
                                         _react2.default.createElement(
-                                            'li',
-                                            { className: 'nav-item' },
+                                            'div',
+                                            { className: 'col-12' },
                                             _react2.default.createElement(
-                                                _reactRouterDom.Link,
-                                                { to: '/', className: 'nav-link' },
-                                                'Search by Cocktail'
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'li',
-                                            { className: 'nav-item' },
-                                            _react2.default.createElement(
-                                                _reactRouterDom.Link,
-                                                { to: '/ingredients', className: 'nav-link' },
-                                                'Search by Ingredient'
+                                                'div',
+                                                { className: 'card-block row search' },
+                                                _react2.default.createElement(
+                                                    'div',
+                                                    { className: 'card-block align-self-center searchArea' },
+                                                    _react2.default.createElement(
+                                                        'div',
+                                                        { className: 'col-sm-12 offset-sm-2' },
+                                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', component: _SearchByInventory2.default }),
+                                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _SearchBarCocktail2.default }),
+                                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', component: _SearchBarIngredients2.default })
+                                                    )
+                                                )
                                             )
                                         )
                                     )
                                 )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'card-block row search' },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'card-block align-self-center' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'col-sm-12 offset-sm-3' },
-                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', component: _SearchByInventory2.default }),
-                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _SearchBarCocktail2.default }),
-                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', component: _SearchBarIngredients2.default })
-                                    )
-                                )
                             )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'col-2' },
+                            _react2.default.createElement(_Inventory2.default, null)
                         )
                     )
                 ),
-                search === '/' || '' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
-                        return _react2.default.createElement(_SingleCocktail2.default, { cocktail: cocktail, route: route });
-                    } }) : null,
-                search === '/ingredients' || '/barcart' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
-                        return _react2.default.createElement(_CocktailList2.default, { cocktails: cocktails, route: route });
-                    } }) : null
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    search === '/' || '' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
+                            return _react2.default.createElement(_SingleCocktail2.default, { cocktail: cocktail, route: route });
+                        } }) : null,
+                    search === '/ingredients' || '/barcart' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
+                            return _react2.default.createElement(_CocktailList2.default, { cocktails: cocktails, route: route });
+                        } }) : null
+                )
             );
         }
     }]);
@@ -48520,6 +48553,12 @@ var _ingredients = __webpack_require__(36);
 
 var _cocktails = __webpack_require__(21);
 
+var _barcart = __webpack_require__(200);
+
+var _Inventory = __webpack_require__(201);
+
+var _Inventory2 = _interopRequireDefault(_Inventory);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -48537,8 +48576,7 @@ var SearchByInventory = function (_Component) {
         var _this = _possibleConstructorReturn(this, (SearchByInventory.__proto__ || Object.getPrototypeOf(SearchByInventory)).call(this));
 
         _this.state = {
-            query: '',
-            barCart: []
+            query: ''
         };
         _this.handleChange = _this.handleChange.bind(_this);
         _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -48562,38 +48600,31 @@ var SearchByInventory = function (_Component) {
         }
     }, {
         key: 'addItem',
-        value: function addItem() {
-            var _state = this.state,
-                query = _state.query,
-                barCart = _state.barCart;
+        value: function addItem(ev) {
+            ev.preventDefault();
+            var query = this.state.query;
+            var barcart = this.props.barcart;
 
             var itemName = this.getItem(query).label;
-            if (barCart.indexOf(itemName) < 0) {
-                this.setState({ barCart: barCart.concat(itemName) });
+            if (barcart.indexOf(itemName) < 0) {
+                this.props.addLiquor(itemName);
             }
+        }
+    }, {
+        key: 'removeItem',
+        value: function removeItem(id) {
+            this.props.filterBarCart(this.props.barcart, id);
         }
     }, {
         key: 'handleChange',
         value: function handleChange(input) {
-            console.log(input);
             this.setState({ query: input });
         }
     }, {
         key: 'handleSubmit',
         value: function handleSubmit(ev) {
             ev.preventDefault();
-            console.log('barcart', this.state.barCart);
-            this.props.getCocktailsByInventory(this.state.barCart);
-        }
-    }, {
-        key: 'removeItem',
-        value: function removeItem(id) {
-            var filtered = this.state.barCart.filter(function (ing) {
-                return ing !== id;
-            });
-
-            this.setState({ barCart: filtered });
-            console.log('filtered', filtered);
+            this.props.getCocktailsByInventory(this.props.barcart);
         }
     }, {
         key: 'render',
@@ -48602,23 +48633,23 @@ var SearchByInventory = function (_Component) {
                 handleSubmit = this.handleSubmit,
                 addItem = this.addItem,
                 removeItem = this.removeItem;
-            var _state2 = this.state,
-                query = _state2.query,
-                barCart = _state2.barCart;
-            var ingredients = this.props.ingredients;
+            var query = this.state.query;
+            var _props = this.props,
+                ingredients = _props.ingredients,
+                barcart = _props.barcart;
 
             console.log(this.state);
 
             return _react2.default.createElement(
                 'div',
-                { className: 'row' },
+                null,
                 _react2.default.createElement(
                     'div',
-                    { className: 'col-10' },
+                    { className: 'col-12' },
                     _react2.default.createElement(
                         'h1',
                         { className: 'display-5' },
-                        'Search your Bar Cart'
+                        'Search your Barcart'
                     ),
                     _react2.default.createElement(
                         'small',
@@ -48631,13 +48662,14 @@ var SearchByInventory = function (_Component) {
                     ),
                     _react2.default.createElement(
                         'form',
-                        { onSubmit: handleSubmit, style: { 'width': '50%' } },
+                        { id: 'searchBar', onSubmit: addItem, style: { 'width': '50%' } },
                         _react2.default.createElement(_reactStyledSelect2.default, {
                             options: ingredients.length && ingredients,
                             value: query,
                             onChange: handleChange,
                             placeholder: 'Search Cocktail by Ingredient',
-                            className: 'dark-theme'
+                            className: 'dark-theme',
+                            clearable: true
                         }),
                         _react2.default.createElement('br', null),
                         _react2.default.createElement(
@@ -48648,7 +48680,7 @@ var SearchByInventory = function (_Component) {
                                 { className: 'col-4' },
                                 _react2.default.createElement(
                                     'button',
-                                    { type: 'button', className: 'btn btn-info', onClick: addItem },
+                                    { type: 'submit', className: 'btn btn-info' },
                                     'Add Ingredient'
                                 )
                             ),
@@ -48657,38 +48689,11 @@ var SearchByInventory = function (_Component) {
                                 { className: 'col-4 offset-2' },
                                 _react2.default.createElement(
                                     'button',
-                                    { className: 'btn btn-primary' },
+                                    { type: 'button', className: 'btn btn-primary', onClick: handleSubmit },
                                     'Search'
                                 )
                             )
                         )
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'col-2 offset-0' },
-                    _react2.default.createElement(
-                        'ul',
-                        { className: 'list-group', style: { "listStyleType": "none" } },
-                        barCart.map(function (ing) {
-                            return _react2.default.createElement(
-                                'div',
-                                { key: ing },
-                                _react2.default.createElement(
-                                    'button',
-                                    { type: 'button', className: 'btn btn-success btn-md', onClick: function onClick() {
-                                            return removeItem(ing);
-                                        } },
-                                    _react2.default.createElement(
-                                        'li',
-                                        { key: ing },
-                                        ing
-                                    )
-                                ),
-                                _react2.default.createElement('br', null),
-                                _react2.default.createElement('br', null)
-                            );
-                        })
                     )
                 )
             );
@@ -48700,9 +48705,10 @@ var SearchByInventory = function (_Component) {
 
 var mapStateToProps = function mapStateToProps(_ref) {
     var ingredients = _ref.ingredients,
-        cocktails = _ref.cocktails;
+        cocktails = _ref.cocktails,
+        barcart = _ref.barcart;
 
-    return { ingredients: ingredients, cocktails: cocktails };
+    return { ingredients: ingredients, cocktails: cocktails, barcart: barcart };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -48712,6 +48718,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
         },
         getCocktailsByInventory: function getCocktailsByInventory(ingredients) {
             dispatch((0, _cocktails.getCocktailsByInventory)(ingredients));
+        },
+        filterBarCart: function filterBarCart(barCart, removedId) {
+            dispatch((0, _barcart.filterBarCart)(barCart, removedId));
+        },
+        addLiquor: function addLiquor(liquor) {
+            dispatch((0, _barcart.addLiquor)(liquor));
         }
     };
 };
@@ -48890,6 +48902,135 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(FullPageCocktail);
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.filterBarCart = exports.addLiquor = undefined;
+
+exports.default = function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var action = arguments[1];
+
+    switch (action.type) {
+        case ADD_LIQUOR:
+            return [].concat(_toConsumableArray(state), [action.liquor]);
+        case removeLiquor:
+            return action.barCart;
+        default:
+            return state;
+    }
+};
+
+var _axios = __webpack_require__(34);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var ADD_LIQUOR = 'ADD_LIQUOR';
+var REMOVE_LIQUOR = 'REMOVE_LIQUOR';
+
+var addLiquor = exports.addLiquor = function addLiquor(liquor) {
+    console.log('dasfasd', liquor);
+    return {
+        type: ADD_LIQUOR,
+        liquor: liquor
+    };
+};
+
+var removeLiquor = function removeLiquor(barCart) {
+    return {
+        type: removeLiquor,
+        barCart: barCart
+    };
+};
+
+//thunks
+
+var filterBarCart = exports.filterBarCart = function filterBarCart(barCart, id) {
+    return function (dispatch) {
+        var filtered = barCart.filter(function (ing) {
+            return ing !== id;
+        });
+        dispatch(removeLiquor(filtered));
+    };
+};
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(9);
+
+var _barcart = __webpack_require__(200);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Inventory = function Inventory(props) {
+    var filterBarCart = props.filterBarCart,
+        barcart = props.barcart;
+
+    console.log('asdfs', props);
+    return _react2.default.createElement(
+        'div',
+        { className: 'row inventory' },
+        _react2.default.createElement(
+            'ul',
+            { className: 'list-group' },
+            barcart.map(function (ing) {
+                var _React$createElement;
+
+                return _react2.default.createElement(
+                    'li',
+                    (_React$createElement = { className: 'list-group-item', key: ing }, _defineProperty(_React$createElement, 'className', 'btn btn-success btn-md'), _defineProperty(_React$createElement, 'onClick', function onClick() {
+                        return filterBarCart(barcart, ing);
+                    }), _React$createElement),
+                    ing,
+                    _react2.default.createElement('br', null)
+                );
+            })
+        )
+    );
+};
+
+var mapStateToProps = function mapStateToProps(_ref) {
+    var barcart = _ref.barcart;
+
+    return { barcart: barcart };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        filterBarCart: function filterBarCart(barCart, removedId) {
+            dispatch((0, _barcart.filterBarCart)(barCart, removedId));
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Inventory);
 
 /***/ })
 /******/ ]);

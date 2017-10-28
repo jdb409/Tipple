@@ -3,13 +3,16 @@ import Select from 'react-styled-select'
 import { connect } from 'react-redux';
 import { mapIngredients } from '../store/ingredients';
 import { getCocktailsByInventory } from '../store/cocktails';
+import { filterBarCart, addLiquor } from '../store/barcart';
+
+import Inventory from './Inventory';
+
 
 class SearchByInventory extends Component {
     constructor() {
         super();
         this.state = {
-            query: '',
-            barCart: []
+            query: ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,90 +31,70 @@ class SearchByInventory extends Component {
         })
     }
 
-    addItem() {
-        const { query, barCart } = this.state
+    addItem(ev) {
+        ev.preventDefault();
+        const { query } = this.state
+        const { barcart } = this.props
         const itemName = this.getItem(query).label;
-        if (barCart.indexOf(itemName) < 0) {
-            this.setState({ barCart: barCart.concat(itemName) })
+        if (barcart.indexOf(itemName) < 0) {
+            this.props.addLiquor(itemName);
         }
+
     }
+
+    removeItem(id) {
+        this.props.filterBarCart(this.props.barcart, id)
+    }
+
     handleChange(input) {
-        console.log(input);
         this.setState({ query: input })
     }
 
     handleSubmit(ev) {
         ev.preventDefault();
-        console.log('barcart',this.state.barCart);
-        this.props.getCocktailsByInventory(this.state.barCart);
-    }
-
-
-    removeItem(id) {
-        const filtered = this.state.barCart.filter(ing => {
-            return ing !== id
-        })
-
-        this.setState({ barCart: filtered });
-        console.log('filtered', filtered)
+        this.props.getCocktailsByInventory(this.props.barcart);
     }
 
     render() {
         const { handleChange, handleSubmit, addItem, removeItem } = this;
-        const { query, barCart } = this.state;
-        const { ingredients } = this.props;
+        const { query } = this.state;
+        const { ingredients, barcart } = this.props;
         console.log(this.state);
 
         return (
-            <div className='row'>
-                <div className='col-10'>
-                    <h1 className='display-5'>Search your Bar Cart</h1>
+            <div>
+                <div className='col-12'>
+                    <h1 className='display-5'>Search your Barcart</h1>
                     <small className='text-muted'><p>Add bottles from your bar to see the cocktails you can make</p></small>
 
-                    <form onSubmit={handleSubmit} style={{ 'width': '50%' }}>
+                    <form id = 'searchBar' onSubmit={addItem} style={{ 'width': '50%' }}>
                         <Select
                             options={ingredients.length && ingredients}
                             value={query}
                             onChange={handleChange}
                             placeholder="Search Cocktail by Ingredient"
                             className='dark-theme'
+                            clearable
                         />
                         <br />
                         <div className='row'>
                             <div className='col-4'>
-                                <button type='button' className='btn btn-info' onClick={addItem}>Add Ingredient</button>
+                                <button type='submit' className='btn btn-info' >Add Ingredient</button>
                             </div>
                             <div className='col-4 offset-2'>
-                                <button className='btn btn-primary'>Search</button>
+                                <button type='button' className='btn btn-primary' onClick={handleSubmit}>Search</button>
                             </div>
                         </div>
                     </form>
                 </div>
-
-                <div className='col-2 offset-0'>
-                    <ul className='list-group' style={{ "listStyleType": "none" }}>
-                        {barCart.map(ing => {
-                            return (
-                                <div key={ing}>
-                                    <button type='button' className='btn btn-success btn-md' onClick={() => removeItem(ing)}>
-                                        <li key={ing}>
-                                            {ing}
-                                        </li>
-                                    </button>
-                                    <br />
-                                    <br />
-                                </div>
-                            );
-                        })}
-                    </ul>
-                </div>
+                
             </div>
         )
     }
 }
 
-const mapStateToProps = ({ ingredients, cocktails }) => {
-    return { ingredients, cocktails }
+const mapStateToProps = ({ ingredients, cocktails, barcart }) => {
+    return { ingredients, cocktails, barcart }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -121,6 +104,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         getCocktailsByInventory: (ingredients) => {
             dispatch(getCocktailsByInventory(ingredients));
+        },
+        filterBarCart: (barCart, removedId) => {
+            dispatch(filterBarCart(barCart, removedId))
+        },
+        addLiquor: (liquor) => {
+            dispatch(addLiquor(liquor));
         }
     }
 }

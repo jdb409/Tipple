@@ -26,3 +26,19 @@ body{
     --styled-select-placeholder__font-size: 1.25em;
 
  }
+
+ .box{
+     position: relative;
+     left:10%;
+ }
+
+ .inventory{
+    position: relative;
+    top:25%;
+    right: 5%;
+ }
+
+ .searchArea{
+    position: relative;
+    left:5%;
+ }
