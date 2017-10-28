@@ -19,7 +19,6 @@ class SearchBarCocktailIngredients extends Component {
     }
 
     handleChange(input) {
-        console.log(input)
         this.setState({ query: input })
     }
 
@@ -46,9 +45,6 @@ class SearchBarCocktailIngredients extends Component {
                     <br />
                     <button className='btn btn-primary'>Search</button>
                 </form>
-                {cocktails.length && cocktails.map(cocktail => {
-                    return (<h1>{cocktail.name}</h1>);
-                })}
             </div>
         )
     }

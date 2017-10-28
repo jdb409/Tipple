@@ -26,7 +26,6 @@ class SearchBarCocktail extends Component {
 
     handleSubmit(ev) {
         ev.preventDefault();
-        console.log(this.state.query);
         this.props.getSingleCocktail(this.state.query);
     }
 
@@ -47,17 +46,6 @@ class SearchBarCocktail extends Component {
                     <br />
                     <button className='btn btn-primary'>Search</button>
                 </form>
-                <h1>{cocktail.name} <span><img style={{ 'width': '50%' }} src={cocktail.photo} /></span></h1>
-                <h2>{cocktail.instructions}</h2>
-                <h3>
-                    {cocktail.ingredientList && cocktail.ingredientList.map(ing => {
-                        return (
-                            <p key={ing}>{ing}</p>
-                        );
-                    })}
-                </h3>
-
-
             </div>
         )
     }
