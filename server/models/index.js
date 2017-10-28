@@ -1,7 +1,8 @@
 const db = require('./conn');
 const Cocktail = require('./Cocktail');
 const Ingredient = require('./Ingredient');
-const cocktails = require('./dataFormat')
+const cocktails = require('./dataFormat');
+const User = require('./User');
 const _ = require('underscore');
 
 const Mix = db.define('mix', {
@@ -34,7 +35,7 @@ db.seed = () => {
     ingredients = _.uniq(ingredients)
 
     // console.log('ingredient', ingredients);
-    
+
     ingredients.forEach(ing => {
         // console.log('asdfds', ing);
         if (ing) {
@@ -77,7 +78,7 @@ db.seed = () => {
 
     return Promise.all(promiseCocktails)
         .then(() => {
-            console.log('huzzah');
+            return User.create({ email: 'j@j.com', password: '123' })
         }).catch(console.log)
 
 }
