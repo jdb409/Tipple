@@ -40,7 +40,10 @@ router.post('/findCocktails', (req, res, next) => {
     return Cocktail.findAll({
     }).then(cocktails => {
         let diff = [];
-        let arr = [];
+        let matches = {};
+        matches.exact = [];
+        matches.oneOff = [];
+        matches.twoOff = [];
         cocktails.forEach((cocktail, index) => {
             const ingArr = [];
             return cocktail.getIngredients({ attributes: ['name'] })
@@ -50,16 +53,20 @@ router.post('/findCocktails', (req, res, next) => {
                     })
                     diff = _.difference(ingArr, req.body.ingredients);
                     if (!diff.length) {
-
-                        arr.push(cocktail);
+                        matches.exact.push(cocktail);
                         console.log(cocktail.name)
+                    } else if (diff.length === 1){
+                        matches.oneOff.push(cocktail);
+                    } else if (diff.length === 2 ){
+                        matches.twoOff.push(cocktail);
                     }
 
-                    return arr;
-                }).then(arr => {
+                    return matches;
+                }).then(matches => {
                     if (index === cocktails.length - 1) {
-                        console.log(arr);
-                        res.send(arr);
+                        console.log('oneOff',matches.oneOff.length);
+                        console.log('two',matches.twoOff.length);
+                        res.send(matches);
                     }
 
                 })

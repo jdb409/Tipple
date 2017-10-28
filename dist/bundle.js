@@ -32386,6 +32386,10 @@ var _SearchByInventory = __webpack_require__(199);
 
 var _SearchByInventory2 = _interopRequireDefault(_SearchByInventory);
 
+var _CanMake = __webpack_require__(202);
+
+var _CanMake2 = _interopRequireDefault(_CanMake);
+
 var _CocktailList = __webpack_require__(200);
 
 var _CocktailList2 = _interopRequireDefault(_CocktailList);
@@ -32526,8 +32530,11 @@ var Search = function (_Component) {
                     search === '/' || '' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
                             return _react2.default.createElement(_SingleCocktail2.default, { cocktail: cocktail, route: route });
                         } }) : null,
-                    search === '/ingredients' || '/barcart' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
+                    search === '/ingredients' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
                             return _react2.default.createElement(_CocktailList2.default, { cocktails: cocktails, route: route });
+                        } }) : null,
+                    search === '/barcart' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
+                            return _react2.default.createElement(_CanMake2.default, { cocktails: cocktails, route: route });
                         } }) : null
                 )
             );
@@ -49030,6 +49037,91 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(FullPageCocktail);
+
+/***/ }),
+/* 202 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = CanMake;
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(13);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function CanMake(props) {
+    var cocktails = props.cocktails;
+
+    var exact = cocktails.exact;
+    var oneOff = cocktails.oneOff;
+
+    return _react2.default.createElement(
+        'div',
+        null,
+        exact && exact.length && _react2.default.createElement(
+            'div',
+            { className: 'card container', style: { "width": "20rem" } },
+            _react2.default.createElement(
+                'div',
+                { className: 'card-body' },
+                _react2.default.createElement(
+                    'h4',
+                    { className: 'card-title' },
+                    'Result'
+                )
+            ),
+            _react2.default.createElement(
+                'ul',
+                { className: 'list-group list-group-flush' },
+                _react2.default.createElement(
+                    'p',
+                    null,
+                    'You can make'
+                ),
+                exact.map(function (drink) {
+                    return _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { key: drink.id, to: '/cocktail/' + drink.id },
+                        _react2.default.createElement(
+                            'li',
+                            { className: 'list-group-item' },
+                            drink.name
+                        )
+                    );
+                })
+            ),
+            _react2.default.createElement(
+                'ul',
+                { className: 'list-group list-group-flush' },
+                _react2.default.createElement(
+                    'p',
+                    null,
+                    'You need one ingredient more to make:'
+                ),
+                oneOff.map(function (drink) {
+                    return _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { key: drink.id, to: '/cocktail/' + drink.id },
+                        _react2.default.createElement(
+                            'li',
+                            { className: 'list-group-item' },
+                            drink.name
+                        )
+                    );
+                })
+            )
+        )
+    );
+}
 
 /***/ })
 /******/ ]);

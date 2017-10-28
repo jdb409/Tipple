@@ -5,6 +5,7 @@ import SearchBarCocktail from './SearchBarCocktail';
 import SearchBarIngredients from './SearchBarIngredients';
 import SingleCocktail from './SingleCocktail';
 import SearchByInventory from './SearchByInventory';
+import CanMake from './CanMake';
 import CocktailList from './CocktailList';
 import Inventory from './Inventory';
 
@@ -16,7 +17,7 @@ class Search extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.setState({ search: this.props.location.pathname })
     }
 
@@ -79,9 +80,16 @@ class Search extends Component {
                             null
                     }
                     {
-                        search === '/ingredients' || '/barcart' ?
+                        search === '/ingredients' ?
 
                             <Route render={(route) => <CocktailList cocktails={cocktails} route={route} />} />
+                            :
+                            null
+                    }
+                    {
+                        search === '/barcart' ?
+
+                            <Route render={(route) => <CanMake cocktails={cocktails} route={route} />} />
                             :
                             null
                     }
