@@ -16,11 +16,10 @@ class Search extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
-        this.setState({ search: nextProps.location.pathname })
-
+    componentDidMount(){
+        this.setState({ search: this.props.location.pathname })
     }
+
     render() {
         const { cocktail, cocktails } = this.props;
         const { search } = this.state;
