@@ -12,6 +12,7 @@ class FullPageCocktail extends Component {
     render() {
         const { cocktail } = this.props;
         console.log(this.props);
+        const { ingredients } = cocktail || [];
 
         return (
             <div>
@@ -22,9 +23,10 @@ class FullPageCocktail extends Component {
                         <p className="card-text">{cocktail.instructions}</p>
                     </div>
                     <ul className="list-group list-group-flush">
-                        {cocktail.ingredientList && cocktail.ingredientList.map(ing => {
+                        {ingredients && ingredients.map(ing => {
                             return (
-                                <li className="list-group-item" key={ing}>{ing}</li>
+                                <li className="list-group-item" key={ing.id}>{ing.name} - {ing.mix.quantity}</li>
+
                             );
                         })}
                     </ul>

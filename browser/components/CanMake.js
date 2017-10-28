@@ -8,29 +8,41 @@ export default function CanMake(props) {
 
 
     return (
-        <div>
-            {exact && exact.length &&
-                <div className="card container" style={{ "width": "20rem" }}>
-                    <div className="card-body">
-                        <h4 className="card-title">Result</h4>
+        <div className = 'container'>
+            {exact && exact.length || oneOff && oneOff.length ?
+                <div className='row' >
+                    <div className='col-6'>
+                        <div className="card" style={{ "width": "20rem;" }}>
+                            <div className="card-block">
+                                <h4 className="card-title">You can make:</h4>
+                                <ul className="list-group list-group-flush">
+                                    {exact.map(drink => {
+                                        return (
+                                            <Link key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <ul className="list-group list-group-flush">
-                        <p>You can make</p>
-                        {exact.map(drink => {
-                            return (
-                                <Link key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
-                            );
-                        })}
-                    </ul>
-                    <ul className="list-group list-group-flush">
-                        <p>You need one ingredient more to make:</p>
-                        {oneOff.map(drink => {
-                            return (
-                                <Link key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
-                            );
-                        })}
-                    </ul>
+                    <div className='col-6'>
+                        <div className="card" style={{ "width": "20rem;" }}>
+                            <div className="card-block">
+                                <h4 className="card-title">You need one more ingredient to make:</h4>
+                                <ul className="list-group list-group-flush">
+                                    {oneOff.map(drink => {
+                                        return (
+                                            <Link key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+                :
+                null
             }
         </div>
     );

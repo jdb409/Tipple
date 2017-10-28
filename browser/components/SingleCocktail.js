@@ -4,12 +4,10 @@ import { getSingleCocktail } from '../store/cocktail';
 
 class SingleCocktail extends Component {
 
-    componentDidMount() {
-        console.log('sadfds', this.props);
-        // this.props.getSingleCocktail()
-    }
+
     render() {
         const { cocktail } = this.props;
+        const { ingredients } = cocktail || [];
 
         return (
 
@@ -21,9 +19,10 @@ class SingleCocktail extends Component {
                             <p className="card-text">{cocktail.instructions}</p>
                         </div>
                         <ul className="list-group list-group-flush">
-                            {cocktail.ingredientList && cocktail.ingredientList.map(ing => {
+                            {ingredients && ingredients.map(ing => {
                                 return (
-                                    <li className="list-group-item" key={ing}>{ing}</li>
+                                    <li className="list-group-item" key={ing.id}>{ing.name} - {ing.mix.quantity}</li>
+
                                 );
                             })}
                         </ul>

@@ -6,16 +6,17 @@ export default function CocktailList(props) {
     console.log(cocktails);
 
     return (
-        <div>
+        <div className='container'>
+        <br/>
             {cocktails.length < 250 &&
-                <div className="card container" style={{ "width": "20rem" }}>
+                <div className="card container" style={{ "width": "50rem" }}>
                     <div className="card-body">
                         <h4 className="card-title">Result</h4>
                     </div>
                     <ul className="list-group list-group-flush">
                         {cocktails.map(drink => {
                             return (
-                                <Link  key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
+                                <Link key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
                             );
                         })}
                     </ul>
