@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function CocktailList(props) {
     const { cocktails } = props;
@@ -14,7 +15,7 @@ export default function CocktailList(props) {
                     <ul className="list-group list-group-flush">
                         {cocktails.map(drink => {
                             return (
-                                <li className="list-group-item" key={drink.id}>{drink.name}</li>
+                                <Link  key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
                             );
                         })}
                     </ul>

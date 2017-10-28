@@ -4,6 +4,7 @@ import { Link, Route, withRouter } from 'react-router-dom';
 import SearchBarCocktail from './SearchBarCocktail';
 import SearchBarIngredients from './SearchBarIngredients';
 import SingleCocktail from './SingleCocktail';
+import SearchByInventory from './SearchByInventory';
 import CocktailList from './CocktailList';
 
 class Search extends Component {
@@ -22,7 +23,7 @@ class Search extends Component {
     render() {
         const { cocktail, cocktails } = this.props;
         const { search } = this.state;
-    
+
         return (
             <div>
                 <div className='bg container-fluid'>
@@ -32,10 +33,13 @@ class Search extends Component {
                                 <div className="card-header">
                                     <ul className="nav nav-tabs card-header-tabs">
                                         <li className="nav-item">
-                                            <Link to='/' className="nav-link active">Cocktails</Link>
+                                            <Link to='/barcart' className="nav-link active">Bar Cart</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link to='/ingredients' className="nav-link">Ingredient</Link>
+                                            <Link to='/' className="nav-link">Search by Cocktail</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link to='/ingredients' className="nav-link">Search by Ingredient</Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -43,8 +47,8 @@ class Search extends Component {
                             <div className="card-block row search">
                                 <div className="card-block align-self-center">
 
-                                    <div className='col-sm-12 offset-sm-3'>
-                                        <h1>Make me a Cocktail</h1>
+                                    <div className='col-md-12 offset-sm-3'>
+                                        <Route exact path='/barcart' component={SearchByInventory} />
                                         <Route exact path='/' component={SearchBarCocktail} />
                                         <Route exact path='/ingredients' component={SearchBarIngredients} />
                                     </div>
@@ -56,14 +60,14 @@ class Search extends Component {
                     </div>
                 </div>
                 {search === '/' || '' ?
-                    <SingleCocktail cocktail={cocktail} />
+                    <Route render={(route) => <SingleCocktail cocktail={cocktail} route={route} />} />
                     :
                     null}
                 {search === '/ingredients' ?
-                    <CocktailList cocktails={cocktails} />
+                    <Route render={(route) => <CocktailList cocktails={cocktails} route={route} />} />
                     :
                     null}
-                
+
             </div>
         )
     }

@@ -4,6 +4,8 @@ import { Route, Switch, withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Search from './Search';
+import SingleCocktail from './SingleCocktail';
+import FullPageCocktail from './FullPageCocktail';
 
 
 class Main extends Component {
@@ -14,7 +16,10 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <Search />
+                <Route exact path='/' component={Search} />
+                <Route exact path='/ingredients' component={Search} />
+                <Route exact path='/barcart' component={Search} />
+                <Route exact path='/cocktail/:id' component={FullPageCocktail} />
             </div>
         );
     }

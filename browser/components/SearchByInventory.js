@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import { mapIngredients } from '../store/ingredients';
 import { getCocktailsByIngredient } from '../store/cocktails';
 
-class SearchBarCocktailIngredients extends Component {
+class SearchByInventory extends Component {
     constructor() {
         super();
         this.state = {
-            query: ''
+            query: '',
+            barcart: []
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,10 +32,12 @@ class SearchBarCocktailIngredients extends Component {
     render() {
         const { handleChange, handleSubmit } = this;
         const { query } = this.state;
-        const { cocktails, ingredients } = this.props;
+        const { ingredients } = this.props;
         return (
             <div>
-                <h1 className='display-5'>sSearch by Ingredient</h1>
+                <h1 className='display-5'>Search your Bar Cart</h1>
+                <small className='text-muted'><p>Add bottles from your bar to see the cocktails you can make</p></small>
+
                 <form onSubmit={handleSubmit} style={{ 'width': '50%' }}>
                     <Select
                         options={ingredients.length && ingredients}
@@ -44,8 +47,17 @@ class SearchBarCocktailIngredients extends Component {
                         className='dark-theme'
                     />
                     <br />
-                    <button className='btn btn-primary'>Search</button>
+                    <div className='row'>
+                        <div className='col-4'>
+                            <button className='btn btn-info'>Add Ingredient</button>
+                        </div>
+                        <div className='col-4 offset-1'>
+                            <button className='btn btn-primary'>Search</button>
+                        </div>
+                    </div>
+
                 </form>
+
             </div>
         )
     }
@@ -66,15 +78,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBarCocktailIngredients);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchByInventory);
 
-
-// <h1>{cocktail.name} <span><img style={{ 'width': '50%' }} src={cocktail.photo} /></span></h1>
-// <h2>{cocktail.instructions}</h2>
-// <h3>
-//     {cocktail.ingredientList && cocktail.ingredientList.map(ing => {
-//         return (
-//             <p key={ing}>{ing}</p>
-//         );
-//     })}
-// </h3>

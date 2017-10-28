@@ -35,6 +35,7 @@ class SearchBarCocktail extends Component {
         const { cocktail, cocktails } = this.props;
         return (
             <div>
+                <h1 className='display-5'>Search by Cocktail</h1>
                 <form onSubmit={handleSubmit} style={{ 'width': '50%' }}>
                     <Select
                         options={cocktails.length && cocktails}
