@@ -13,18 +13,19 @@ class Search extends Component {
     constructor() {
         super();
         this.state = {
-            search: ''
+            search: '',
         }
     }
 
     componentDidMount() {
         this.setState({ search: this.props.location.pathname })
+
     }
 
     render() {
         const { cocktail, cocktails } = this.props;
         const { search } = this.state;
-
+        console.log(this.state)
         return (
             <div>
                 <div className='bg container-fluid'>
@@ -36,13 +37,13 @@ class Search extends Component {
                                         <div className="card-header">
                                             <ul className="nav nav-tabs card-header-tabs">
                                                 <li className="nav-item">
-                                                    <Link to='/barcart' className="nav-link active">Bar Cart</Link>
+                                                    <Link to='/barcart' className={search === '/barcart'? "nav-link active" : "nav-link"}>Bar Cart</Link>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <Link to='/' className="nav-link">Search by Cocktail</Link>
+                                                    <Link to='/' className={search === '/'? "nav-link active" : "nav-link"}>Search by Cocktail</Link>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <Link to='/ingredients' className="nav-link">Search by Ingredient</Link>
+                                                    <Link to='/ingredients' className={search === '/ingredients' ? "nav-link active" : "nav-link"}>Search by Ingredient</Link>
                                                 </li>
                                             </ul>
                                         </div>

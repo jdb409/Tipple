@@ -29,7 +29,7 @@ function NavBar(props) {
                         :
 
                         <li className="nav-item">
-                            <Link to='/' className="nav-link" onClick={() => props.logout()}>Logout </Link>
+                            <Link to='/' className="nav-link" onClick={() => props.logout()}><strong>{user.email}</strong> Logout </Link>
                         </li>
                     }
 
