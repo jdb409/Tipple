@@ -6,16 +6,16 @@ import Login from './Login';
 
 function NavBar(props) {
     const { user } = props;
-    
+
     return (
         <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <a className="navbar-brand" href="/">Tipple</a>
+
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
-
+                    <a className="navbar-brand" href="/">Tipple</a>
                     <li className="nav-item">
                         <Link to='/' className="nav-link" >Search </Link>
                     </li>
@@ -26,9 +26,7 @@ function NavBar(props) {
                         <li className="nav-item">
                             <Login />
                         </li>
-
                         :
-
                         <li className="nav-item">
                             <Link to='/' className="nav-link" onClick={() => props.logout(props.history)}><strong>{user.email}</strong> Logout </Link>
                         </li>

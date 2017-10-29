@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Infinite from 'react-infinite';
 
 export default function CocktailList(props) {
     const { cocktails } = props;
@@ -8,8 +9,9 @@ export default function CocktailList(props) {
     return (
         <div className='container'>
         <br/>
+        
             {cocktails.length < 250 &&
-                <div className="card container" style={{ "width": "50rem" }}>
+                <Infinite className="card container" containerHeight={350} elementHeight={30} style={{ "width": "50rem" }}>
                     <div className="card-body">
                         <h4 className="card-title">Result</h4>
                     </div>
@@ -20,7 +22,7 @@ export default function CocktailList(props) {
                             );
                         })}
                     </ul>
-                </div>
+                </Infinite>
             }
         </div>
     );
