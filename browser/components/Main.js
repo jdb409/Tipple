@@ -8,8 +8,8 @@ import { me } from '../store/user';
 import Search from './Search';
 import SingleCocktail from './SingleCocktail';
 import FullPageCocktail from './FullPageCocktail';
-import Login from './Login';
-import NavBar from './Navbar';
+
+import NavBar from './NavBar';
 
 
 class Main extends Component {
@@ -30,7 +30,7 @@ class Main extends Component {
                 <Route exact path='/ingredients' component={Search} />
                 <Route exact path='/barcart' component={Search} />
                 <Route exact path='/cocktail/:id' component={FullPageCocktail} />
-                <Route exact path='/login' component={Login} />
+
             </div>
         );
     }
