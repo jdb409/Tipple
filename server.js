@@ -2,11 +2,23 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const db = require('./server/models/');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const sessionStore = new SequelizeStore({db})
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+
+app.use(session({
+    secret: 'sdafdsafdsay',
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false
+  }))
 
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));

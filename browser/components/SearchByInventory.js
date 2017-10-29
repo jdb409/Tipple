@@ -39,7 +39,7 @@ class SearchByInventory extends Component {
         if (barcart.indexOf(itemName) < 0) {
             this.props.addLiquor(itemName);
         }
-
+        this.setState({ query: '' })
     }
 
     removeItem(id) {
@@ -67,14 +67,15 @@ class SearchByInventory extends Component {
                     <h1 className='display-5'>Search your Barcart</h1>
                     <small className='text-muted'><p>Add bottles from your bar to see the cocktails you can make</p></small>
 
-                    <form id = 'searchBar' onSubmit={addItem} style={{ 'width': '50%' }}>
+                    <form id='searchBar' onSubmit={addItem} style={{ 'width': '50%' }}>
                         <Select
                             options={ingredients.length && ingredients}
                             value={query}
                             onChange={handleChange}
                             placeholder="Search Cocktail by Ingredient"
                             className='dark-theme'
-                            clearable
+                            clearable={true}
+                            
                         />
                         <br />
                         <div className='row'>
@@ -87,7 +88,7 @@ class SearchByInventory extends Component {
                         </div>
                     </form>
                 </div>
-                
+
             </div>
         )
     }

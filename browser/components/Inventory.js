@@ -1,22 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { filterBarCart } from '../store/barcart'
+import Infinite from 'react-infinite';
 
 const Inventory = (props) => {
     const { filterBarCart, barcart } = props;
     console.log('asdfs', props)
     return (
         <div className='row inventory'>
-            <ul className='list-group'>
+            <Infinite containerHeight={350} elementHeight={30} className='list-group'>
                 {barcart.map(ing => {
                     return (
-                        <li className='list-group-item' key={ing} className='btn btn-success btn-md' onClick={() => filterBarCart(barcart, ing)}>
+                        <li key={ing} className='list-group-item list-group-item-danger' onClick={() => filterBarCart(barcart, ing)}>
                             {ing}
                             <br />
                         </li>
                     );
                 })}
-            </ul>
+            </Infinite>
         </div>
 
     );

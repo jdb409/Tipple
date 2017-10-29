@@ -2,19 +2,32 @@ const router = require('express').Router()
 const User = require('../models/User')
 module.exports = router
 
+router.get('/me', (req, res, next) => {
+  console.log('session', req.session.userId);
+  User.findById(req.session.userId)
+    .then(user => {
+      console.log(user);
+      res.send(user);
+    })
+})
+
 router.post('/login', (req, res, next) => {
-  User.findOne({where: {email: req.body.email}})
+  User.findOne({ where: { email: req.body.email } })
     .then(user => {
       if (!user) {
         res.status(401).send('User not found')
       } else if (!user.correctPassword(req.body.password)) {
         res.status(401).send('Incorrect password')
       } else {
+        console.log('csafdas', user.id)
+        req.session.userId = user.id;
         res.send(user);
       }
     })
     .catch(next)
 })
+
+
 
 router.post('/signup', (req, res, next) => {
   User.create(req.body)
@@ -29,7 +42,7 @@ router.post('/signup', (req, res, next) => {
 })
 
 router.post('/logout', (req, res) => {
-  req.logout()
+  req.session.destroy();
   res.redirect('/')
 })
 
