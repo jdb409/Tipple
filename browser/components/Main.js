@@ -3,10 +3,11 @@ import ReactDom from 'react-dom';
 import { Route, Switch, withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { me } from '../store/user';
+
+
 import Search from './Search';
 import SingleCocktail from './SingleCocktail';
 import FullPageCocktail from './FullPageCocktail';
-
 import Login from './Login';
 import NavBar from './Navbar';
 
@@ -18,8 +19,13 @@ class Main extends Component {
     componentDidMount() {
         this.props.fetchUser();
     }
+    componentWillReceiveProps(next){
+        console.log('this',this.props)
+        console.log('next',next)
+    }
 
     render() {
+        console.log(this.props)
         return (
             <div>
                 <Route path='/' component={NavBar} />
@@ -38,6 +44,7 @@ const mapDispatchToProps = (dispatch) => {
         fetchUser: () => {
             dispatch(me());
         }
+
     }
 }
 

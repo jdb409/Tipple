@@ -3731,7 +3731,7 @@ var auth = exports.auth = function auth(email, password, history) {
     return _axios2.default.post('/auth/login', { email: email, password: password }).then(function (res) {
       console.log('sadfsda', res.data);
       dispatch(getUser(res.data));
-      history.push('/');
+      history.push('/barcart');
     }).catch(function (error) {
       return dispatch(getUser({ error: error }));
     });
@@ -3742,7 +3742,7 @@ var logout = exports.logout = function logout(history) {
   return function (dispatch) {
     return _axios2.default.post('/auth/logout').then(function (res) {
       dispatch(removeUser());
-      history.push('/');
+      history.push('/barcart');
     }).catch(function (err) {
       return console.log(err);
     });
@@ -4651,7 +4651,7 @@ var mapIngredients = exports.mapIngredients = function mapIngredients() {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.addIngredientToServer = exports.filterBarCart = exports.addLiquor = undefined;
+exports.addIngredientToServer = exports.filterBarCart = exports.fetchBarcart = exports.addLiquor = undefined;
 
 exports.default = function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -4660,7 +4660,7 @@ exports.default = function () {
     switch (action.type) {
         case ADD_LIQUOR:
             return [].concat(_toConsumableArray(state), [action.liquor]);
-        case removeLiquor:
+        case GET_BARCART:
             return action.barCart;
         default:
             return state;
@@ -4677,6 +4677,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var ADD_LIQUOR = 'ADD_LIQUOR';
 var REMOVE_LIQUOR = 'REMOVE_LIQUOR';
+var GET_BARCART = 'GET_BARCART';
 
 var addLiquor = exports.addLiquor = function addLiquor(liquor) {
 
@@ -4686,31 +4687,56 @@ var addLiquor = exports.addLiquor = function addLiquor(liquor) {
     };
 };
 
-var removeLiquor = function removeLiquor(barCart) {
+var getBarCart = function getBarCart(barCart) {
     return {
-        type: removeLiquor,
+        type: GET_BARCART,
         barCart: barCart
     };
 };
 
 //thunks
 
-var filterBarCart = exports.filterBarCart = function filterBarCart(barCart, ingredient) {
+var fetchBarcart = exports.fetchBarcart = function fetchBarcart(userId) {
+    if (!userId) return;
+    console.log(userId);
     return function (dispatch) {
-        var filtered = barCart.filter(function (ing) {
-            return ing !== ingredient;
+        _axios2.default.get('/api/barcart/' + userId).then(function (res) {
+            return res.data;
+        }).then(function (cart) {
+            console.log(cart);
+            dispatch(getBarCart(cart));
         });
-        dispatch(removeLiquor(filtered));
+    };
+};
+
+var filterBarCart = exports.filterBarCart = function filterBarCart(barCart, ingredient, userId) {
+    return function (dispatch) {
+        if (userId) {
+            _axios2.default.delete('/api/barcart/' + userId + '/' + ingredient, { ingredient: ingredient }).then(function (res) {
+                return res.data;
+            }).then(function () {
+                return;
+            });
+        } else {
+            var filtered = barCart.filter(function (ing) {
+                return ing !== ingredient;
+            });
+            dispatch(getBarCart(filtered));
+        }
     };
 };
 
 var addIngredientToServer = exports.addIngredientToServer = function addIngredientToServer(user, ingredient) {
-
+    console.log('thuk', user);
     return function (dispatch) {
         _axios2.default.post('/api/barcart/' + user.id, { ingredient: ingredient }).then(function (res) {
             return res.data;
         }).then(function (ing) {
+            console.log(ing);
             dispatch(addLiquor(ing));
+            dispatch(fetchBarcart(user.id));
+        }).catch(function (err) {
+            console.log('err', err);
         });
     };
 };
@@ -7071,20 +7097,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Inventory = function Inventory(props) {
     var filterBarCart = props.filterBarCart,
-        barcart = props.barcart;
+        user = props.user;
+    var barcart = props.barcart;
 
-
+    console.log('bar', barcart);
+    if (barcart[0] && barcart[0].liquor) {
+        barcart = barcart.length && barcart.map(function (item) {
+            return item.liquor;
+        });
+    }
+    console.log('bar', barcart);
     return _react2.default.createElement(
         'div',
         { className: 'row inventory' },
         _react2.default.createElement(
             _reactInfinite2.default,
             { containerHeight: 350, elementHeight: 30, className: 'list-group' },
-            barcart.map(function (ing) {
+            barcart && barcart.map(function (ing) {
                 return _react2.default.createElement(
                     'li',
                     { key: ing, className: 'list-group-item list-group-item-danger', onClick: function onClick() {
-                            return filterBarCart(barcart, ing);
+                            return filterBarCart(barcart, ing, user.id);
                         } },
                     ing,
                     _react2.default.createElement('br', null)
@@ -7095,16 +7128,17 @@ var Inventory = function Inventory(props) {
 };
 
 var mapStateToProps = function mapStateToProps(_ref) {
-    var barcart = _ref.barcart;
+    var barcart = _ref.barcart,
+        user = _ref.user;
 
-    return { barcart: barcart };
+    return { barcart: barcart, user: user };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        filterBarCart: function filterBarCart(barCart, removedId) {
+        filterBarCart: function filterBarCart(barCart, removedId, userId) {
             console.log('asdfds', removedId);
-            dispatch((0, _barcart.filterBarCart)(barCart, removedId));
+            dispatch((0, _barcart.filterBarCart)(barCart, removedId, userId));
         }
     };
 };
@@ -32624,8 +32658,15 @@ var Main = function (_Component) {
             this.props.fetchUser();
         }
     }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(next) {
+            console.log('this', this.props);
+            console.log('next', next);
+        }
+    }, {
         key: 'render',
         value: function render() {
+            console.log(this.props);
             return _react2.default.createElement(
                 'div',
                 null,
@@ -32647,6 +32688,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
         fetchUser: function fetchUser() {
             dispatch((0, _user.me)());
         }
+
     };
 };
 
@@ -32672,6 +32714,8 @@ var _react2 = _interopRequireDefault(_react);
 var _reactRedux = __webpack_require__(8);
 
 var _reactRouterDom = __webpack_require__(12);
+
+var _barcart = __webpack_require__(38);
 
 var _SearchBarCocktail = __webpack_require__(164);
 
@@ -32726,14 +32770,23 @@ var Search = function (_Component) {
     _createClass(Search, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
+
             this.setState({ search: this.props.location.pathname });
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(next) {
+            if (next.user.id) {
+                this.props.fetchBarcart(next.user.id);
+            }
         }
     }, {
         key: 'render',
         value: function render() {
             var _props = this.props,
                 cocktail = _props.cocktail,
-                cocktails = _props.cocktails;
+                cocktails = _props.cocktails,
+                user = _props.user;
             var search = this.state.search;
 
 
@@ -32837,7 +32890,7 @@ var Search = function (_Component) {
                             return _react2.default.createElement(_CocktailList2.default, { cocktails: cocktails, route: route });
                         } }) : null,
                     search === '/barcart' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
-                            return _react2.default.createElement(_CanMake2.default, { cocktails: cocktails, route: route });
+                            return _react2.default.createElement(_CanMake2.default, { user: user, cocktails: cocktails, route: route });
                         } }) : null
                 )
             );
@@ -32849,12 +32902,23 @@ var Search = function (_Component) {
 
 var mapState = function mapState(_ref) {
     var cocktail = _ref.cocktail,
-        cocktails = _ref.cocktails;
+        cocktails = _ref.cocktails,
+        user = _ref.user;
 
-    return { cocktail: cocktail, cocktails: cocktails };
+    return { cocktail: cocktail, cocktails: cocktails, user: user };
 };
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapState, null)(Search));
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+
+        fetchBarcart: function fetchBarcart(userId) {
+            dispatch((0, _barcart.fetchBarcart)(userId));
+        }
+
+    };
+};
+
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapState, mapDispatchToProps)(Search));
 
 /***/ }),
 /* 164 */
@@ -49039,6 +49103,7 @@ var SearchByInventory = function (_Component) {
     }, {
         key: 'addItem',
         value: function addItem(ev) {
+            console.log(this.props);
             ev.preventDefault();
             var query = this.state.query;
             var _props = this.props,
@@ -49048,7 +49113,7 @@ var SearchByInventory = function (_Component) {
             var itemName = this.getItem(query);
             console.log('user', user.id);
             if (barcart.indexOf(itemName) < 0) {
-                if (user.id) {
+                if (user) {
                     console.log('name', itemName);
                     this.props.addIngredientToServer(user, itemName.label);
                 } else {

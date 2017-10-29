@@ -3,7 +3,7 @@ import Select from 'react-styled-select'
 import { connect } from 'react-redux';
 import { mapIngredients } from '../store/ingredients';
 import { getCocktailsByInventory } from '../store/cocktails';
-import { filterBarCart, addLiquor, addIngredientToServer } from '../store/barcart';
+import { filterBarCart, addLiquor, addIngredientToServer, fetchBarcart } from '../store/barcart';
 
 import Inventory from './Inventory';
 
@@ -23,6 +23,8 @@ class SearchByInventory extends Component {
 
     componentDidMount() {
         this.props.mapIngredients();
+        
+        
     }
 
     getItem(query) {
@@ -32,13 +34,14 @@ class SearchByInventory extends Component {
     }
 
     addItem(ev) {
+        console.log(this.props)
         ev.preventDefault();
         const { query } = this.state
         const { barcart, user } = this.props
         const itemName = this.getItem(query);
         console.log('user', user.id);
         if (barcart.indexOf(itemName) < 0) {
-            if (user.id) {
+            if (user) {
                 console.log('name', itemName)
                 this.props.addIngredientToServer(user, itemName.label)
             } else {

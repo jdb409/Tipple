@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, withRouter } from 'react-router-dom';
+import { fetchBarcart } from '../store/barcart'
+
 import SearchBarCocktail from './SearchBarCocktail';
 import SearchBarIngredients from './SearchBarIngredients';
 import SingleCocktail from './SingleCocktail';
@@ -18,14 +20,22 @@ class Search extends Component {
     }
 
     componentDidMount() {
+
         this.setState({ search: this.props.location.pathname })
 
     }
 
+    componentWillReceiveProps(next) {
+        if (next.user.id) {
+            this.props.fetchBarcart(next.user.id);
+        }
+
+    }
+
     render() {
-        const { cocktail, cocktails } = this.props;
+        const { cocktail, cocktails, user } = this.props;
         const { search } = this.state;
-        
+
         return (
             <div>
                 <div className='bg container-fluid'>
@@ -37,10 +47,10 @@ class Search extends Component {
                                         <div className="card-header">
                                             <ul className="nav nav-tabs card-header-tabs">
                                                 <li className="nav-item">
-                                                    <Link to='/barcart' className={search === '/barcart'? "nav-link active" : "nav-link"}>Bar Cart</Link>
+                                                    <Link to='/barcart' className={search === '/barcart' ? "nav-link active" : "nav-link"}>Bar Cart</Link>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <Link to='/' className={search === '/'? "nav-link active" : "nav-link"}>Search by Cocktail</Link>
+                                                    <Link to='/' className={search === '/' ? "nav-link active" : "nav-link"}>Search by Cocktail</Link>
                                                 </li>
                                                 <li className="nav-item">
                                                     <Link to='/ingredients' className={search === '/ingredients' ? "nav-link active" : "nav-link"}>Search by Ingredient</Link>
@@ -90,7 +100,7 @@ class Search extends Component {
                     {
                         search === '/barcart' ?
 
-                            <Route render={(route) => <CanMake cocktails={cocktails} route={route} />} />
+                            <Route render={(route) => <CanMake user={user} cocktails={cocktails} route={route} />} />
                             :
                             null
                     }
@@ -101,10 +111,21 @@ class Search extends Component {
     }
 }
 
-const mapState = ({ cocktail, cocktails }) => {
-    return { cocktail, cocktails }
+const mapState = ({ cocktail, cocktails, user }) => {
+    return { cocktail, cocktails, user }
 }
 
-export default withRouter(connect(mapState, null)(Search));
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+        fetchBarcart: (userId) => {
+            dispatch(fetchBarcart(userId))
+        }
+
+    }
+}
+
+export default withRouter(connect(mapState, mapDispatchToProps)(Search));
 
 

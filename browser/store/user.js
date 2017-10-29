@@ -34,7 +34,7 @@ export const auth = (email, password, history) =>
       .then(res => {
         console.log('sadfsda', res.data);
         dispatch(getUser(res.data))
-        history.push('/')
+        history.push('/barcart')
       })
       .catch(error =>
         dispatch(getUser({ error })))
@@ -44,7 +44,7 @@ export const logout = (history) =>
     axios.post('/auth/logout')
       .then(res => {
         dispatch(removeUser())
-        history.push('/')
+        history.push('/barcart')
       })
       .catch(err => console.log(err))
 
