@@ -34,15 +34,14 @@ class SearchByInventory extends Component {
     }
 
     addItem(ev) {
-        console.log(this.props)
+
         ev.preventDefault();
         const { query } = this.state
         const { barcart, user } = this.props
         const itemName = this.getItem(query);
-        console.log('user', user.id);
+
         if (barcart.indexOf(itemName) < 0) {
-            if (user) {
-                console.log('name', itemName)
+            if (user.id) {
                 this.props.addIngredientToServer(user, itemName.label)
             } else {
                 this.props.addLiquor(itemName.label);

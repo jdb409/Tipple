@@ -23,7 +23,7 @@ export const mapCocktails = () => {
                 cocktails = cocktails.map(cocktail => {
                     return { value: cocktail.id, label: cocktail.name };
                 })
-                console.log(cocktails);
+
                 dispatch(getCocktails(cocktails));
             })
 
@@ -43,6 +43,11 @@ export const getCocktailsByIngredient = (id) => {
 
 export const getCocktailsByInventory = (ingredients) => {
     console.log('thunk', ingredients)
+    if (ingredients[0].liquor) {
+        ingredients = ingredients.map(item => {
+            return item.liquor;
+        })
+    }
     return (dispatch) => {
         axios.post(`/api/cocktails/findCocktails`, { ingredients })
             .then(res => res.data)

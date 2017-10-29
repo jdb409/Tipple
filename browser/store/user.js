@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import {clearCart} from './barcart';
 
 /**
  * ACTION TYPES
@@ -32,7 +32,6 @@ export const auth = (email, password, history) =>
   dispatch =>
     axios.post(`/auth/login`, { email, password })
       .then(res => {
-        console.log('sadfsda', res.data);
         dispatch(getUser(res.data))
         history.push('/barcart')
       })
@@ -44,9 +43,12 @@ export const logout = (history) =>
     axios.post('/auth/logout')
       .then(res => {
         dispatch(removeUser())
+        console.log('remove')
+        dispatch(clearCart());
+        console.log('clear')
         history.push('/barcart')
       })
-      .catch(err => console.log(err))
+      .catch(console.log);
 
 /**
  * REDUCER

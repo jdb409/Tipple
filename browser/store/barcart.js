@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const ADD_LIQUOR = 'ADD_LIQUOR';
-const REMOVE_LIQUOR = 'REMOVE_LIQUOR';
 const GET_BARCART = 'GET_BARCART';
+const CLEAR_CART = 'CLEAR_CART';
 
 export const addLiquor = (liquor) => {
 
@@ -19,17 +19,23 @@ const getBarCart = (barCart) => {
     }
 }
 
+export const clearCart = () => {
+    return {
+        type: CLEAR_CART
+    }
+}
+
 
 //thunks
 
 export const fetchBarcart = (userId) => {
     if (!userId) return;
-    console.log(userId);
+
     return (dispatch) => {
         axios.get(`/api/barcart/${userId}`)
             .then(res => res.data)
             .then(cart => {
-                console.log(cart);
+
                 dispatch(getBarCart(cart))
             })
     }
@@ -42,7 +48,8 @@ export const filterBarCart = (barCart, ingredient, userId) => {
             axios.delete(`/api/barcart/${userId}/${ingredient}`, { ingredient })
                 .then(res => res.data)
                 .then(() => {
-                    return;
+                    return dispatch(fetchBarcart(userId));
+
                 })
         } else {
             const filtered = barCart.filter(ing => {
@@ -54,17 +61,14 @@ export const filterBarCart = (barCart, ingredient, userId) => {
 }
 
 export const addIngredientToServer = (user, ingredient) => {
-    console.log('thuk',user);
+    if (!user.id) return;
     return (dispatch) => {
         axios.post(`/api/barcart/${user.id}`, { ingredient })
             .then(res => res.data)
             .then(ing => {
-                console.log(ing)
                 dispatch(addLiquor(ing))
                 dispatch(fetchBarcart(user.id))
-            }).catch(err => {
-                console.log('err', err)
-            })
+            }).catch(console.log);
     }
 }
 
@@ -76,6 +80,8 @@ export default function (state = [], action) {
             return [...state, action.liquor];
         case GET_BARCART:
             return action.barCart;
+        case CLEAR_CART:
+            return [];
         default:
             return state;
     }

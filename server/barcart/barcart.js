@@ -12,7 +12,6 @@ router.get('/:userId', (req, res, next) => {
             if (!barCart){
                 res.send([]);
             }
-
             res.send(barCart)
         }).catch(next);
 })

@@ -19,13 +19,10 @@ class Main extends Component {
     componentDidMount() {
         this.props.fetchUser();
     }
-    componentWillReceiveProps(next){
-        console.log('this',this.props)
-        console.log('next',next)
-    }
+   
 
     render() {
-        console.log(this.props)
+
         return (
             <div>
                 <Route path='/' component={NavBar} />

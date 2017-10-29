@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { logout } from '../store/user'
+import Login from './Login';
 
 function NavBar(props) {
     const { user } = props;
@@ -29,7 +30,7 @@ function NavBar(props) {
                         :
 
                         <li className="nav-item">
-                            <Link to='/' className="nav-link" onClick={() => props.logout()}><strong>{user.email}</strong> Logout </Link>
+                            <Link to='/' className="nav-link" onClick={() => props.logout(props.history)}><strong>{user.email}</strong> Logout </Link>
                         </li>
                     }
 
@@ -48,8 +49,8 @@ const mapStateToProps = ({ user }) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        logout: () => {
-            dispatch(logout());
+        logout: (history) => {
+            dispatch(logout(history));
         }
     }
 }

@@ -20,7 +20,7 @@ class SearchBarCocktail extends Component {
     }
 
     handleChange(input) {
-        console.log(input)
+
         this.setState({ query: input })
     }
 
