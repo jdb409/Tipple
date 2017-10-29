@@ -5,7 +5,7 @@ import Infinite from 'react-infinite';
 
 const Inventory = (props) => {
     const { filterBarCart, barcart } = props;
-    console.log('asdfs', props)
+
     return (
         <div className='row inventory'>
             <Infinite containerHeight={350} elementHeight={30} className='list-group'>

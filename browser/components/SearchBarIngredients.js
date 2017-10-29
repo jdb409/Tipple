@@ -24,7 +24,7 @@ class SearchBarCocktailIngredients extends Component {
 
     handleSubmit(ev) {
         ev.preventDefault();
-        console.log(this.state.query);
+        
         this.props.getCocktailsByIngredient(this.state.query);
     }
 

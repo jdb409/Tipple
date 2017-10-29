@@ -4679,7 +4679,7 @@ var ADD_LIQUOR = 'ADD_LIQUOR';
 var REMOVE_LIQUOR = 'REMOVE_LIQUOR';
 
 var addLiquor = exports.addLiquor = function addLiquor(liquor) {
-    console.log('dasfasd', liquor);
+
     return {
         type: ADD_LIQUOR,
         liquor: liquor
@@ -4697,20 +4697,20 @@ var removeLiquor = function removeLiquor(barCart) {
 
 var filterBarCart = exports.filterBarCart = function filterBarCart(barCart, id) {
     return function (dispatch) {
-        var filtered = barCart.filter(function (ing) {
+        var filtered = barCart.filter(function (g) {
             return ing !== id;
         });
         dispatch(removeLiquor(filtered));
     };
 };
 
-var addIngredientToServer = exports.addIngredientToServer = function addIngredientToServer(userId, ingredientId) {
-    console.log(userId, ingredientId);
+var addIngredientToServer = exports.addIngredientToServer = function addIngredientToServer(user, ingredientId) {
+    console.log('hello', user.id, ingredientId);
     return function (dispatch) {
-        _axios2.default.post('/api/barcart/' + userId, ingredientId).then(function (res) {
+        _axios2.default.post('/api/barcart/' + user.id, { ingredientId: ingredientId }).then(function (res) {
             return res.data;
         }).then(function (ing) {
-            dispatch(addLiquor(ing.name));
+            dispatch(addLiquor(ing));
         });
     };
 };
@@ -7073,7 +7073,7 @@ var Inventory = function Inventory(props) {
     var filterBarCart = props.filterBarCart,
         barcart = props.barcart;
 
-    console.log('asdfs', props);
+
     return _react2.default.createElement(
         'div',
         { className: 'row inventory' },
@@ -32735,7 +32735,7 @@ var Search = function (_Component) {
                 cocktails = _props.cocktails;
             var search = this.state.search;
 
-            console.log(this.state);
+
             return _react2.default.createElement(
                 'div',
                 null,
@@ -48898,7 +48898,7 @@ var SearchBarCocktailIngredients = function (_Component) {
         key: 'handleSubmit',
         value: function handleSubmit(ev) {
             ev.preventDefault();
-            console.log(this.state.query);
+
             this.props.getCocktailsByIngredient(this.state.query);
         }
     }, {
@@ -49045,11 +49045,11 @@ var SearchByInventory = function (_Component) {
                 user = _props.user;
 
             var itemName = this.getItem(query);
-
+            console.log('user', user.id);
             if (barcart.indexOf(itemName) < 0) {
                 if (user.id) {
-                    console.log('itemName', itemName.value);
-                    this.props.addIngredientToServer(itemName.value);
+                    console.log('name', itemName);
+                    this.props.addIngredientToServer(user, itemName.value);
                 } else {
                     this.props.addLiquor(itemName.label);
                 }
@@ -49084,7 +49084,6 @@ var SearchByInventory = function (_Component) {
                 ingredients = _props2.ingredients,
                 barcart = _props2.barcart;
 
-            console.log(this.state);
 
             return _react2.default.createElement(
                 'div',
@@ -50353,7 +50352,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function CocktailList(props) {
     var cocktails = props.cocktails;
 
-    console.log(cocktails);
 
     return _react2.default.createElement(
         'div',
@@ -50433,15 +50431,13 @@ var FullPageCocktail = function (_Component) {
     _createClass(FullPageCocktail, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            console.log('sadfds', this.props);
+
             this.props.getSingleCocktail(this.props.match.params.id);
         }
     }, {
         key: 'render',
         value: function render() {
             var cocktail = this.props.cocktail;
-
-            console.log(this.props);
 
             var _ref = cocktail || [],
                 ingredients = _ref.ingredients;
@@ -50560,7 +50556,7 @@ var Login = function (_Component) {
     key: 'handleChange',
     value: function handleChange(evt) {
       var obj = {};
-      console.log(evt.target.value);
+
       obj[evt.target.name] = evt.target.value;
       this.setState(obj);
     }
@@ -50568,7 +50564,7 @@ var Login = function (_Component) {
     key: 'handleSubmit',
     value: function handleSubmit(ev) {
       ev.preventDefault();
-      console.log(this.props);
+
       this.props.login(this.state.email, this.state.password, this.props.history);
     }
   }, {
@@ -50647,7 +50643,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function NavBar(props) {
     var user = props.user;
 
-    console.log('sadfsadf', user.id);
+
     return _react2.default.createElement(
         'nav',
         { className: 'navbar navbar-toggleable-md navbar-light bg-faded' },

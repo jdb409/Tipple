@@ -6,12 +6,12 @@ import { getSingleCocktail } from '../store/cocktail';
 class FullPageCocktail extends Component {
 
     componentDidMount() {
-        console.log('sadfds', this.props);
+        
         this.props.getSingleCocktail(this.props.match.params.id)
     }
     render() {
         const { cocktail } = this.props;
-        console.log(this.props);
+        
         const { ingredients } = cocktail || [];
 
         return (

@@ -4,7 +4,7 @@ const ADD_LIQUOR = 'ADD_LIQUOR';
 const REMOVE_LIQUOR = 'REMOVE_LIQUOR';
 
 export const addLiquor = (liquor) => {
-    console.log('dasfasd', liquor);
+
     return {
         type: ADD_LIQUOR,
         liquor
@@ -22,20 +22,20 @@ const removeLiquor = (barCart) => {
 
 export const filterBarCart = (barCart, id) => {
     return (dispatch) => {
-        const filtered = barCart.filter(ing => {
+        const filtered = barCart.filter(g => {
             return ing !== id
         })
         dispatch(removeLiquor(filtered))
     }
 }
 
-export const addIngredientToServer = (userId, ingredientId) => {
-    console.log(userId, ingredientId)
+export const addIngredientToServer = (user, ingredientId) => {
+    console.log('hello', user.id, ingredientId)
     return (dispatch) => {
-        axios.post(`/api/barcart/${userId}`, ingredientId)
+        axios.post(`/api/barcart/${user.id}`, {ingredientId})
             .then(res => res.data)
             .then(ing => {
-                dispatch(addLiquor(ing.name))
+                dispatch(addLiquor(ing))
             })
     }
 }

@@ -5,7 +5,7 @@ import { logout } from '../store/user'
 
 function NavBar(props) {
     const { user } = props;
-    console.log('sadfsadf', user.id);
+    
     return (
         <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

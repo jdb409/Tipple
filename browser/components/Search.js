@@ -25,7 +25,7 @@ class Search extends Component {
     render() {
         const { cocktail, cocktails } = this.props;
         const { search } = this.state;
-        console.log(this.state)
+        
         return (
             <div>
                 <div className='bg container-fluid'>

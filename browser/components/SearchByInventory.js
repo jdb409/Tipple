@@ -36,11 +36,11 @@ class SearchByInventory extends Component {
         const { query } = this.state
         const { barcart, user } = this.props
         const itemName = this.getItem(query);
-        
+        console.log('user', user.id);
         if (barcart.indexOf(itemName) < 0) {
             if (user.id) {
-                console.log('itemName', itemName.value)
-                this.props.addIngredientToServer(itemName.value)
+                console.log('name', itemName)
+                this.props.addIngredientToServer(user, itemName.value)
             } else {
                 this.props.addLiquor(itemName.label);
             }
@@ -66,7 +66,7 @@ class SearchByInventory extends Component {
         const { handleChange, handleSubmit, addItem, removeItem } = this;
         const { query } = this.state;
         const { ingredients, barcart } = this.props;
-        console.log(this.state);
+
 
         return (
             <div>

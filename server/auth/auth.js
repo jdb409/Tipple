@@ -3,10 +3,10 @@ const User = require('../models/User')
 module.exports = router
 
 router.get('/me', (req, res, next) => {
-  console.log('session', req.session.userId);
+  
   User.findById(req.session.userId)
     .then(user => {
-      console.log(user);
+      
       res.send(user);
     })
 })
@@ -19,7 +19,7 @@ router.post('/login', (req, res, next) => {
       } else if (!user.correctPassword(req.body.password)) {
         res.status(401).send('Incorrect password')
       } else {
-        console.log('csafdas', user.id)
+        
         req.session.userId = user.id;
         res.send(user);
       }

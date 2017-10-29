@@ -17,14 +17,14 @@ class Login extends Component {
 
   handleChange(evt) {
     const obj = {};
-    console.log(evt.target.value)
+    
     obj[evt.target.name] = evt.target.value
     this.setState(obj)
   }
 
   handleSubmit(ev) {
     ev.preventDefault();
-    console.log(this.props);
+    
     this.props.login(this.state.email, this.state.password, this.props.history);
   }
 

@@ -13,17 +13,20 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/:userId', (req, res, next) => {
-    Ingredient.findById(req.body.ingredientId)
+    console.log('sdfdsafd', req.params.userId, req.body.ingredientId)
+    return Ingredient.findById(req.body.ingredientId)
         .then(ingredient => {
-            return BarCart.create()
+            BarCart.create()
                 .then(cart => {
-                    cart.userId = req.params.id;
+                    cart.userId = req.params.userId;
                     cart.addIngredient(ingredient);
-                    return cart.save();
-                }).catch(next);
-        })
-        .then(ingredient => {
-            res.send(ingredient);
+                    cart.save()
+                    return ingredient;
+                }).then(ingredient => {
+                    console.log('ingredient', ingredient);
+                    res.send(ingredient.name);
+                })
+
         }).catch(next);
 })
 
