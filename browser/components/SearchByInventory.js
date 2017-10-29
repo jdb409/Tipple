@@ -40,7 +40,7 @@ class SearchByInventory extends Component {
         if (barcart.indexOf(itemName) < 0) {
             if (user.id) {
                 console.log('name', itemName)
-                this.props.addIngredientToServer(user, itemName.value)
+                this.props.addIngredientToServer(user, itemName.label)
             } else {
                 this.props.addLiquor(itemName.label);
             }

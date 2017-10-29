@@ -13,22 +13,20 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/:userId', (req, res, next) => {
-    console.log('sdfdsafd', req.params.userId, req.body.ingredientId)
-    return Ingredient.findById(req.body.ingredientId)
-        .then(ingredient => {
-            BarCart.create()
-                .then(cart => {
-                    cart.userId = req.params.userId;
-                    cart.addIngredient(ingredient);
-                    cart.save()
-                    return ingredient;
-                }).then(ingredient => {
-                    console.log('ingredient', ingredient);
-                    res.send(ingredient.name);
+    BarCart.findOne({ where: { userId: req.params.userId, liquor: req.body.ingredient } })
+        .then(cart => {
+            return cart ? cart :
+                BarCart.create({
+                    liquor: req.body.ingredient,
+                    userId: req.params.userId
                 })
-
+                    .then(cart => {
+                        console.log(cart);
+                        res.send(cart.liquor);
+                    }).catch(next);
         }).catch(next);
-})
+});
+
 
 router.delete('/:itemId', (req, res, next) => {
     BarCart.destroy({

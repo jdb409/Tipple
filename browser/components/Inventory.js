@@ -31,6 +31,7 @@ const mapStateToProps = ({ barcart }) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         filterBarCart: (barCart, removedId) => {
+            console.log('asdfds',removedId);
             dispatch(filterBarCart(barCart, removedId))
         }
     }

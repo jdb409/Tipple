@@ -20,19 +20,19 @@ const removeLiquor = (barCart) => {
 
 //thunks
 
-export const filterBarCart = (barCart, id) => {
+export const filterBarCart = (barCart, ingredient) => {
     return (dispatch) => {
-        const filtered = barCart.filter(g => {
-            return ing !== id
+        const filtered = barCart.filter(ing => {
+            return ing !== ingredient
         })
         dispatch(removeLiquor(filtered))
     }
 }
 
-export const addIngredientToServer = (user, ingredientId) => {
-    console.log('hello', user.id, ingredientId)
+export const addIngredientToServer = (user, ingredient) => {
+    
     return (dispatch) => {
-        axios.post(`/api/barcart/${user.id}`, {ingredientId})
+        axios.post(`/api/barcart/${user.id}`, { ingredient })
             .then(res => res.data)
             .then(ing => {
                 dispatch(addLiquor(ing))

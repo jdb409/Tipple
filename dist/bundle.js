@@ -4695,19 +4695,19 @@ var removeLiquor = function removeLiquor(barCart) {
 
 //thunks
 
-var filterBarCart = exports.filterBarCart = function filterBarCart(barCart, id) {
+var filterBarCart = exports.filterBarCart = function filterBarCart(barCart, ingredient) {
     return function (dispatch) {
-        var filtered = barCart.filter(function (g) {
-            return ing !== id;
+        var filtered = barCart.filter(function (ing) {
+            return ing !== ingredient;
         });
         dispatch(removeLiquor(filtered));
     };
 };
 
-var addIngredientToServer = exports.addIngredientToServer = function addIngredientToServer(user, ingredientId) {
-    console.log('hello', user.id, ingredientId);
+var addIngredientToServer = exports.addIngredientToServer = function addIngredientToServer(user, ingredient) {
+
     return function (dispatch) {
-        _axios2.default.post('/api/barcart/' + user.id, { ingredientId: ingredientId }).then(function (res) {
+        _axios2.default.post('/api/barcart/' + user.id, { ingredient: ingredient }).then(function (res) {
             return res.data;
         }).then(function (ing) {
             dispatch(addLiquor(ing));
@@ -7103,6 +7103,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         filterBarCart: function filterBarCart(barCart, removedId) {
+            console.log('asdfds', removedId);
             dispatch((0, _barcart.filterBarCart)(barCart, removedId));
         }
     };
@@ -49049,7 +49050,7 @@ var SearchByInventory = function (_Component) {
             if (barcart.indexOf(itemName) < 0) {
                 if (user.id) {
                     console.log('name', itemName);
-                    this.props.addIngredientToServer(user, itemName.value);
+                    this.props.addIngredientToServer(user, itemName.label);
                 } else {
                     this.props.addLiquor(itemName.label);
                 }
