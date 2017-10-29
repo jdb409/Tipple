@@ -24,7 +24,7 @@ function NavBar(props) {
                 <ul className="navbar-nav ml-auto">
                     {!user.id ?
                         <li className="nav-item">
-                            <Link to='/login' className="nav-link" >Login </Link>
+                            <Login />
                         </li>
 
                         :

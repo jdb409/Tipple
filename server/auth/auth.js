@@ -4,7 +4,7 @@ module.exports = router
 
 router.get('/me', (req, res, next) => {
   
-  User.findById(req.session.userId  || 1)
+  User.findById(req.session.userId)
     .then(user => {
       
       res.send(user);
