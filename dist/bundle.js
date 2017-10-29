@@ -4651,7 +4651,7 @@ var mapIngredients = exports.mapIngredients = function mapIngredients() {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.filterBarCart = exports.addLiquor = undefined;
+exports.addIngredientToServer = exports.filterBarCart = exports.addLiquor = undefined;
 
 exports.default = function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -4703,6 +4703,19 @@ var filterBarCart = exports.filterBarCart = function filterBarCart(barCart, id) 
         dispatch(removeLiquor(filtered));
     };
 };
+
+var addIngredientToServer = exports.addIngredientToServer = function addIngredientToServer(userId, ingredientId) {
+    console.log(userId, ingredientId);
+    return function (dispatch) {
+        _axios2.default.post('/api/barcart/' + userId, ingredientId).then(function (res) {
+            return res.data;
+        }).then(function (ing) {
+            dispatch(addLiquor(ing.name));
+        });
+    };
+};
+
+//reducer
 
 /***/ }),
 /* 39 */
@@ -49027,11 +49040,19 @@ var SearchByInventory = function (_Component) {
         value: function addItem(ev) {
             ev.preventDefault();
             var query = this.state.query;
-            var barcart = this.props.barcart;
+            var _props = this.props,
+                barcart = _props.barcart,
+                user = _props.user;
 
-            var itemName = this.getItem(query).label;
+            var itemName = this.getItem(query);
+
             if (barcart.indexOf(itemName) < 0) {
-                this.props.addLiquor(itemName);
+                if (user.id) {
+                    console.log('itemName', itemName.value);
+                    this.props.addIngredientToServer(itemName.value);
+                } else {
+                    this.props.addLiquor(itemName.label);
+                }
             }
             this.setState({ query: '' });
         }
@@ -49059,9 +49080,9 @@ var SearchByInventory = function (_Component) {
                 addItem = this.addItem,
                 removeItem = this.removeItem;
             var query = this.state.query;
-            var _props = this.props,
-                ingredients = _props.ingredients,
-                barcart = _props.barcart;
+            var _props2 = this.props,
+                ingredients = _props2.ingredients,
+                barcart = _props2.barcart;
 
             console.log(this.state);
 
@@ -49132,9 +49153,10 @@ var SearchByInventory = function (_Component) {
 var mapStateToProps = function mapStateToProps(_ref) {
     var ingredients = _ref.ingredients,
         cocktails = _ref.cocktails,
-        barcart = _ref.barcart;
+        barcart = _ref.barcart,
+        user = _ref.user;
 
-    return { ingredients: ingredients, cocktails: cocktails, barcart: barcart };
+    return { ingredients: ingredients, cocktails: cocktails, barcart: barcart, user: user };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -49150,6 +49172,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
         },
         addLiquor: function addLiquor(liquor) {
             dispatch((0, _barcart.addLiquor)(liquor));
+        },
+        addIngredientToServer: function addIngredientToServer(userId, ingId) {
+            dispatch((0, _barcart.addIngredientToServer)(userId, ingId));
         }
     };
 };

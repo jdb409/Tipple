@@ -6,7 +6,7 @@ const port = process.env.PORT || 3001;
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
-const sessionStore = new SequelizeStore({db})
+const sessionStore = new SequelizeStore({ db })
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -18,7 +18,7 @@ app.use(session({
     store: sessionStore,
     resave: false,
     saveUninitialized: false
-  }))
+}))
 
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
@@ -28,6 +28,8 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
 
 app.use('/api/cocktails', require('./server/cocktails/cocktail'))
 app.use('/api/ingredients', require('./server/ingredients/ingredients'))
+app.use('/api/barcart', require('./server/barcart/barcart'))
+
 app.use('/auth', require('./server/auth/auth'))
 
 app.use((err, req, res, next) => {
@@ -38,8 +40,8 @@ app.use((err, req, res, next) => {
 //     .then(() => {
 //         db.seed()
 //             .then(() => {
-app.listen(port, () => {
-    console.log(`listening on ${port}`)
-})
+                app.listen(port, () => {
+                    console.log(`listening on ${port}`)
+                })
     //         })
     // });

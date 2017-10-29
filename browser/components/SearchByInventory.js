@@ -3,7 +3,7 @@ import Select from 'react-styled-select'
 import { connect } from 'react-redux';
 import { mapIngredients } from '../store/ingredients';
 import { getCocktailsByInventory } from '../store/cocktails';
-import { filterBarCart, addLiquor } from '../store/barcart';
+import { filterBarCart, addLiquor, addIngredientToServer } from '../store/barcart';
 
 import Inventory from './Inventory';
 
@@ -34,10 +34,17 @@ class SearchByInventory extends Component {
     addItem(ev) {
         ev.preventDefault();
         const { query } = this.state
-        const { barcart } = this.props
-        const itemName = this.getItem(query).label;
+        const { barcart, user } = this.props
+        const itemName = this.getItem(query);
+        
         if (barcart.indexOf(itemName) < 0) {
-            this.props.addLiquor(itemName);
+            if (user.id) {
+                console.log('itemName', itemName.value)
+                this.props.addIngredientToServer(itemName.value)
+            } else {
+                this.props.addLiquor(itemName.label);
+            }
+
         }
         this.setState({ query: '' })
     }
@@ -75,7 +82,7 @@ class SearchByInventory extends Component {
                             placeholder="Search Cocktail by Ingredient"
                             className='dark-theme'
                             clearable={true}
-                            
+
                         />
                         <br />
                         <div className='row'>
@@ -94,8 +101,8 @@ class SearchByInventory extends Component {
     }
 }
 
-const mapStateToProps = ({ ingredients, cocktails, barcart }) => {
-    return { ingredients, cocktails, barcart }
+const mapStateToProps = ({ ingredients, cocktails, barcart, user }) => {
+    return { ingredients, cocktails, barcart, user }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -111,6 +118,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         addLiquor: (liquor) => {
             dispatch(addLiquor(liquor));
+        },
+        addIngredientToServer: (userId, ingId) => {
+            dispatch(addIngredientToServer(userId, ingId))
         }
     }
 }
