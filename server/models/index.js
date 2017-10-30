@@ -79,5 +79,10 @@ db.seed = () => {
         }).catch(console.log)
 
 }
+db.sync({ force: true })
+    .then(() => {
+        db.seed();
+    })
+
 
 module.exports = db;
