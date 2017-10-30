@@ -72,7 +72,7 @@ class SearchByInventory extends Component {
 
         return (
 
-            <div className='container text-center'>
+            <div className='container text-center bgSearch'>
                 <h1>Search your Barcart</h1>
                 <small className='text-muted'><p>Add bottles from your bar to see the cocktails you can make</p></small>
                 <div className='row'>
@@ -90,10 +90,10 @@ class SearchByInventory extends Component {
                             <br />
                             <div className='row'>
                                 <div className='col-4'>
-                                    <button type='submit' className='btn btn-info' >Add Ingredient</button>
+                                    <button type='submit' className='btn btn-default' >Add Ingredient</button>
                                 </div>
                                 <div className='col-4 offset-2'>
-                                    <button type='button' className='btn btn-primary' onClick={handleSubmit}>Search</button>
+                                    <button type='button' className='btn btn-default' onClick={handleSubmit}>Search</button>
                                 </div>
                             </div>
                         </form>

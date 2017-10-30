@@ -8,33 +8,30 @@ function NavBar(props) {
     const { user } = props;
 
     return (
-        <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-            <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    <a className="navbar-brand" href="/">Tipple</a>
-                    <li className="nav-item">
-                        <Link to='/' className="nav-link" >Search </Link>
-                    </li>
-                </ul>
-
-                <ul className="navbar-nav ml-auto">
-                    {!user.id ?
-                        <li className="nav-item">
-                            <LogIn />
-                        </li>
-                        :
-                        <li className="nav-item">
-                            <Link to='/' className="nav-link" onClick={() => props.logout(props.history)}><strong>{user.email}</strong> Logout </Link>
-                        </li>
-                    }
-
-                </ul>
+        <nav className="navbar navbar-default navbar-fixed-top">
+            <div className="container-fluid">
+                <div className="navbar-header">
+                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                    </button>
+                    <Link to='/' className="navbar-brand">Tipple</Link>
+                </div>
+                <div className="collapse navbar-collapse" id="myNavbar">
+                    <ul className="nav navbar-nav navbar-right">
+                        {!user.id ?
+                            <li className="nav-item">
+                                <LogIn />
+                            </li>
+                            :
+                            <li className="nav-item">
+                                <Link to='/' className="nav-link" onClick={() => props.logout(props.history)}><strong>{user.email}</strong> Logout </Link>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
-
         </nav>
     );
 }

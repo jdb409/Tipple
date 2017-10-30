@@ -46,7 +46,7 @@ export const logout = (history) =>
         console.log('remove')
         dispatch(clearCart());
         console.log('clear')
-        history.push('/barcart')
+        history.push('/')
       })
       .catch(console.log);
 

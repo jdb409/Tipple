@@ -34,10 +34,10 @@ class LogIn extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <label htmlFor='email'>Email</label>
-          <input value={email} name='email' type='email' onChange={handleChange} />
-          <label htmlFor='password'>password</label>
-          <input value={password} name='password' type='password' onChange={handleChange} />
+
+          <input value={email} name='email' type='email' onChange={handleChange} placeholder = 'Email' />
+
+          <input value={password} name='password' type='password' onChange={handleChange} placeholder = 'Password' />
           <button className='btn btn-primary'>Login</button>
         </form>
       </div>

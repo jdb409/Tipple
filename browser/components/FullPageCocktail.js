@@ -6,30 +6,35 @@ import { getSingleCocktail } from '../store/cocktail';
 class FullPageCocktail extends Component {
 
     componentDidMount() {
-        
+
         this.props.getSingleCocktail(this.props.match.params.id)
     }
     render() {
         const { cocktail } = this.props;
-        
+
         const { ingredients } = cocktail || [];
 
         return (
-            <div>
+            <div className='fullpage'>
+                
+                <div className='container'>
                 <Link to='/'>Back</Link>
-                <div className="card container" style={{ "width": "20rem" }}>
-                    <div className="card-body">
-                        <h4 className="card-title">{cocktail.name}</h4>
-                        <p className="card-text">{cocktail.instructions}</p>
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        {ingredients && ingredients.map(ing => {
-                            return (
-                                <li className="list-group-item" key={ing.id}>{ing.name} - {ing.mix.quantity}</li>
+                    {cocktail.name && cocktail.name.length > 0 ?
+                        <div>
 
-                            );
-                        })}
-                    </ul>
+                            <h4>{cocktail.name}</h4>
+                            <p>{cocktail.instructions}</p>
+
+                            <ul className="list-group-item">
+                                {ingredients && ingredients.map(ing => {
+                                    return (
+                                        <li className="list-group-item" key={ing.id}>{ing.name} - {ing.mix.quantity}</li>
+
+                                    );
+                                })}
+                            </ul>
+                        </div>
+                        : null}
                 </div>
             </div>
         );

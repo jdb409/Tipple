@@ -19,21 +19,27 @@ class Main extends Component {
     componentDidMount() {
         this.props.fetchUser();
     }
-   
+
 
     render() {
-        // <Route path='/' component={NavBar} />
+
         return (
             <div>
-                
+                <Route path='/' component={NavBar} />
                 <Route path='/' component={Home} />
                 <Route exact path='/' component={Search} />
                 <Route exact path='/ingredients' component={Search} />
-                <Route exact path='/barcart' component={Search} />
-                <Route exact path='/cocktail/:id' component={FullPageCocktail} />
-
+                <Route exact path='/cocktail' component={Search} />
+                <Route exact path='/cocktail/:id' component={FullPageCocktail}/>
             </div>
         );
+    }
+}
+
+
+const mapStateToProps = ({ cocktail }) => {
+    return {
+        cocktail
     }
 }
 
@@ -46,4 +52,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

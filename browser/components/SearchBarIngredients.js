@@ -46,7 +46,7 @@ class SearchBarCocktailIngredients extends Component {
                                 className='dark-theme'
                             />
                             <br />
-                            <button className='btn btn-primary'>Search</button>
+                            <button className='btn btn-default'>Search</button>
                         </form>
                     </div>
                 </div>

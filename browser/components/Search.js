@@ -40,36 +40,31 @@ class Search extends Component {
 
             <div>
                 <div className='bg container-fluid'>
-                    <div className='row offset-3'>
+                    <div className='row '>
                         <div className='col-9'>
                             <div>
                                 <ul className="nav nav-tabs">
-                                    <li className={search === '/barcart' ? "nav-link active" : "nav-link"}><Link to='/barcart'>Bar Cart</Link></li>
-                                    <li className={search === '/' ? "nav-link active" : "nav-link"}><Link to='/'>Search by Cocktails</Link></li>
+                                    <li className={search === '/' ? "nav-link active" : "nav-link"}><Link to='/'>Bar Cart</Link></li>
+                                    <li className={search === '/cocktail' ? "nav-link active" : "nav-link"}><Link to='/cocktail'>Search by Cocktails</Link></li>
                                     <li className={search === '/ingredients' ? "nav-link active" : "nav-link"}><Link to='/ingredients'>Search by Ingredients</Link></li>
                                 </ul>
-
-
-                                <div className="tab-content">
-
-                                    <Route exact path='/barcart' component={SearchByInventory} />
-
-
-                                    <Route exact path='/' component={SearchBarCocktail} />
-
-
-                                    <Route exact path='/ingredients' component={SearchBarIngredients} />
-
+                                <div className='row'>
+                                    <div className='col-md-10 searchForm' id = 'search'>
+                                        <Route exact path='/' component={SearchByInventory}></Route>
+                                        <Route exact path='/cocktail' component={SearchBarCocktail} />
+                                        <Route exact path='/ingredients' component={SearchBarIngredients} />
+                                    </div>
+                                    <div className='col-md-2 inventory'>
+                                        <Inventory />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <Route exact path='/' render={(route) => <SingleCocktail cocktail={cocktail} route={route} />} />
+                    <Route exact path='/cocktail' render={(route) => <SingleCocktail cocktail={cocktail} route={route} />} />
                     <Route exact path='/ingredients' render={(route) => <CocktailList cocktails={cocktails} route={route} />} />
-                    <Route exact path='/barcart' render={(route) => <CanMake user={user} cocktails={cocktails} route={route} />} />
-                    <div className='col-2'>
-                        <Inventory />
-                    </div>
+                    <Route exact path='/' render={(route) => <CanMake user={user} cocktails={cocktails} route={route} />} />
+
                 </div>
 
             </div>

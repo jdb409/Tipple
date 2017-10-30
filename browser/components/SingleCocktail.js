@@ -8,7 +8,7 @@ class SingleCocktail extends Component {
     render() {
         const { cocktail } = this.props;
         const { ingredients } = cocktail || [];
-
+        console.log('tail',cocktail)
         return (
 
             <div className='bg-1'>
@@ -19,7 +19,7 @@ class SingleCocktail extends Component {
                             <h4 className="card-title">{cocktail.name}</h4>
                             <p className="card-text">{cocktail.instructions}</p>
 
-                            <ul className="list-group list-group-flush">
+                            <ul className="list-group-item">
                                 {ingredients && ingredients.map(ing => {
                                     return (
                                         <li className="list-group-item" key={ing.id}>{ing.name} - {ing.mix.quantity}</li>
