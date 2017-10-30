@@ -23,8 +23,8 @@ class SearchByInventory extends Component {
 
     componentDidMount() {
         this.props.mapIngredients();
-        
-        
+
+
     }
 
     getItem(query) {
@@ -72,7 +72,7 @@ class SearchByInventory extends Component {
 
         return (
             <div>
-                <div className='col-12'>
+                <div className='align-self-center'>
                     <h1 className='display-5'>Search your Barcart</h1>
                     <small className='text-muted'><p>Add bottles from your bar to see the cocktails you can make</p></small>
 

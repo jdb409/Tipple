@@ -1,16 +1,23 @@
 body{
-    background-color: #e1e8fa;
+  
 }
 
 .bg{
     background-color: #adc6fa;
     background-image: url("https://www.transparenttextures.com/patterns/groovepaper.png");
-    height: 50%;   
+    height: 70%;   
+    margin-top: 5%;
  }
  
  .search{
      background-color: #e1e8fa;
-     height: 60%;
+     height: 90%;
+     font-size: 2em;
+ }
+
+ .searchNav{
+     padding: 1%;
+     font-size:1.1em;
  }
 
 .header{
@@ -24,12 +31,13 @@ body{
     --styled-select-menu-outer__border-style: solid;
     --styled-select-menu-outer__border-width: 3px;
     --styled-select-placeholder__font-size: 1.25em;
+    --styled-select-value__max-width: 100%;
 
  }
 
  .box{
      position: relative;
-     left:10%;
+     left:25%;
  }
 
  .inventory{

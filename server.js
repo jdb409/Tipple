@@ -36,12 +36,12 @@ app.use((err, req, res, next) => {
     res.send(err);
 })
 
-db.sync({ force: true })
-    .then(() => {
-        db.seed()
-            .then(() => {
+// db.sync({ force: true })
+//     .then(() => {
+//         db.seed()
+//             .then(() => {
                 app.listen(port, () => {
                     console.log(`listening on ${port}`)
                 })
-            })
-    });
+            // })
+    // });

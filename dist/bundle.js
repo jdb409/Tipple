@@ -33149,100 +33149,71 @@ var Search = function (_Component) {
                     { className: 'bg container-fluid' },
                     _react2.default.createElement(
                         'div',
-                        { className: 'row' },
+                        { className: 'row offset-3' },
                         _react2.default.createElement(
                             'div',
-                            { className: 'col-10 box' },
+                            null,
                             _react2.default.createElement(
                                 'div',
-                                { className: 'row h-100 header' },
+                                { className: 'card text-center card-inverse card-warning' },
                                 _react2.default.createElement(
                                     'div',
-                                    { className: 'col-sm-6 align-self-center offset-sm-3' },
+                                    { className: 'card-header container' },
                                     _react2.default.createElement(
-                                        'div',
-                                        { className: 'card text-center card-inverse card-warning' },
+                                        'ul',
+                                        { className: 'nav nav-pills card-header-tabs searchNav' },
                                         _react2.default.createElement(
-                                            'div',
-                                            { className: 'card-header' },
+                                            'li',
+                                            { className: 'nav-item' },
                                             _react2.default.createElement(
-                                                'ul',
-                                                { className: 'nav nav-tabs card-header-tabs' },
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    { className: 'nav-item' },
-                                                    _react2.default.createElement(
-                                                        _reactRouterDom.Link,
-                                                        { to: '/barcart', className: search === '/barcart' ? "nav-link active" : "nav-link" },
-                                                        'Bar Cart'
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    { className: 'nav-item' },
-                                                    _react2.default.createElement(
-                                                        _reactRouterDom.Link,
-                                                        { to: '/', className: search === '/' ? "nav-link active" : "nav-link" },
-                                                        'Search by Cocktail'
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    { className: 'nav-item' },
-                                                    _react2.default.createElement(
-                                                        _reactRouterDom.Link,
-                                                        { to: '/ingredients', className: search === '/ingredients' ? "nav-link active" : "nav-link" },
-                                                        'Search by Ingredient'
-                                                    )
-                                                )
+                                                _reactRouterDom.Link,
+                                                { to: '/barcart', className: search === '/barcart' ? "nav-link active" : "nav-link" },
+                                                'Bar Cart'
                                             )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'row' },
+                                        ),
                                         _react2.default.createElement(
-                                            'div',
-                                            { className: 'col-12' },
+                                            'li',
+                                            { className: 'nav-item' },
                                             _react2.default.createElement(
-                                                'div',
-                                                { className: 'card-block row search' },
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'card-block align-self-center searchArea' },
-                                                    _react2.default.createElement(
-                                                        'div',
-                                                        { className: 'col-sm-12 offset-sm-2' },
-                                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', component: _SearchByInventory2.default }),
-                                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _SearchBarCocktail2.default }),
-                                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', component: _SearchBarIngredients2.default })
-                                                    )
-                                                )
+                                                _reactRouterDom.Link,
+                                                { to: '/', className: search === '/' ? "nav-link active" : "nav-link" },
+                                                'Search by Cocktail'
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'li',
+                                            { className: 'nav-item' },
+                                            _react2.default.createElement(
+                                                _reactRouterDom.Link,
+                                                { to: '/ingredients', className: search === '/ingredients' ? "nav-link active" : "nav-link" },
+                                                'Search by Ingredient'
                                             )
                                         )
                                     )
                                 )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'row search' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'offset-4 align-self-center' },
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', component: _SearchByInventory2.default }),
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _SearchBarCocktail2.default }),
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', component: _SearchBarIngredients2.default })
+                                )
                             )
                         ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'col-2' },
-                            _react2.default.createElement(_Inventory2.default, null)
-                        )
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render(route) {
+                                return _react2.default.createElement(_SingleCocktail2.default, { cocktail: cocktail, route: route });
+                            } }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', render: function render(route) {
+                                return _react2.default.createElement(_CocktailList2.default, { cocktails: cocktails, route: route });
+                            } }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', render: function render(route) {
+                                return _react2.default.createElement(_CanMake2.default, { user: user, cocktails: cocktails, route: route });
+                            } })
                     )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    search === '/' || '' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
-                            return _react2.default.createElement(_SingleCocktail2.default, { cocktail: cocktail, route: route });
-                        } }) : null,
-                    search === '/ingredients' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
-                            return _react2.default.createElement(_CocktailList2.default, { cocktails: cocktails, route: route });
-                        } }) : null,
-                    search === '/barcart' ? _react2.default.createElement(_reactRouterDom.Route, { render: function render(route) {
-                            return _react2.default.createElement(_CanMake2.default, { user: user, cocktails: cocktails, route: route });
-                        } }) : null
                 )
             );
         }
@@ -49603,7 +49574,7 @@ var SearchByInventory = function (_Component) {
                 null,
                 _react2.default.createElement(
                     'div',
-                    { className: 'col-12' },
+                    { className: 'align-self-center' },
                     _react2.default.createElement(
                         'h1',
                         { className: 'display-5' },
