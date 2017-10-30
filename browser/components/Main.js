@@ -6,7 +6,6 @@ import { me } from '../store/user';
 
 
 import Search from './Search';
-import SingleCocktail from './SingleCocktail';
 import FullPageCocktail from './FullPageCocktail';
 
 import NavBar from './NavBar';

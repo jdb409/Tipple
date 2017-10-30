@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { logout } from '../store/user'
-import Login from './Login';
+import LogIn from './LogIn';
 
 function NavBar(props) {
     const { user } = props;
@@ -24,7 +24,7 @@ function NavBar(props) {
                 <ul className="navbar-nav ml-auto">
                     {!user.id ?
                         <li className="nav-item">
-                            <Login />
+                            <LogIn />
                         </li>
                         :
                         <li className="nav-item">
