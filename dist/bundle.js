@@ -33152,55 +33152,59 @@ var Search = function (_Component) {
                         { className: 'row offset-3' },
                         _react2.default.createElement(
                             'div',
-                            null,
+                            { className: 'col-9' },
                             _react2.default.createElement(
                                 'div',
-                                { className: 'card text-center card-inverse card-warning' },
+                                null,
                                 _react2.default.createElement(
                                     'div',
-                                    { className: 'card-header container' },
+                                    { className: 'card text-center card-inverse card-warning' },
                                     _react2.default.createElement(
-                                        'ul',
-                                        { className: 'nav nav-pills card-header-tabs searchNav' },
+                                        'div',
+                                        { className: 'card-header container' },
                                         _react2.default.createElement(
-                                            'li',
-                                            { className: 'nav-item' },
+                                            'ul',
+                                            { className: 'nav nav-pills card-header-tabs searchNav' },
                                             _react2.default.createElement(
-                                                _reactRouterDom.Link,
-                                                { to: '/barcart', className: search === '/barcart' ? "nav-link active" : "nav-link" },
-                                                'Bar Cart'
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'li',
-                                            { className: 'nav-item' },
+                                                'li',
+                                                { className: 'nav-item' },
+                                                _react2.default.createElement(
+                                                    _reactRouterDom.Link,
+                                                    { to: '/barcart', className: search === '/barcart' ? "nav-link active" : "nav-link" },
+                                                    'Bar Cart'
+                                                )
+                                            ),
                                             _react2.default.createElement(
-                                                _reactRouterDom.Link,
-                                                { to: '/', className: search === '/' ? "nav-link active" : "nav-link" },
-                                                'Search by Cocktail'
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'li',
-                                            { className: 'nav-item' },
+                                                'li',
+                                                { className: 'nav-item' },
+                                                _react2.default.createElement(
+                                                    _reactRouterDom.Link,
+                                                    { to: '/', className: search === '/' ? "nav-link active" : "nav-link" },
+                                                    'Search by Cocktail'
+                                                )
+                                            ),
                                             _react2.default.createElement(
-                                                _reactRouterDom.Link,
-                                                { to: '/ingredients', className: search === '/ingredients' ? "nav-link active" : "nav-link" },
-                                                'Search by Ingredient'
+                                                'li',
+                                                { className: 'nav-item' },
+                                                _react2.default.createElement(
+                                                    _reactRouterDom.Link,
+                                                    { to: '/ingredients', className: search === '/ingredients' ? "nav-link active" : "nav-link" },
+                                                    'Search by Ingredient'
+                                                )
                                             )
                                         )
                                     )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'row search' },
+                                ),
                                 _react2.default.createElement(
                                     'div',
-                                    { className: 'offset-4 align-self-center' },
-                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', component: _SearchByInventory2.default }),
-                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _SearchBarCocktail2.default }),
-                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', component: _SearchBarIngredients2.default })
+                                    { className: 'row search' },
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'offset-4 align-self-center' },
+                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', component: _SearchByInventory2.default }),
+                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _SearchBarCocktail2.default }),
+                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', component: _SearchBarIngredients2.default })
+                                    )
                                 )
                             )
                         ),
@@ -33212,7 +33216,12 @@ var Search = function (_Component) {
                             } }),
                         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', render: function render(route) {
                                 return _react2.default.createElement(_CanMake2.default, { user: user, cocktails: cocktails, route: route });
-                            } })
+                            } }),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'col-2' },
+                            _react2.default.createElement(_Inventory2.default, null)
+                        )
                     )
                 )
             );

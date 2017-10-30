@@ -40,38 +40,41 @@ class Search extends Component {
             <div>
                 <div className='bg container-fluid'>
                     <div className='row offset-3'>
-                        <div>
+                        <div className='col-9'>
+                            <div>
 
-                            <div className="card text-center card-inverse card-warning">
-                                <div className="card-header container">
+                                <div className="card text-center card-inverse card-warning">
+                                    <div className="card-header container">
 
-                                    <ul className="nav nav-pills card-header-tabs searchNav">
-                                        <li className="nav-item">
-                                            <Link to='/barcart' className={search === '/barcart' ? "nav-link active" : "nav-link"}>Bar Cart</Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link to='/' className={search === '/' ? "nav-link active" : "nav-link"}>Search by Cocktail</Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link to='/ingredients' className={search === '/ingredients' ? "nav-link active" : "nav-link"}>Search by Ingredient</Link>
-                                        </li>
-                                    </ul>
+                                        <ul className="nav nav-pills card-header-tabs searchNav">
+                                            <li className="nav-item">
+                                                <Link to='/barcart' className={search === '/barcart' ? "nav-link active" : "nav-link"}>Bar Cart</Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link to='/' className={search === '/' ? "nav-link active" : "nav-link"}>Search by Cocktail</Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link to='/ingredients' className={search === '/ingredients' ? "nav-link active" : "nav-link"}>Search by Ingredient</Link>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className='row search'>
-                                <div className = 'offset-4 align-self-center'>
-                                    <Route exact path='/barcart' component={SearchByInventory} />
-                                    <Route exact path='/' component={SearchBarCocktail} />
-                                    <Route exact path='/ingredients' component={SearchBarIngredients} />
+                                <div className='row search'>
+                                    <div className='offset-4 align-self-center'>
+                                        <Route exact path='/barcart' component={SearchByInventory} />
+                                        <Route exact path='/' component={SearchBarCocktail} />
+                                        <Route exact path='/ingredients' component={SearchBarIngredients} />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                         <Route exact path='/' render={(route) => <SingleCocktail cocktail={cocktail} route={route} />} />
                         <Route exact path='/ingredients' render={(route) => <CocktailList cocktails={cocktails} route={route} />} />
                         <Route exact path='/barcart' render={(route) => <CanMake user={user} cocktails={cocktails} route={route} />} />
-
+                        <div className='col-2'>
+                            <Inventory />
+                        </div>
                     </div>
 
                 </div>
