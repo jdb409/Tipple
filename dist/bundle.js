@@ -33144,7 +33144,7 @@ var Search = function (_Component) {
                 user = _props.user;
             var search = this.state.search;
 
-
+            console.log('search', search);
             return _react2.default.createElement(
                 'div',
                 null,
@@ -33162,62 +33162,58 @@ var Search = function (_Component) {
                                 null,
                                 _react2.default.createElement(
                                     'ul',
-                                    { className: 'nav nav-pills searchNav' },
+                                    { className: 'nav nav-tabs' },
                                     _react2.default.createElement(
                                         'li',
-                                        { className: 'nav-item' },
+                                        { className: search === '/barcart' ? "nav-link active" : "nav-link" },
                                         _react2.default.createElement(
                                             _reactRouterDom.Link,
-                                            { to: '/barcart', className: search === '/barcart' ? "nav-link active" : "nav-link" },
+                                            { to: '/barcart' },
                                             'Bar Cart'
                                         )
                                     ),
                                     _react2.default.createElement(
                                         'li',
-                                        { className: 'nav-item' },
+                                        { className: search === '/' ? "nav-link active" : "nav-link" },
                                         _react2.default.createElement(
                                             _reactRouterDom.Link,
-                                            { to: '/', className: search === '/' ? "nav-link active" : "nav-link" },
-                                            'Search by Cocktail'
+                                            { to: '/' },
+                                            'Search by Cocktails'
                                         )
                                     ),
                                     _react2.default.createElement(
                                         'li',
-                                        { className: 'nav-item' },
+                                        { className: search === '/ingredients' ? "nav-link active" : "nav-link" },
                                         _react2.default.createElement(
                                             _reactRouterDom.Link,
-                                            { to: '/ingredients', className: search === '/ingredients' ? "nav-link active" : "nav-link" },
-                                            'Search by Ingredient'
+                                            { to: '/ingredients' },
+                                            'Search by Ingredients'
                                         )
                                     )
                                 ),
                                 _react2.default.createElement(
                                     'div',
-                                    { className: 'row search' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'offset-4' },
-                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', component: _SearchByInventory2.default }),
-                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _SearchBarCocktail2.default }),
-                                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', component: _SearchBarIngredients2.default })
-                                    )
+                                    { className: 'tab-content' },
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', component: _SearchByInventory2.default }),
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _SearchBarCocktail2.default }),
+                                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', component: _SearchBarIngredients2.default })
                                 )
                             )
-                        ),
-                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render(route) {
-                                return _react2.default.createElement(_SingleCocktail2.default, { cocktail: cocktail, route: route });
-                            } }),
-                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', render: function render(route) {
-                                return _react2.default.createElement(_CocktailList2.default, { cocktails: cocktails, route: route });
-                            } }),
-                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', render: function render(route) {
-                                return _react2.default.createElement(_CanMake2.default, { user: user, cocktails: cocktails, route: route });
-                            } }),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'col-2' },
-                            _react2.default.createElement(_Inventory2.default, null)
                         )
+                    ),
+                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render(route) {
+                            return _react2.default.createElement(_SingleCocktail2.default, { cocktail: cocktail, route: route });
+                        } }),
+                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', render: function render(route) {
+                            return _react2.default.createElement(_CocktailList2.default, { cocktails: cocktails, route: route });
+                        } }),
+                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', render: function render(route) {
+                            return _react2.default.createElement(_CanMake2.default, { user: user, cocktails: cocktails, route: route });
+                        } }),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-2' },
+                        _react2.default.createElement(_Inventory2.default, null)
                     )
                 )
             );
@@ -33327,7 +33323,7 @@ var SearchBarCocktail = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: 'container text-center' },
+                { className: 'container text-center bgSearch' },
                 _react2.default.createElement(
                     'h1',
                     null,
@@ -49313,7 +49309,7 @@ var SearchBarCocktailIngredients = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: 'container text-center' },
+                { className: 'container text-center bgSearch' },
                 _react2.default.createElement(
                     'h1',
                     null,
@@ -49419,13 +49415,13 @@ var SingleCocktail = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                null,
-                cocktail.name && cocktail.name.length > 0 ? _react2.default.createElement(
+                { className: 'bg-1' },
+                _react2.default.createElement(
                     'div',
-                    { className: 'card container', style: { "width": "20rem" } },
-                    _react2.default.createElement(
+                    { className: 'container' },
+                    cocktail.name && cocktail.name.length > 0 ? _react2.default.createElement(
                         'div',
-                        { className: 'card-body' },
+                        null,
                         _react2.default.createElement(
                             'h4',
                             { className: 'card-title' },
@@ -49435,22 +49431,22 @@ var SingleCocktail = function (_Component) {
                             'p',
                             { className: 'card-text' },
                             cocktail.instructions
+                        ),
+                        _react2.default.createElement(
+                            'ul',
+                            { className: 'list-group list-group-flush' },
+                            ingredients && ingredients.map(function (ing) {
+                                return _react2.default.createElement(
+                                    'li',
+                                    { className: 'list-group-item', key: ing.id },
+                                    ing.name,
+                                    ' - ',
+                                    ing.mix.quantity
+                                );
+                            })
                         )
-                    ),
-                    _react2.default.createElement(
-                        'ul',
-                        { className: 'list-group list-group-flush' },
-                        ingredients && ingredients.map(function (ing) {
-                            return _react2.default.createElement(
-                                'li',
-                                { className: 'list-group-item', key: ing.id },
-                                ing.name,
-                                ' - ',
-                                ing.mix.quantity
-                            );
-                        })
-                    )
-                ) : null
+                    ) : null
+                )
             );
         }
     }]);
@@ -50304,6 +50300,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(12);
 
+var _reactInfinite = __webpack_require__(71);
+
+var _reactInfinite2 = _interopRequireDefault(_reactInfinite);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function CanMake(props) {
@@ -50314,75 +50314,59 @@ function CanMake(props) {
 
     return _react2.default.createElement(
         'div',
-        { className: 'container' },
-        exact && exact.length || oneOff && oneOff.length ? _react2.default.createElement(
+        { className: 'bg-1' },
+        _react2.default.createElement(
             'div',
-            { className: 'row' },
+            { className: 'container' },
             _react2.default.createElement(
                 'div',
-                { className: 'col-6' },
-                _react2.default.createElement(
+                { className: 'row' },
+                exact && exact.length || oneOff && oneOff.length ? _react2.default.createElement(
                     'div',
-                    { className: 'card', style: { "width": "20rem;" } },
+                    null,
                     _react2.default.createElement(
-                        'div',
-                        { className: 'card-block' },
-                        _react2.default.createElement(
-                            'h4',
-                            { className: 'card-title' },
-                            'You can make:'
-                        ),
-                        _react2.default.createElement(
-                            'ul',
-                            { className: 'list-group list-group-flush' },
-                            exact.map(function (drink) {
-                                return _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    { key: drink.id, to: '/cocktail/' + drink.id },
-                                    _react2.default.createElement(
-                                        'li',
-                                        { className: 'list-group-item' },
-                                        drink.name
-                                    )
-                                );
-                            })
-                        )
-                    )
-                )
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: 'col-6' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'card', style: { "width": "20rem;" } },
+                        'h3',
+                        null,
+                        'You can make:'
+                    ),
                     _react2.default.createElement(
-                        'div',
-                        { className: 'card-block' },
-                        _react2.default.createElement(
-                            'h4',
-                            { className: 'card-title' },
-                            'You need one more ingredient to make:'
-                        ),
-                        _react2.default.createElement(
-                            'ul',
-                            { className: 'list-group list-group-flush' },
-                            oneOff.map(function (drink) {
-                                return _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    { key: drink.id, to: '/cocktail/' + drink.id },
-                                    _react2.default.createElement(
-                                        'li',
-                                        { className: 'list-group-item' },
-                                        drink.name
-                                    )
-                                );
-                            })
-                        )
+                        'ul',
+                        { className: 'list-group-item' },
+                        exact.map(function (drink) {
+                            return _react2.default.createElement(
+                                _reactRouterDom.Link,
+                                { key: drink.id, to: '/cocktail/' + drink.id },
+                                _react2.default.createElement(
+                                    'li',
+                                    { className: 'list-group-item' },
+                                    drink.name
+                                )
+                            );
+                        })
+                    ),
+                    _react2.default.createElement(
+                        'h3',
+                        null,
+                        'You need one more ingredient to make:'
+                    ),
+                    _react2.default.createElement(
+                        _reactInfinite2.default,
+                        { className: 'list-group-item', containerHeight: 200, elementHeight: 30, style: { "width": "50rem" } },
+                        oneOff.map(function (drink) {
+                            return _react2.default.createElement(
+                                _reactRouterDom.Link,
+                                { key: drink.id, to: '/cocktail/' + drink.id },
+                                _react2.default.createElement(
+                                    'li',
+                                    { className: 'list-group-item' },
+                                    drink.name
+                                )
+                            );
+                        })
                     )
-                )
+                ) : null
             )
-        ) : null
+        )
     );
 }
 
@@ -50422,22 +50406,18 @@ function CocktailList(props) {
             { className: 'container' },
             cocktails.length < 250 && _react2.default.createElement(
                 _reactInfinite2.default,
-                { className: 'list-group', containerHeight: 350, elementHeight: 30, style: { "width": "50rem" } },
-                _react2.default.createElement(
-                    'ul',
-                    { className: 'list-group-item' },
-                    cocktails.map(function (drink) {
-                        return _react2.default.createElement(
-                            _reactRouterDom.Link,
-                            { key: drink.id, to: '/cocktail/' + drink.id },
-                            _react2.default.createElement(
-                                'li',
-                                { className: 'list-group-item' },
-                                drink.name
-                            )
-                        );
-                    })
-                )
+                { className: 'list-group-item', containerHeight: 400, elementHeight: 30, style: { "width": "50rem" } },
+                cocktails.map(function (drink) {
+                    return _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { key: drink.id, to: '/cocktail/' + drink.id },
+                        _react2.default.createElement(
+                            'li',
+                            { className: 'list-group-item' },
+                            drink.name
+                        )
+                    );
+                })
             )
         )
     );

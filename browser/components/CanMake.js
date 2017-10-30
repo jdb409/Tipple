@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Infinite from 'react-infinite';
 
 export default function CanMake(props) {
     const { cocktails } = props;
@@ -8,42 +9,41 @@ export default function CanMake(props) {
 
 
     return (
-        <div className = 'container'>
-            {exact && exact.length || oneOff && oneOff.length ?
+        <div className='bg-1'>
+            <div className='container'>
                 <div className='row' >
-                    <div className='col-6'>
-                        <div className="card" style={{ "width": "20rem;" }}>
-                            <div className="card-block">
-                                <h4 className="card-title">You can make:</h4>
-                                <ul className="list-group list-group-flush">
-                                    {exact.map(drink => {
-                                        return (
-                                            <Link key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
-                                        );
-                                    })}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='col-6'>
-                        <div className="card" style={{ "width": "20rem;" }}>
-                            <div className="card-block">
-                                <h4 className="card-title">You need one more ingredient to make:</h4>
-                                <ul className="list-group list-group-flush">
-                                    {oneOff.map(drink => {
-                                        return (
-                                            <Link key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
-                                        );
-                                    })}
-                                </ul>
-                            </div>
-                        </div>
+                    {exact && exact.length || oneOff && oneOff.length ?
+                        <div>
 
-                    </div>
+
+
+                            <h3>You can make:</h3>
+                            <ul className='list-group-item'>
+                                {exact.map(drink => {
+                                    return (
+                                        <Link key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
+                                    );
+                                })}
+                            </ul>
+
+
+
+
+                            <h3>You need one more ingredient to make:</h3>
+                            <Infinite className="list-group-item" containerHeight={200} elementHeight={30} style={{ "width": "50rem" }}>
+                                {oneOff.map(drink => {
+                                    return (
+                                        <Link key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
+                                    );
+                                })}
+                            </Infinite>
+
+
+                        </div>
+                        :
+                        null}
                 </div>
-                :
-                null
-            }
+            </div>
         </div>
     );
 }

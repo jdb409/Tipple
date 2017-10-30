@@ -34,7 +34,7 @@ class SearchBarCocktail extends Component {
         const { query } = this.state;
         const { cocktail, cocktails } = this.props;
         return (
-            <div className='container text-center'>
+            <div className='container text-center bgSearch'>
                 <h1>Search by Cocktail</h1>
                 <div className='row'>
                     <div className='col-sm-offset-4'>
