@@ -9,6 +9,7 @@ import Search from './Search';
 import FullPageCocktail from './FullPageCocktail';
 
 import NavBar from './NavBar';
+import Home from './Home';
 
 
 class Main extends Component {
@@ -21,10 +22,11 @@ class Main extends Component {
    
 
     render() {
-
+        // <Route path='/' component={NavBar} />
         return (
             <div>
-                <Route path='/' component={NavBar} />
+                
+                <Route path='/' component={Home} />
                 <Route exact path='/' component={Search} />
                 <Route exact path='/ingredients' component={Search} />
                 <Route exact path='/barcart' component={Search} />

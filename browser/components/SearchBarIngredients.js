@@ -24,7 +24,7 @@ class SearchBarCocktailIngredients extends Component {
 
     handleSubmit(ev) {
         ev.preventDefault();
-        
+
         this.props.getCocktailsByIngredient(this.state.query);
     }
 
@@ -33,19 +33,23 @@ class SearchBarCocktailIngredients extends Component {
         const { query } = this.state;
         const { cocktails, ingredients } = this.props;
         return (
-            <div>
-                <h1 className='display-5'>Search by Ingredient</h1>
-                <form onSubmit={handleSubmit} style={{ 'width': '50%' }}>
-                    <Select
-                        options={ingredients.length && ingredients}
-                        value={query}
-                        onChange={handleChange}
-                        placeholder="Search Cocktail by Ingredient"
-                        className='dark-theme'
-                    />
-                    <br />
-                    <button className='btn btn-primary'>Search</button>
-                </form>
+            <div className='container text-center'>
+                <h1>Search by Ingredient</h1>
+                <div className='row'>
+                    <div className='col-sm-offset-4'>
+                        <form onSubmit={handleSubmit} style={{ 'width': '50%' }}>
+                            <Select
+                                options={ingredients.length && ingredients}
+                                value={query}
+                                onChange={handleChange}
+                                placeholder="Search Cocktail by Ingredient"
+                                className='dark-theme'
+                            />
+                            <br />
+                            <button className='btn btn-primary'>Search</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     }

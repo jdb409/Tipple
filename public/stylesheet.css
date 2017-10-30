@@ -1,24 +1,7 @@
-body{
-  
+.container{
+    padding: 80px 120px;
 }
 
-.bg{
-    background-color: #adc6fa;
-    background-image: url("https://www.transparenttextures.com/patterns/groovepaper.png");
-    height: 70%;   
-    margin-top: 5%;
- }
- 
- .search{
-     background-color: #e1e8fa;
-     height: 90%;
-     font-size: 2em;
- }
-
- .searchNav{
-     padding: 1%;
-     font-size:1.1em;
- }
 
 .header{
     transform: scale(1.15,1.15);
@@ -34,20 +17,20 @@ body{
     --styled-select-value__max-width: 100%;
 
  }
+ .carousel-inner img {
 
- .box{
-     position: relative;
-     left:25%;
- }
+    filter: grayscale(90%); /* make all photos black and white */
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
 
- .inventory{
-    position: relative;
-    top:25%;
-    right: 5%;
- }
+.carousel-caption h1 {
+    color: #fff !important;
+}
 
- .searchArea{
-    position: relative;
-    left:5%;
- }
-
+.bg-1 {
+    background: #2d2d30;
+    color: #bdbdbd;
+}
+.bg-1 h3 {color: #fff;}
+.bg-1 p {font-style: italic;}

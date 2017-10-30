@@ -34,19 +34,23 @@ class SearchBarCocktail extends Component {
         const { query } = this.state;
         const { cocktail, cocktails } = this.props;
         return (
-            <div>
-                <h1 className='display-5'>Search by Cocktail</h1>
-                <form onSubmit={handleSubmit} style={{ 'width': '50%' }}>
-                    <Select
-                        options={cocktails.length && cocktails}
-                        value={query}
-                        onChange={handleChange}
-                        placeholder="Search Cocktails"
-                        className='dark-theme'
-                    />
-                    <br />
-                    <button className='btn btn-primary'>Search</button>
-                </form>
+            <div className='container text-center'>
+                <h1>Search by Cocktail</h1>
+                <div className='row'>
+                    <div className='col-sm-offset-4'>
+                        <form onSubmit={handleSubmit} style={{ 'width': '50%' }}>
+                            <Select
+                                options={cocktails.length && cocktails}
+                                value={query}
+                                onChange={handleChange}
+                                placeholder="Search Cocktails"
+                                className='dark-theme'
+                            />
+                            <br />
+                            <button className='btn btn-primary'>Search</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     }

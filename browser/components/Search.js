@@ -43,25 +43,23 @@ class Search extends Component {
                         <div className='col-9'>
                             <div>
 
-                                <div className="card text-center card-inverse card-warning">
-                                    <div className="card-header container">
 
-                                        <ul className="nav nav-pills card-header-tabs searchNav">
-                                            <li className="nav-item">
-                                                <Link to='/barcart' className={search === '/barcart' ? "nav-link active" : "nav-link"}>Bar Cart</Link>
-                                            </li>
-                                            <li className="nav-item">
-                                                <Link to='/' className={search === '/' ? "nav-link active" : "nav-link"}>Search by Cocktail</Link>
-                                            </li>
-                                            <li className="nav-item">
-                                                <Link to='/ingredients' className={search === '/ingredients' ? "nav-link active" : "nav-link"}>Search by Ingredient</Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+
+                                <ul className="nav nav-pills searchNav">
+                                    <li className="nav-item">
+                                        <Link to='/barcart' className={search === '/barcart' ? "nav-link active" : "nav-link"}>Bar Cart</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to='/' className={search === '/' ? "nav-link active" : "nav-link"}>Search by Cocktail</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to='/ingredients' className={search === '/ingredients' ? "nav-link active" : "nav-link"}>Search by Ingredient</Link>
+                                    </li>
+                                </ul>
+
 
                                 <div className='row search'>
-                                    <div className='offset-4 align-self-center'>
+                                    <div className='offset-4'>
                                         <Route exact path='/barcart' component={SearchByInventory} />
                                         <Route exact path='/' component={SearchBarCocktail} />
                                         <Route exact path='/ingredients' component={SearchBarIngredients} />

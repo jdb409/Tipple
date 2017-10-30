@@ -71,34 +71,37 @@ class SearchByInventory extends Component {
 
 
         return (
-            <div>
-                <div className='align-self-center'>
-                    <h1 className='display-5'>Search your Barcart</h1>
-                    <small className='text-muted'><p>Add bottles from your bar to see the cocktails you can make</p></small>
 
-                    <form id='searchBar' onSubmit={addItem} style={{ 'width': '50%' }}>
-                        <Select
-                            options={ingredients.length && ingredients}
-                            value={query}
-                            onChange={handleChange}
-                            placeholder="Search Cocktail by Ingredient"
-                            className='dark-theme'
-                            clearable={true}
+            <div className='container text-center'>
+                <h1>Search your Barcart</h1>
+                <small className='text-muted'><p>Add bottles from your bar to see the cocktails you can make</p></small>
+                <div className='row'>
+                    <div className='col-sm-offset-4'>
+                        <form id='searchBar' onSubmit={addItem} style={{ 'width': '50%' }}>
+                            <Select
+                                options={ingredients.length && ingredients}
+                                value={query}
+                                onChange={handleChange}
+                                placeholder="Search Cocktail by Ingredient"
+                                className='dark-theme'
+                                clearable={true}
 
-                        />
-                        <br />
-                        <div className='row'>
-                            <div className='col-4'>
-                                <button type='submit' className='btn btn-info' >Add Ingredient</button>
+                            />
+                            <br />
+                            <div className='row'>
+                                <div className='col-4'>
+                                    <button type='submit' className='btn btn-info' >Add Ingredient</button>
+                                </div>
+                                <div className='col-4 offset-2'>
+                                    <button type='button' className='btn btn-primary' onClick={handleSubmit}>Search</button>
+                                </div>
                             </div>
-                            <div className='col-4 offset-2'>
-                                <button type='button' className='btn btn-primary' onClick={handleSubmit}>Search</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-
             </div>
+
+
         )
     }
 }

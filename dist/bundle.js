@@ -32993,6 +32993,10 @@ var _NavBar = __webpack_require__(217);
 
 var _NavBar2 = _interopRequireDefault(_NavBar);
 
+var _Home = __webpack_require__(219);
+
+var _Home2 = _interopRequireDefault(_Home);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33018,11 +33022,11 @@ var Main = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-
+            // <Route path='/' component={NavBar} />
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _NavBar2.default }),
+                _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _Home2.default }),
                 _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Search2.default }),
                 _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', component: _Search2.default }),
                 _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', component: _Search2.default }),
@@ -33157,41 +33161,33 @@ var Search = function (_Component) {
                                 'div',
                                 null,
                                 _react2.default.createElement(
-                                    'div',
-                                    { className: 'card text-center card-inverse card-warning' },
+                                    'ul',
+                                    { className: 'nav nav-pills searchNav' },
                                     _react2.default.createElement(
-                                        'div',
-                                        { className: 'card-header container' },
+                                        'li',
+                                        { className: 'nav-item' },
                                         _react2.default.createElement(
-                                            'ul',
-                                            { className: 'nav nav-pills card-header-tabs searchNav' },
-                                            _react2.default.createElement(
-                                                'li',
-                                                { className: 'nav-item' },
-                                                _react2.default.createElement(
-                                                    _reactRouterDom.Link,
-                                                    { to: '/barcart', className: search === '/barcart' ? "nav-link active" : "nav-link" },
-                                                    'Bar Cart'
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                'li',
-                                                { className: 'nav-item' },
-                                                _react2.default.createElement(
-                                                    _reactRouterDom.Link,
-                                                    { to: '/', className: search === '/' ? "nav-link active" : "nav-link" },
-                                                    'Search by Cocktail'
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                'li',
-                                                { className: 'nav-item' },
-                                                _react2.default.createElement(
-                                                    _reactRouterDom.Link,
-                                                    { to: '/ingredients', className: search === '/ingredients' ? "nav-link active" : "nav-link" },
-                                                    'Search by Ingredient'
-                                                )
-                                            )
+                                            _reactRouterDom.Link,
+                                            { to: '/barcart', className: search === '/barcart' ? "nav-link active" : "nav-link" },
+                                            'Bar Cart'
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        'li',
+                                        { className: 'nav-item' },
+                                        _react2.default.createElement(
+                                            _reactRouterDom.Link,
+                                            { to: '/', className: search === '/' ? "nav-link active" : "nav-link" },
+                                            'Search by Cocktail'
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        'li',
+                                        { className: 'nav-item' },
+                                        _react2.default.createElement(
+                                            _reactRouterDom.Link,
+                                            { to: '/ingredients', className: search === '/ingredients' ? "nav-link active" : "nav-link" },
+                                            'Search by Ingredient'
                                         )
                                     )
                                 ),
@@ -33200,7 +33196,7 @@ var Search = function (_Component) {
                                     { className: 'row search' },
                                     _react2.default.createElement(
                                         'div',
-                                        { className: 'offset-4 align-self-center' },
+                                        { className: 'offset-4' },
                                         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/barcart', component: _SearchByInventory2.default }),
                                         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _SearchBarCocktail2.default }),
                                         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ingredients', component: _SearchBarIngredients2.default })
@@ -33331,27 +33327,35 @@ var SearchBarCocktail = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'container text-center' },
                 _react2.default.createElement(
                     'h1',
-                    { className: 'display-5' },
+                    null,
                     'Search by Cocktail'
                 ),
                 _react2.default.createElement(
-                    'form',
-                    { onSubmit: handleSubmit, style: { 'width': '50%' } },
-                    _react2.default.createElement(_reactStyledSelect2.default, {
-                        options: cocktails.length && cocktails,
-                        value: query,
-                        onChange: handleChange,
-                        placeholder: 'Search Cocktails',
-                        className: 'dark-theme'
-                    }),
-                    _react2.default.createElement('br', null),
+                    'div',
+                    { className: 'row' },
                     _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-primary' },
-                        'Search'
+                        'div',
+                        { className: 'col-sm-offset-4' },
+                        _react2.default.createElement(
+                            'form',
+                            { onSubmit: handleSubmit, style: { 'width': '50%' } },
+                            _react2.default.createElement(_reactStyledSelect2.default, {
+                                options: cocktails.length && cocktails,
+                                value: query,
+                                onChange: handleChange,
+                                placeholder: 'Search Cocktails',
+                                className: 'dark-theme'
+                            }),
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement(
+                                'button',
+                                { className: 'btn btn-primary' },
+                                'Search'
+                            )
+                        )
                     )
                 )
             );
@@ -49309,27 +49313,35 @@ var SearchBarCocktailIngredients = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'container text-center' },
                 _react2.default.createElement(
                     'h1',
-                    { className: 'display-5' },
+                    null,
                     'Search by Ingredient'
                 ),
                 _react2.default.createElement(
-                    'form',
-                    { onSubmit: handleSubmit, style: { 'width': '50%' } },
-                    _react2.default.createElement(_reactStyledSelect2.default, {
-                        options: ingredients.length && ingredients,
-                        value: query,
-                        onChange: handleChange,
-                        placeholder: 'Search Cocktail by Ingredient',
-                        className: 'dark-theme'
-                    }),
-                    _react2.default.createElement('br', null),
+                    'div',
+                    { className: 'row' },
                     _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-primary' },
-                        'Search'
+                        'div',
+                        { className: 'col-sm-offset-4' },
+                        _react2.default.createElement(
+                            'form',
+                            { onSubmit: handleSubmit, style: { 'width': '50%' } },
+                            _react2.default.createElement(_reactStyledSelect2.default, {
+                                options: ingredients.length && ingredients,
+                                value: query,
+                                onChange: handleChange,
+                                placeholder: 'Search Cocktail by Ingredient',
+                                className: 'dark-theme'
+                            }),
+                            _react2.default.createElement('br', null),
+                            _react2.default.createElement(
+                                'button',
+                                { className: 'btn btn-primary' },
+                                'Search'
+                            )
+                        )
                     )
                 )
             );
@@ -49580,56 +49592,60 @@ var SearchByInventory = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'container text-center' },
+                _react2.default.createElement(
+                    'h1',
+                    null,
+                    'Search your Barcart'
+                ),
+                _react2.default.createElement(
+                    'small',
+                    { className: 'text-muted' },
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        'Add bottles from your bar to see the cocktails you can make'
+                    )
+                ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'align-self-center' },
+                    { className: 'row' },
                     _react2.default.createElement(
-                        'h1',
-                        { className: 'display-5' },
-                        'Search your Barcart'
-                    ),
-                    _react2.default.createElement(
-                        'small',
-                        { className: 'text-muted' },
+                        'div',
+                        { className: 'col-sm-offset-4' },
                         _react2.default.createElement(
-                            'p',
-                            null,
-                            'Add bottles from your bar to see the cocktails you can make'
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'form',
-                        { id: 'searchBar', onSubmit: addItem, style: { 'width': '50%' } },
-                        _react2.default.createElement(_reactStyledSelect2.default, {
-                            options: ingredients.length && ingredients,
-                            value: query,
-                            onChange: handleChange,
-                            placeholder: 'Search Cocktail by Ingredient',
-                            className: 'dark-theme',
-                            clearable: true
+                            'form',
+                            { id: 'searchBar', onSubmit: addItem, style: { 'width': '50%' } },
+                            _react2.default.createElement(_reactStyledSelect2.default, {
+                                options: ingredients.length && ingredients,
+                                value: query,
+                                onChange: handleChange,
+                                placeholder: 'Search Cocktail by Ingredient',
+                                className: 'dark-theme',
+                                clearable: true
 
-                        }),
-                        _react2.default.createElement('br', null),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'row' },
+                            }),
+                            _react2.default.createElement('br', null),
                             _react2.default.createElement(
                                 'div',
-                                { className: 'col-4' },
+                                { className: 'row' },
                                 _react2.default.createElement(
-                                    'button',
-                                    { type: 'submit', className: 'btn btn-info' },
-                                    'Add Ingredient'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'col-4 offset-2' },
+                                    'div',
+                                    { className: 'col-4' },
+                                    _react2.default.createElement(
+                                        'button',
+                                        { type: 'submit', className: 'btn btn-info' },
+                                        'Add Ingredient'
+                                    )
+                                ),
                                 _react2.default.createElement(
-                                    'button',
-                                    { type: 'button', className: 'btn btn-primary', onClick: handleSubmit },
-                                    'Search'
+                                    'div',
+                                    { className: 'col-4 offset-2' },
+                                    _react2.default.createElement(
+                                        'button',
+                                        { type: 'button', className: 'btn btn-primary', onClick: handleSubmit },
+                                        'Search'
+                                    )
                                 )
                             )
                         )
@@ -50400,34 +50416,28 @@ function CocktailList(props) {
 
     return _react2.default.createElement(
         'div',
-        { className: 'container' },
-        _react2.default.createElement('br', null),
-        cocktails.length < 250 && _react2.default.createElement(
-            _reactInfinite2.default,
-            { className: 'card container', containerHeight: 350, elementHeight: 30, style: { "width": "50rem" } },
-            _react2.default.createElement(
-                'div',
-                { className: 'card-body' },
+        { className: 'bg-1' },
+        _react2.default.createElement(
+            'div',
+            { className: 'container' },
+            cocktails.length < 250 && _react2.default.createElement(
+                _reactInfinite2.default,
+                { className: 'list-group', containerHeight: 350, elementHeight: 30, style: { "width": "50rem" } },
                 _react2.default.createElement(
-                    'h4',
-                    { className: 'card-title' },
-                    'Result'
+                    'ul',
+                    { className: 'list-group-item' },
+                    cocktails.map(function (drink) {
+                        return _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { key: drink.id, to: '/cocktail/' + drink.id },
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'list-group-item' },
+                                drink.name
+                            )
+                        );
+                    })
                 )
-            ),
-            _react2.default.createElement(
-                'ul',
-                { className: 'list-group list-group-flush' },
-                cocktails.map(function (drink) {
-                    return _react2.default.createElement(
-                        _reactRouterDom.Link,
-                        { key: drink.id, to: '/cocktail/' + drink.id },
-                        _react2.default.createElement(
-                            'li',
-                            { className: 'list-group-item' },
-                            drink.name
-                        )
-                    );
-                })
             )
         )
     );
@@ -50767,6 +50777,45 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 // export default Login;
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(LogIn);
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Home;
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Home() {
+    return _react2.default.createElement(
+        "div",
+        { id: "mycarousel", className: "carousel slide", "data-ride": "carousel" },
+        _react2.default.createElement(
+            "div",
+            { className: "carousel-inner" },
+            _react2.default.createElement("img", { src: "http://www.bacardi.com/au/SiteImages/featured-cocktails/fc-of-step0-bg.jpg" }),
+            _react2.default.createElement(
+                "div",
+                { className: "carousel-caption" },
+                _react2.default.createElement(
+                    "h1",
+                    null,
+                    "Tipple"
+                )
+            )
+        )
+    );
+}
 
 /***/ })
 /******/ ]);
