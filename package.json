@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "npm run webpack",
     "webpack": "./node_modules/webpack/bin/webpack.js",
-    "start": "npm run webpack -- -w & nodemon server.js",
+    "start": "npm run webpack -- -w & server.js",
     "seed": "nodemon ./server/models/index"
   },
   "keywords": [],
