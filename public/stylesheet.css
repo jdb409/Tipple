@@ -95,3 +95,8 @@ body{
 .canMake {
     font-size: 1.5em;
 }
+
+.searchBtn{
+    position: relative;
+    right: 5px;
+}

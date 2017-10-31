@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { logout } from '../store/user'
 import LogIn from './LogIn';
 import Scroll from 'react-scroll';
-
+import SignUp from './SignUp';
 
 function NavBar(props) {
     const { user } = props;
@@ -20,6 +20,12 @@ function NavBar(props) {
                         <span className="icon-bar"></span>
                     </button>
                     <Link to='/' className="navbar-brand">Tipple</Link>
+                    {!user.id ?
+                        <ul className="nav navbar-nav">
+                            <SignUp />
+                        </ul>
+                        :
+                        null}
                 </div>
                 <div className="collapse navbar-collapse" id="myNavbar">
                     <ul className="nav navbar-nav navbar-right">

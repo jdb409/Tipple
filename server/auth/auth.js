@@ -3,10 +3,10 @@ const User = require('../models/User')
 module.exports = router
 
 router.get('/me', (req, res, next) => {
-  
+
   User.findById(req.session.userId)
     .then(user => {
-      
+
       res.send(user);
     })
 })
@@ -19,7 +19,7 @@ router.post('/login', (req, res, next) => {
       } else if (!user.correctPassword(req.body.password)) {
         res.status(401).send('Incorrect password')
       } else {
-        
+
         req.session.userId = user.id;
         res.send(user);
       }
@@ -32,13 +32,9 @@ router.post('/login', (req, res, next) => {
 router.post('/signup', (req, res, next) => {
   User.create(req.body)
     .then(user => {
-      req.login(user, err => err ? next(err) : res.json(user))
+      res.send(user);
     })
-    .catch(err => {
-      if (err.name === 'SequelizeUniqueConstraintError')
-        res.status(401).send('User already exists')
-      else next(err)
-    })
+    .catch(console.log);
 })
 
 router.post('/logout', (req, res) => {

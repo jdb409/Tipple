@@ -10,6 +10,7 @@ import FullPageCocktail from './FullPageCocktail';
 
 import NavBar from './NavBar';
 import Home from './Home';
+import SignUp from './SignUp';
 
 
 class Main extends Component {
@@ -28,6 +29,7 @@ class Main extends Component {
                 <Route path='/' component={NavBar} />
                 <Route path='/' component={Home} />
                 <Route exact path='/' component={Search} />
+                <Route exact path='/signup' component={Search} />
                 <Route exact path='/ingredients' component={Search} />
                 <Route exact path='/cocktail' component={Search} />
                 <Route exact path='/cocktail/:id' component={FullPageCocktail}/>

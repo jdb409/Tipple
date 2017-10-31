@@ -49,7 +49,7 @@ class SearchBarCocktailIngredients extends Component {
                                 className='dark-theme'
                             />
                             <br />
-                            <div className='col-md-offset-5 col-sm-offset-4 '>
+                            <div className='col-md-offset-5 col-sm-offset-4 searchBtn'>
                                 <ScrollLink to='result' smooth={true} offset={50} duration={500} className="navbar-brand" onClick={handleSubmit}> <button className='btn btn-default'>Search</button></ScrollLink>
                             </div>
                         </form>
