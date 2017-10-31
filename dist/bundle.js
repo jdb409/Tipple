@@ -34070,7 +34070,7 @@ var Search = function (_Component) {
                                     ),
                                     _react2.default.createElement(
                                         'div',
-                                        { className: 'col-sm-2 inventory' },
+                                        { className: 'col-md-2 col-sm-0 inventory' },
                                         _react2.default.createElement(_Inventory2.default, null)
                                     )
                                 )
@@ -34534,7 +34534,7 @@ var SearchBarCocktail = function (_Component) {
                         { className: 'col-sm-offset-4' },
                         _react2.default.createElement(
                             'form',
-                            { onSubmit: handleSubmit, style: { 'width': '50%' } },
+                            { style: { 'width': '50%' } },
                             _react2.default.createElement(_reactStyledSelect2.default, {
                                 options: cocktails.length && cocktails,
                                 value: query,
@@ -34545,13 +34545,14 @@ var SearchBarCocktail = function (_Component) {
                             _react2.default.createElement('br', null),
                             _react2.default.createElement(
                                 'div',
-                                { className: 'col-md-offset-5' },
+                                { className: 'col-md-offset-5 col-sm-offset-4 ' },
                                 _react2.default.createElement(
                                     ScrollLink,
-                                    { to: 'result', smooth: true, offset: 50, duration: 500, className: 'navbar-brand' },
+                                    { to: 'result', smooth: true, offset: 50, duration: 500, className: 'navbar-brand', onClick: handleSubmit },
+                                    ' ',
                                     _react2.default.createElement(
                                         'button',
-                                        { type: 'button', className: 'btn btn-default' },
+                                        { className: 'btn btn-default' },
                                         'Search'
                                     )
                                 )
@@ -50533,7 +50534,7 @@ var SearchBarCocktailIngredients = function (_Component) {
                         { className: 'col-sm-offset-4' },
                         _react2.default.createElement(
                             'form',
-                            { onSubmit: handleSubmit, style: { 'width': '50%' } },
+                            { style: { 'width': '50%' } },
                             _react2.default.createElement(_reactStyledSelect2.default, {
                                 options: ingredients.length && ingredients,
                                 value: query,
@@ -50543,9 +50544,18 @@ var SearchBarCocktailIngredients = function (_Component) {
                             }),
                             _react2.default.createElement('br', null),
                             _react2.default.createElement(
-                                'button',
-                                { className: 'btn btn-default' },
-                                'Search'
+                                'div',
+                                { className: 'col-md-offset-5 col-sm-offset-4 ' },
+                                _react2.default.createElement(
+                                    ScrollLink,
+                                    { to: 'result', smooth: true, offset: 50, duration: 500, className: 'navbar-brand', onClick: handleSubmit },
+                                    ' ',
+                                    _react2.default.createElement(
+                                        'button',
+                                        { className: 'btn btn-default' },
+                                        'Search'
+                                    )
+                                )
                             )
                         )
                     )
@@ -50766,7 +50776,7 @@ var SearchByInventory = function (_Component) {
                 user = _props.user;
 
             var itemName = this.getItem(query);
-
+            console.log('sdafds', user.id, itemName);
             if (barcart.indexOf(itemName) < 0) {
                 if (user.id) {
                     this.props.addIngredientToServer(user, itemName.label);
@@ -50856,7 +50866,7 @@ var SearchByInventory = function (_Component) {
                                 ),
                                 _react2.default.createElement(
                                     'div',
-                                    { className: 'col-md-offset-5' },
+                                    { className: 'col-md-offset-5 col-sm-offset-4 ' },
                                     _react2.default.createElement(
                                         ScrollLink,
                                         { to: 'result', smooth: true, offset: 50, duration: 500, className: 'navbar-brand', onClick: handleSubmit },
@@ -51545,7 +51555,7 @@ function CanMake(props) {
             { className: 'container' },
             _react2.default.createElement(
                 'div',
-                { className: 'row' },
+                { className: 'row canMake' },
                 exact && exact.length || oneOff && oneOff.length ? _react2.default.createElement(
                     'div',
                     null,
@@ -51628,10 +51638,10 @@ function CocktailList(props) {
         { className: 'bg-1' },
         _react2.default.createElement(
             'div',
-            { className: 'container' },
+            { className: 'container', style: { "font-size": "2em" } },
             cocktails.length < 250 && _react2.default.createElement(
                 _reactInfinite2.default,
-                { className: 'list-group-item', containerHeight: 400, elementHeight: 30, style: { "width": "50rem" } },
+                { className: 'list-group-item', containerHeight: 400, elementHeight: 30 },
                 cocktails.map(function (drink) {
                     return _react2.default.createElement(
                         _reactRouterDom.Link,

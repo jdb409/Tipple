@@ -11,12 +11,9 @@ export default function CanMake(props) {
     return (
         <div className='bg-1'>
             <div className='container'>
-                <div className='row' >
+                <div className='row canMake' >
                     {exact && exact.length || oneOff && oneOff.length ?
                         <div>
-
-
-
                             <h3>You can make:</h3>
                             <ul className='list-group-item'>
                                 {exact.map(drink => {
@@ -25,10 +22,6 @@ export default function CanMake(props) {
                                     );
                                 })}
                             </ul>
-
-
-
-
                             <h3>You need one more ingredient to make:</h3>
                             <Infinite className="list-group-item" containerHeight={200} elementHeight={30} style={{ "width": "50rem" }}>
                                 {oneOff.map(drink => {

@@ -39,7 +39,7 @@ class SearchBarCocktail extends Component {
                 <h1>Search by Cocktail</h1>
                 <div className='row'>
                     <div className='col-sm-offset-4'>
-                        <form onSubmit={handleSubmit} style={{ 'width': '50%' }}>
+                        <form style={{ 'width': '50%' }}>
                             <Select
                                 options={cocktails.length && cocktails}
                                 value={query}
@@ -48,8 +48,8 @@ class SearchBarCocktail extends Component {
                                 className='dark-theme'
                             />
                             <br />
-                            <div className = "col-md-offset-5">
-                                <ScrollLink to='result' smooth={true} offset={50} duration={500} className="navbar-brand"><button type='button' className='btn btn-default'>Search</button></ScrollLink>
+                            <div className='col-md-offset-5 col-sm-offset-4 '>
+                                <ScrollLink to='result' smooth={true} offset={50} duration={500} className="navbar-brand" onClick={handleSubmit}> <button className='btn btn-default'>Search</button></ScrollLink>
                             </div>
                         </form>
                     </div>

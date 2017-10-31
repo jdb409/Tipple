@@ -41,7 +41,7 @@ class SearchByInventory extends Component {
         const { query } = this.state
         const { barcart, user } = this.props
         const itemName = this.getItem(query);
-
+        console.log('sdafds',user.id, itemName);
         if (barcart.indexOf(itemName) < 0) {
             if (user.id) {
                 this.props.addIngredientToServer(user, itemName.label)
@@ -94,14 +94,14 @@ class SearchByInventory extends Component {
                                 <div className='col-4'>
                                     <button type='submit' className='btn btn-default' >Add Ingredient</button>
                                 </div>
-                                <div className='col-md-offset-5'>
+                                <div className='col-md-offset-5 col-sm-offset-4 '>
                                     <ScrollLink to='result' smooth={true} offset={50} duration={500} className="navbar-brand" onClick={handleSubmit}> <button type='button' className='btn btn-default'>Search</button></ScrollLink>
-                            </div>
+                                </div>
                             </div>
                         </form>
+                    </div>
                 </div>
             </div>
-            </div >
 
 
         )
