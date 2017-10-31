@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-styled-select'
 import { connect } from 'react-redux';
-
+import Scroll from 'react-scroll';
 import { getSingleCocktail } from '../store/cocktail';
 import { mapCocktails } from '../store/cocktails';
 
@@ -33,6 +33,7 @@ class SearchBarCocktail extends Component {
         const { handleChange, handleSubmit } = this;
         const { query } = this.state;
         const { cocktail, cocktails } = this.props;
+        const ScrollLink = Scroll.Link;
         return (
             <div className='container text-center bgSearch'>
                 <h1>Search by Cocktail</h1>
@@ -47,7 +48,9 @@ class SearchBarCocktail extends Component {
                                 className='dark-theme'
                             />
                             <br />
-                            <button className='btn btn-default'>Search</button>
+                            <div className = "col-md-offset-5">
+                                <ScrollLink to='result' smooth={true} offset={50} duration={500} className="navbar-brand"><button type='button' className='btn btn-default'>Search</button></ScrollLink>
+                            </div>
                         </form>
                     </div>
                 </div>

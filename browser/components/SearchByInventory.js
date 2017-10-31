@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Select from 'react-styled-select'
 import { connect } from 'react-redux';
+import Scroll from 'react-scroll';
+
 import { mapIngredients } from '../store/ingredients';
 import { getCocktailsByInventory } from '../store/cocktails';
 import { filterBarCart, addLiquor, addIngredientToServer, fetchBarcart } from '../store/barcart';
@@ -68,7 +70,7 @@ class SearchByInventory extends Component {
         const { handleChange, handleSubmit, addItem, removeItem } = this;
         const { query } = this.state;
         const { ingredients, barcart } = this.props;
-
+        const ScrollLink = Scroll.Link;
 
         return (
 
@@ -92,14 +94,14 @@ class SearchByInventory extends Component {
                                 <div className='col-4'>
                                     <button type='submit' className='btn btn-default' >Add Ingredient</button>
                                 </div>
-                                <div className='col-4 offset-2'>
-                                    <button type='button' className='btn btn-default' onClick={handleSubmit}>Search</button>
-                                </div>
+                                <div className='col-md-offset-5'>
+                                    <ScrollLink to='result' smooth={true} offset={50} duration={500} className="navbar-brand" onClick={handleSubmit}> <button type='button' className='btn btn-default'>Search</button></ScrollLink>
+                            </div>
                             </div>
                         </form>
-                    </div>
                 </div>
             </div>
+            </div >
 
 
         )

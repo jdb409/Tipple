@@ -50,21 +50,23 @@ class Search extends Component {
                                     <li className={search === '/ingredients' ? "nav-link active" : "nav-link"}><Link to='/ingredients'>Search by Ingredients</Link></li>
                                 </ul>
                                 <div className='row'>
-                                    <div className='col-md-10 searchForm' id='search'>
+                                    <div className='col-sm-10 searchForm' id='search'>
                                         <Element name='cocktail'><Route exact path='/' component={SearchByInventory}></Route></Element>
                                         <Route exact path='/cocktail' component={SearchBarCocktail} />
                                         <Route exact path='/ingredients' component={SearchBarIngredients} />
                                     </div>
-                                    <div className='col-md-2 inventory'>
+                                    <div className='col-sm-2 inventory'>
                                         <Inventory />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <Route exact path='/cocktail' render={(route) => <SingleCocktail cocktail={cocktail} route={route} />} />
-                    <Route exact path='/ingredients' render={(route) => <CocktailList cocktails={cocktails} route={route} />} />
-                    <Route exact path='/' render={(route) => <CanMake user={user} cocktails={cocktails} route={route} />} />
+                    <Element name='result'>
+                        <Route exact path='/cocktail' render={(route) => <SingleCocktail cocktail={cocktail} route={route} />} />
+                        <Route exact path='/ingredients' render={(route) => <CocktailList cocktails={cocktails} route={route} />} />
+                        <Route exact path='/' render={(route) => <CanMake user={user} cocktails={cocktails} route={route} />} />
+                    </Element>
 
                 </div>
 

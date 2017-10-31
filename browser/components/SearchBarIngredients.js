@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-styled-select'
+import Scroll from 'react-scroll';
+
 import { connect } from 'react-redux';
 import { mapIngredients } from '../store/ingredients';
 import { getCocktailsByIngredient } from '../store/cocktails';
@@ -32,6 +34,7 @@ class SearchBarCocktailIngredients extends Component {
         const { handleChange, handleSubmit } = this;
         const { query } = this.state;
         const { cocktails, ingredients } = this.props;
+        const ScrollLink = Scroll.Link;
         return (
             <div className='container text-center bgSearch'>
                 <h1>Search by Ingredient</h1>
