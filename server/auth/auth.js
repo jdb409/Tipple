@@ -6,7 +6,6 @@ router.get('/me', (req, res, next) => {
 
   User.findById(req.session.userId)
     .then(user => {
-
       res.send(user);
     })
 })
@@ -19,7 +18,6 @@ router.post('/login', (req, res, next) => {
       } else if (!user.correctPassword(req.body.password)) {
         res.status(401).send('Incorrect password')
       } else {
-
         req.session.userId = user.id;
         res.send(user);
       }
@@ -32,9 +30,12 @@ router.post('/login', (req, res, next) => {
 router.post('/signup', (req, res, next) => {
   User.create(req.body)
     .then(user => {
+      console.log('before', req.session.userId)
+      req.session.userId = user.id;
+      console.log('after', req.session.userId)
       res.send(user);
     })
-    .catch(console.log);
+    .catch(next);
 })
 
 router.post('/logout', (req, res) => {
