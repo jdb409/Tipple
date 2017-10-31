@@ -29,6 +29,7 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')
 app.use('/api/cocktails', require('./server/cocktails/cocktail'))
 app.use('/api/ingredients', require('./server/ingredients/ingredients'))
 app.use('/api/barcart', require('./server/barcart/barcart'))
+app.use('/api/likes', require('./server/likes/likes'))
 
 app.use('/auth', require('./server/auth/auth'))
 

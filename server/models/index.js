@@ -3,7 +3,9 @@ const Cocktail = require('./Cocktail');
 const Ingredient = require('./Ingredient');
 const cocktails = require('./dataFormat');
 const User = require('./User');
+const Like = require('./Like');
 const BarCart = require('./BarCart')
+
 const _ = require('underscore');
 
 const Mix = db.define('mix', {
@@ -15,6 +17,9 @@ Ingredient.belongsToMany(Cocktail, { through: Mix });
 
 BarCart.belongsTo(User);
 BarCart.hasMany(Ingredient);
+
+Like.belongsTo(User);
+Like.belongsTo(Cocktail);
 
 db.seed = () => {
     const promiseCocktails = [];

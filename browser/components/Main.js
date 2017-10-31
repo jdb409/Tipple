@@ -6,7 +6,8 @@ import { me } from '../store/user';
 
 
 import Search from './Search';
-import FullPageCocktail from './FullPageCocktail';
+
+import SingleCocktail from './SingleCocktail';
 
 import NavBar from './NavBar';
 import Home from './Home';
@@ -33,7 +34,7 @@ class Main extends Component {
                 <Route exact path='/ingredients' component={Search} />
                 <Route exact path='/cocktail' component={Search} />
                 <Route exact path='/profile' component={Search} />
-                <Route exact path='/cocktail/:id' component={FullPageCocktail}/>
+                <Route exact path='/cocktail/:id' component={SingleCocktail} />
             </div>
         );
     }

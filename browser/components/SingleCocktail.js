@@ -14,19 +14,23 @@ class SingleCocktail extends Component {
             <div className='bg-1'>
                 <div className='container'>
                     {cocktail.name && cocktail.name.length > 0 ?
-                        <div>
+                        <div className='row'>
+                            <div className='col-sm-2'>
+                                <button className='btn btn-default btn-lg'>Like</button>
+                            </div>
+                            <div className='col-sm-10'>
+                                <h1>{cocktail.name}</h1>
+                                <p>{cocktail.instructions}</p>
 
-                            <h1>{cocktail.name}</h1>
-                            <p>{cocktail.instructions}</p>
+                                <ul className="list-group">
+                                    {ingredients && ingredients.map(ing => {
+                                        return (
+                                            <li className="list-group-item h2" key={ing.id}><strong>{ing.name} - {ing.mix.quantity}</strong></li>
 
-                            <ul className="list-group">
-                                {ingredients && ingredients.map(ing => {
-                                    return (
-                                        <li className="list-group-item h2" key={ing.id}><strong>{ing.name} - {ing.mix.quantity}</strong></li>
-
-                                    );
-                                })}
-                            </ul>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
                         </div>
                         : null}
                 </div>
