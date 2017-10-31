@@ -20,16 +20,18 @@ function NavBar(props) {
                         <span className="icon-bar"></span>
                     </button>
                     <Link to='/' className="navbar-brand">Tipple</Link>
-                    {!user.id ?
-                        <ul className="nav navbar-nav">
+                    <ul className="nav navbar-nav">
+                        {!user.id ?
+                            
                             <SignUp />
-                        </ul>
-                        :
-                        null}
+                            :
+                            <ScrollLink to='cocktail' smooth={true} offset={700} duration={500} ><Link to='/profile' className="navbar-brand">Profile</Link></ScrollLink>
+                        }
+                    </ul>
                 </div>
                 <div className="collapse navbar-collapse" id="myNavbar">
                     <ul className="nav navbar-nav navbar-right">
-                        <li className="nav-item"> <ScrollLink to='cocktail' smooth={true} offset={600} duration={500} className="navbar-brand">Search</ScrollLink></li>
+                        <li className="nav-item"> <ScrollLink to='cocktail' smooth={true} offset={700} duration={500} className="navbar-brand">Search</ScrollLink></li>
                         {!user.id ?
                             <li className="nav-item">
                                 <LogIn />
@@ -42,7 +44,7 @@ function NavBar(props) {
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav >
     );
 }
 

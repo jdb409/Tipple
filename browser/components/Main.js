@@ -32,6 +32,7 @@ class Main extends Component {
                 <Route exact path='/signup' component={Search} />
                 <Route exact path='/ingredients' component={Search} />
                 <Route exact path='/cocktail' component={Search} />
+                <Route exact path='/profile' component={Search} />
                 <Route exact path='/cocktail/:id' component={FullPageCocktail}/>
             </div>
         );

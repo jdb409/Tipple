@@ -11,6 +11,7 @@ import SearchByInventory from './SearchByInventory';
 import CanMake from './CanMake';
 import CocktailList from './CocktailList';
 import Inventory from './Inventory';
+import Profile from './Profile';
 
 class Search extends Component {
     constructor() {
@@ -54,6 +55,7 @@ class Search extends Component {
                                         <Element name='cocktail'><Route exact path='/' component={SearchByInventory}></Route></Element>
                                         <Route exact path='/cocktail' component={SearchBarCocktail} />
                                         <Route exact path='/ingredients' component={SearchBarIngredients} />
+                                        <Route exact path='/profile' component = {Profile} />
                                     </div>
                                     <div className='col-md-2 col-sm-0 inventory'>
                                         <Inventory />

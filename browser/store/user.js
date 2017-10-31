@@ -34,6 +34,7 @@ export const signUp = (email, password, history) => {
       .then(res => res.data)
       .then(user => {
         dispatch(getUser(user))
+        dispatch(clearCart());
         history.push('/');
       }).catch(console.log)
   }
