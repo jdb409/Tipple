@@ -34,7 +34,8 @@ export default function CanMake(props) {
 
                         </div>
                         :
-                        null}
+                       <h1 className = 'text-center'>No Drinks Found</h1>
+                    }
                 </div>
             </div>
         </div>

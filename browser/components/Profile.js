@@ -15,7 +15,7 @@ class Profile extends Component {
         const exact = cocktails.exact || [];
         return (
             <div className='container text-center bgSearch'>
-                <h1>Welcome Back</h1>
+                <h1>Welcome Back {this.props.user.email}</h1>
                 <h3>You can make:</h3>
                 <div className='container'>
                     <ul className='list-group-item'>
@@ -31,9 +31,9 @@ class Profile extends Component {
     }
 }
 
-const mapState = ({ barcart, cocktails }) => {
+const mapState = ({ barcart, cocktails, user }) => {
     return {
-        barcart, cocktails
+        barcart, cocktails, user
     }
 }
 

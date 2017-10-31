@@ -55,7 +55,7 @@ class Search extends Component {
                                         <Element name='cocktail'><Route exact path='/' component={SearchByInventory}></Route></Element>
                                         <Route exact path='/cocktail' component={SearchBarCocktail} />
                                         <Route exact path='/ingredients' component={SearchBarIngredients} />
-                                        <Route exact path='/profile' component = {Profile} />
+                                        <Route exact path='/profile' render={(route) => <Profile user={user} />} />
                                     </div>
                                     <div className='col-md-2 col-sm-0 inventory'>
                                         <Inventory />
