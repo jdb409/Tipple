@@ -10,7 +10,7 @@ class Profile extends Component {
         }
     }
     render() {
-        console.log(this.props);
+
         const cocktails = this.props.cocktails || [];
         const exact = cocktails.exact || [];
         return (

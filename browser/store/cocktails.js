@@ -42,7 +42,7 @@ export const getCocktailsByIngredient = (id) => {
 }
 
 export const getCocktailsByInventory = (ingredients) => {
-    console.log('thunk', ingredients)
+
     if (ingredients[0].liquor) {
         ingredients = ingredients.map(item => {
             return item.liquor;
@@ -52,7 +52,6 @@ export const getCocktailsByInventory = (ingredients) => {
         axios.post(`/api/cocktails/findCocktails`, { ingredients })
             .then(res => res.data)
             .then(cocktails => {
-                console.log('inventory', cocktails)
                 dispatch(getCocktails(cocktails));
             })
     }

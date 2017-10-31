@@ -41,8 +41,8 @@ class SearchByInventory extends Component {
         const { query } = this.state
         const { barcart, user } = this.props
         const itemName = this.getItem(query);
-        console.log('sdafds',user.id, itemName);
-        if (barcart.indexOf(itemName) < 0) {
+
+        if (barcart.indexOf(itemName.label) < 0) {
             if (user.id) {
                 this.props.addIngredientToServer(user, itemName.label)
             } else {

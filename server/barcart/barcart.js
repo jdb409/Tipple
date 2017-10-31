@@ -4,7 +4,7 @@ const Ingredient = require('../models/Ingredient');
 
 
 router.get('/:userId', (req, res, next) => {
-    console.log(req.params.userId);
+
     BarCart.findAll({
         where: { userId: req.params.userId }
     })
@@ -17,7 +17,7 @@ router.get('/:userId', (req, res, next) => {
 })
 
 router.post('/:userId', (req, res, next) => {
-    // console.log(req.body);
+
     BarCart.findOne({ where: { userId: req.params.userId, liquor: req.body.ingredient } })
         .then(cart => {
             return cart ? cart :
@@ -27,7 +27,6 @@ router.post('/:userId', (req, res, next) => {
                 })
 
         }).then(cart => {
-            console.log(cart.liquor);
             res.send(cart.liquor);
         })
         .catch(next);
@@ -35,7 +34,6 @@ router.post('/:userId', (req, res, next) => {
 
 
 router.delete('/:userId/:ingredient', (req, res, next) => {
-    console.log(req.params, req.params.ingredient);
     BarCart.destroy({
         where: {
             userId: req.params.userId,

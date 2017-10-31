@@ -8,7 +8,7 @@ class SingleCocktail extends Component {
     render() {
         const { cocktail } = this.props;
         const { ingredients } = cocktail || [];
-        console.log('tail', cocktail)
+
         return (
 
             <div className='bg-1'>

@@ -20,22 +20,6 @@ router.get('/:id', (req, res, next) => {
 })
 
 
-// //search for all cocktails with selected ingredients
-// router.post('/findCocktails', (req, res, next) => {
-
-//     console.log('inventory', req.body.ingredients);
-//     return Cocktail.findAll({
-//         where: {
-//             ingredientList: {
-//                 $contained: req.body.ingredients
-//             }
-//         }
-//     }).then(cocktail => {
-//         // console.log(cocktail);
-//         res.send(cocktail);
-//     }).catch(next);
-// })
-
 router.post('/findCocktails', (req, res, next) => {
     
     return Cocktail.findAll({

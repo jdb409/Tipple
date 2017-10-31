@@ -30,9 +30,7 @@ router.post('/login', (req, res, next) => {
 router.post('/signup', (req, res, next) => {
   User.create(req.body)
     .then(user => {
-      console.log('before', req.session.userId)
       req.session.userId = user.id;
-      console.log('after', req.session.userId)
       res.send(user);
     })
     .catch(next);

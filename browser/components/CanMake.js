@@ -15,15 +15,15 @@ export default function CanMake(props) {
                     {exact && exact.length || oneOff && oneOff.length ?
                         <div>
                             <h3>You can make:</h3>
-                            <ul className='list-group-item'>
+                            <Infinite className="list-group-item" containerHeight={180} elementHeight={30} style={{ "width": "50rem" }}>
                                 {exact.map(drink => {
                                     return (
                                         <Link key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>
                                     );
                                 })}
-                            </ul>
+                            </Infinite>
                             <h3>You need one more ingredient to make:</h3>
-                            <Infinite className="list-group-item" containerHeight={200} elementHeight={30} style={{ "width": "50rem" }}>
+                            <Infinite className="list-group-item" containerHeight={160} elementHeight={30} style={{ "width": "50rem" }}>
                                 {oneOff.map(drink => {
                                     return (
                                         <Link key={drink.id} to={`/cocktail/${drink.id}`}><li className="list-group-item">{drink.name}</li></Link>

@@ -22,7 +22,6 @@ function NavBar(props) {
                     <Link to='/' className="navbar-brand">Tipple</Link>
                     <ul className="nav navbar-nav">
                         {!user.id ?
-                            
                             <SignUp />
                             :
                             <ScrollLink to='cocktail' smooth={true} offset={700} duration={500} ><Link to='/profile' className="navbar-brand">Profile</Link></ScrollLink>
@@ -44,7 +43,7 @@ function NavBar(props) {
                     </ul>
                 </div>
             </div>
-        </nav >
+        </nav>
     );
 }
 
