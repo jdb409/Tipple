@@ -3,7 +3,7 @@ const Sequelize = db.Sequelize;
 
 const Like = db.define('like', {
     ingredientList: {
-        type: Sequelize.STRING
+        type: Sequelize.ARRAY(Sequelize.STRING)
     }
 })
 
