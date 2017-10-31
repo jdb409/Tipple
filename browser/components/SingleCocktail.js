@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { getSingleCocktail } from '../store/cocktail';
+import { likeCocktail } from '../store/user';
 
 class SingleCocktail extends Component {
 
 
     render() {
-        const { cocktail } = this.props;
+        const { cocktail, user } = this.props;
         const { ingredients } = cocktail || [];
 
         return (
@@ -16,7 +17,7 @@ class SingleCocktail extends Component {
                     {cocktail.name && cocktail.name.length > 0 ?
                         <div className='row'>
                             <div className='col-sm-2'>
-                                <button className='btn btn-default btn-lg'>Like</button>
+                                <button className='btn btn-default btn-lg' onClick={() => this.props.likeCocktail(user.id, cocktail.id)}>Like</button>
                             </div>
                             <div className='col-sm-10'>
                                 <h1>{cocktail.name}</h1>
@@ -45,6 +46,9 @@ const mapDispatchToProps = (dispatch) => {
         getSingleCocktail: (name) => {
             dispatch(getSingleCocktail(name));
         },
+        likeCocktail: (userId, cocktailId) => {
+            dispatch(userId, cocktailId);
+        }
     }
 }
 

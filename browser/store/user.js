@@ -4,22 +4,32 @@ import { clearCart } from './barcart';
 /**
  * ACTION TYPES
  */
-const GET_USER = 'GET_USER'
-const REMOVE_USER = 'REMOVE_USER'
+const GET_USER = 'GET_USER';
+const REMOVE_USER = 'REMOVE_USER';
 const POST_USER = 'POST_USER';
+const POST_LIKE = 'POST_LIKE';
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const defaultUser = {};
 
 /**
  * ACTION CREATORS
  */
-const getUser = user => ({ type: GET_USER, user })
-const removeUser = () => ({ type: REMOVE_USER })
+const getUser = user => ({ type: GET_USER, user });
+const removeUser = () => ({ type: REMOVE_USER });
+const postLike = () => ({ type: POST_LIKE });
 /**
  * THUNK CREATORS
  */
+
+export const likeCocktail = (userId, cocktailId) => {
+  return (dispatch) => {
+    axios.post(`/api/likes/${userId}`, { cocktailId })
+      .catch(console.log);
+  }
+}
+
 export const me = () =>
   dispatch =>
     axios.get('/auth/me')
