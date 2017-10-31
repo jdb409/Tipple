@@ -34,7 +34,7 @@ class SignUp extends Component {
         return (
             <div>
                 <form onSubmit={handleSubmit}>
-                    <input value={email} name='email' type='email' onChange={handleChange} placeholder='Email' />
+                    <input value={email} name='email' type='email' onChange={handleChange} placeholder='SignUp Email' />
                     <input value={password} name='password' type='password' onChange={handleChange} placeholder='Password' />
                     <button className='btn btn-primary'>Signup</button>
                 </form>

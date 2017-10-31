@@ -5,9 +5,9 @@ import Infinite from 'react-infinite';
 
 const Inventory = (props) => {
     const { filterBarCart, user } = props;
-    let {barcart} = props;
+    let { barcart } = props;
 
-    if ( barcart[0] && barcart[0].liquor) {
+    if (barcart[0] && barcart[0].liquor) {
         barcart = barcart.length && barcart.map(item => {
             return item.liquor;
         })
@@ -18,7 +18,7 @@ const Inventory = (props) => {
             <Infinite containerHeight={350} elementHeight={30} className='list-group'>
                 {barcart && barcart.map(ing => {
                     return (
-                        <li  key = {ing} className='list-group-item list-group-item-danger' onClick={() => filterBarCart(barcart, ing, user.id)}>
+                        <li key={ing} className='list-group-item list-group-item-danger' onClick={() => filterBarCart(barcart, ing, user.id)}>
                             {ing}
                             <br />
                         </li>

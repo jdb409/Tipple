@@ -8618,7 +8618,7 @@ var SignUp = function (_Component) {
                 _react2.default.createElement(
                     'form',
                     { onSubmit: handleSubmit },
-                    _react2.default.createElement('input', { value: email, name: 'email', type: 'email', onChange: handleChange, placeholder: 'Email' }),
+                    _react2.default.createElement('input', { value: email, name: 'email', type: 'email', onChange: handleChange, placeholder: 'SignUp Email' }),
                     _react2.default.createElement('input', { value: password, name: 'password', type: 'password', onChange: handleChange, placeholder: 'Password' }),
                     _react2.default.createElement(
                         'button',
