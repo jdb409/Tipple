@@ -52087,7 +52087,6 @@ var FullPageCocktail = function (_Component) {
             var _ref = cocktail || [],
                 ingredients = _ref.ingredients;
 
-            console.log('sdafdsaf', this.props);
             return _react2.default.createElement(
                 'div',
                 { className: 'fullpage' },
@@ -52428,7 +52427,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Home() {
     return _react2.default.createElement(
         "div",
-        { id: "mycarousel", className: "carousel slide", "data-ride": "carousel" },
+        { id: "mycarousel", className: "carousel" },
         _react2.default.createElement(
             "div",
             { className: "carousel-inner" },

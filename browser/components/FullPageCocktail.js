@@ -15,7 +15,7 @@ class FullPageCocktail extends Component {
         const { cocktail, user } = this.props;
 
         const { ingredients } = cocktail || [];
-        console.log('sdafdsaf', this.props)
+
         return (
             <div className='fullpage'>
 

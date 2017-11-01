@@ -5,22 +5,19 @@ const Ingredient = require('../models/Ingredient');
 const _ = require('underscore');
 
 router.get('/recommendation/:userId', (req, res, next) => {
+    let ingArr = [], mostLiked = {}, largest = 0, greatest;
 
-    let ingArr = [];
-    let greatest;
     Like.findAll({
         where: {
             userId: req.params.userId
         }
     })
         .then(likes => {
-
             likes.forEach(like => {
-
                 ingArr.push(like.ingredientList);
             })
-            ingArr = _.flatten(ingArr);
 
+            ingArr = _.flatten(ingArr);
             greatest = ingArr.reduce((memo, current) => {
                 if (!memo[current]) {
                     memo[current] = 1;
@@ -29,12 +26,10 @@ router.get('/recommendation/:userId', (req, res, next) => {
                 }
                 return memo;
             }, {})
-            let mostLiked = {};
-            let largest = 0;
             for (let key in greatest) {
-                
+
                 if (greatest[key] > largest) {
-                
+
                     largest = greatest[key];
                     mostLiked = key;
                 }
@@ -47,9 +42,9 @@ router.get('/recommendation/:userId', (req, res, next) => {
                 return ing.getCocktails();
             }).then(drinks => {
                 res.send(drinks);
-            })
-            
-        })
+            }).catch(next)
+
+        }).catch(next)
 })
 
 router.post('/:userId', (req, res, next) => {
