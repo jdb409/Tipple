@@ -7662,9 +7662,8 @@ var getRecos = exports.getRecos = function getRecos(userId) {
         _axios2.default.get('/api/likes/recommendation/' + userId).then(function (res) {
             return res.data;
         }).then(function (cocktails) {
-
             dispatch(getReco(cocktails));
-        });
+        }).catch(console.log);
     };
 };
 
