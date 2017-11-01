@@ -7662,7 +7662,7 @@ var getRecos = exports.getRecos = function getRecos(userId) {
         _axios2.default.get('/api/likes/recommendation/' + userId).then(function (res) {
             return res.data;
         }).then(function (cocktails) {
-            console.log(cocktails);
+
             dispatch(getReco(cocktails));
         });
     };
@@ -51817,11 +51817,7 @@ function CanMake(props) {
                             );
                         })
                     )
-                ) : _react2.default.createElement(
-                    'h1',
-                    { className: 'text-center' },
-                    '...Loading'
-                )
+                ) : null
             )
         )
     );
@@ -52122,7 +52118,7 @@ var FullPageCocktail = function (_Component) {
                             'div',
                             { className: 'col-sm-10' },
                             _react2.default.createElement(
-                                'h4',
+                                'h2',
                                 null,
                                 cocktail.name
                             ),

@@ -19,7 +19,7 @@ export const getRecos = (userId) => {
         axios.get(`/api/likes/recommendation/${userId}`)
             .then(res => res.data)
             .then(cocktails => {
-                console.log(cocktails);
+
                 dispatch(getReco(cocktails));
 
             })

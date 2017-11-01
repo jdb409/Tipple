@@ -29,7 +29,7 @@ class FullPageCocktail extends Component {
                             </div>
                             <div className='col-sm-10'>
 
-                                <h4>{cocktail.name}</h4>
+                                <h2>{cocktail.name}</h2>
                                 <p>{cocktail.instructions}</p>
 
                                 <ul className="list-group-item">

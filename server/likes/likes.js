@@ -16,11 +16,11 @@ router.get('/recommendation/:userId', (req, res, next) => {
         .then(likes => {
 
             likes.forEach(like => {
-                console.log(like.ingredientList);
+
                 ingArr.push(like.ingredientList);
             })
             ingArr = _.flatten(ingArr);
-            console.log('sadfdsa', ingArr)
+
             greatest = ingArr.reduce((memo, current) => {
                 if (!memo[current]) {
                     memo[current] = 1;

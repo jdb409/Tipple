@@ -2,23 +2,23 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
-// // axios.get(`http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink`)
-// //     .then(res => res.data)
-// //     .then(ordinary => {
-// //         // let list = [];
-// //         // list.push(ordinary);
-// //         // // return axios.get(`http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail`)
-// //         // //     .then(res => res.data)
-// //         // //     .then(cocktails => {
-// //         // //         console.log(cocktails.drinks.length);
-// //         // //         list.push(cocktails);
-// //         fs.writeFile(path.join(__dirname, 'cocktaildb'), JSON.stringify(ordinary), (err) => {
-// //             if (err) throw err;
-// //             console.log('written');
+// axios.get(`http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink`)
+//     .then(res => res.data)
+//     .then(ordinary => {
+//         // let list = [];
+//         // list.push(ordinary);
+//         // // return axios.get(`http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail`)
+//         // //     .then(res => res.data)
+//         // //     .then(cocktails => {
+//         // //         console.log(cocktails.drinks.length);
+//         // //         list.push(cocktails);
+//         fs.writeFile(path.join(__dirname, 'cocktaildb'), JSON.stringify(ordinary), (err) => {
+//             if (err) throw err;
+//             console.log('written');
 
-// //         })
-// //         // })
-// //     });
+//         })
+//         // })
+//     });
 
 
 fs.readFile(path.join(__dirname, 'cocktaildb'), 'utf-8', (err, cocktails) => {
