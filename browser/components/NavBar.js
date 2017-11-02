@@ -19,10 +19,18 @@ function NavBar(props) {
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
                     </button>
+
                     <Link to='/' className="navbar-brand">Tipple</Link>
                     <ul className="nav navbar-nav">
                         {!user.id ?
-                            <SignUp />
+                            <div className="dropdown">
+                                <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">SignUp<span className="caret" /></button>
+                                <ul className="dropdown-menu">
+                                    <li className="nav-item">
+                                        <SignUp />
+                                    </li>
+                                </ul>
+                            </div>
                             :
                             <ScrollLink to='cocktail' smooth={true} offset={700} duration={500} ><Link to='/profile' className="navbar-brand">Profile</Link></ScrollLink>
                         }
@@ -30,10 +38,17 @@ function NavBar(props) {
                 </div>
                 <div className="collapse navbar-collapse" id="myNavbar">
                     <ul className="nav navbar-nav navbar-right">
-                        <li className="nav-item"> <ScrollLink to='cocktail' smooth={true} offset={700} duration={500} className="navbar-brand">Search</ScrollLink></li>
+                        <li className="nav-item"> <ScrollLink to='cocktail' smooth={true} offset={700} duration={500}>Search</ScrollLink></li>
                         {!user.id ?
-                            <li className="nav-item">
-                                <LogIn />
+                            <li className='nav-item'>
+                                <div className="dropdown">
+                                    <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Login <span className="caret" /></button>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                            <LogIn />
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                             :
                             <li className="nav-item">

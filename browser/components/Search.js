@@ -57,7 +57,7 @@ class Search extends Component {
                                         <Route exact path='/ingredients' component={SearchBarIngredients} />
                                         <Route exact path='/profile' render={(route) => <Profile user={user} />} />
                                     </div>
-                                    <div className='col-md-2 col-sm-0 inventory'>
+                                    <div className='col-xs-2 col-xs-0 inventory'>
                                         <Inventory />
                                     </div>
                                 </div>

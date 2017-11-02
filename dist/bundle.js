@@ -34264,7 +34264,7 @@ var Search = function (_Component) {
                                     ),
                                     _react2.default.createElement(
                                         'div',
-                                        { className: 'col-md-2 col-sm-0 inventory' },
+                                        { className: 'col-xs-2 col-xs-0 inventory' },
                                         _react2.default.createElement(_Inventory2.default, null)
                                     )
                                 )
@@ -52233,7 +52233,25 @@ function NavBar(props) {
                 _react2.default.createElement(
                     'ul',
                     { className: 'nav navbar-nav' },
-                    !user.id ? _react2.default.createElement(_SignUp2.default, null) : _react2.default.createElement(
+                    !user.id ? _react2.default.createElement(
+                        'div',
+                        { className: 'dropdown' },
+                        _react2.default.createElement(
+                            'button',
+                            { className: 'btn btn-default dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
+                            'SignUp',
+                            _react2.default.createElement('span', { className: 'caret' })
+                        ),
+                        _react2.default.createElement(
+                            'ul',
+                            { className: 'dropdown-menu' },
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'nav-item' },
+                                _react2.default.createElement(_SignUp2.default, null)
+                            )
+                        )
+                    ) : _react2.default.createElement(
                         ScrollLink,
                         { to: 'cocktail', smooth: true, offset: 700, duration: 500 },
                         _react2.default.createElement(
@@ -52256,14 +52274,32 @@ function NavBar(props) {
                         ' ',
                         _react2.default.createElement(
                             ScrollLink,
-                            { to: 'cocktail', smooth: true, offset: 700, duration: 500, className: 'navbar-brand' },
+                            { to: 'cocktail', smooth: true, offset: 700, duration: 500 },
                             'Search'
                         )
                     ),
                     !user.id ? _react2.default.createElement(
                         'li',
                         { className: 'nav-item' },
-                        _react2.default.createElement(_LogIn2.default, null)
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'dropdown' },
+                            _react2.default.createElement(
+                                'button',
+                                { className: 'btn btn-default dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
+                                'Login ',
+                                _react2.default.createElement('span', { className: 'caret' })
+                            ),
+                            _react2.default.createElement(
+                                'ul',
+                                { className: 'dropdown-menu' },
+                                _react2.default.createElement(
+                                    'li',
+                                    null,
+                                    _react2.default.createElement(_LogIn2.default, null)
+                                )
+                            )
+                        )
                     ) : _react2.default.createElement(
                         'li',
                         { className: 'nav-item' },

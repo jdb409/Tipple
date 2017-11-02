@@ -73,7 +73,6 @@ body{
     letter-spacing: 4px;
     opacity:0.9;
     margin: 5px;
-    margin-top: 20px;
 }
 
 
@@ -91,6 +90,10 @@ body{
     top: 200px;
     left: 6%;
     transform: scale(1.5, 1.5)
+}
+
+.dropdown button{
+    margin-top:10%;
 }
 
 .inventory{
@@ -147,6 +150,14 @@ body{
         }
     /* Medium Devices, Desktops */
     @media only screen and (max-width : 1200px) {
+
+        .inventory{
+            position: relative;
+            right: 1%;
+            top: 50px;
+            
+
+        }
         .carousel-caption h1 {
             position: relative;
             bottom: 150px;
@@ -163,9 +174,21 @@ body{
             color: #fff !important;
         }
     }
+    @media only screen and (min-width: 900px) and (max-width : 1500px) {
+        .searchBtn{
+            position: relative;
+            right: 20px;
+        }
+    }
+
 
     /* Small Devices, Tablets */
     @media only screen and (max-width : 768px) {
+        .inventory{
+           display: none;
+
+        }
+        
         .carousel-caption h1 {
             position: relative;
             bottom: 100px;
@@ -181,10 +204,14 @@ body{
             font-size: 1em !important;
             color: #fff !important;
         }
+
+      
     }
 
     /* Extra Small Devices, Phones */ 
     @media only screen and (max-width : 600px) {
+
+      
         .carousel-caption h1 {
             position: relative;
             bottom: 50px;

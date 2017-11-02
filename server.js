@@ -41,8 +41,8 @@ app.use((err, req, res, next) => {
 //     .then(() => {
 //         db.seed()
 //             .then(() => {
-                app.listen(port, () => {
-                    console.log(`listening on ${port}`)
-                })
+app.listen(port, () => {
+    console.log(`listening on ${port}`)
+})
     //         })
     // });
