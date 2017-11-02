@@ -27,18 +27,18 @@ body{
     --styled-select-value__max-width: 100%;
 
  }
- 
+/*  
  .carousel-inner img {
 
-    filter: grayscale(90%); /* make all photos black and white */
-    width: 100%; /* Set width to 100% */
+    filter: grayscale(90%); 
+    width: 100%; 
     margin: auto;
     height: auto;
-}
+} */
 
 .carousel-caption h1 {
     position: relative;
-    bottom: 500px;
+    bottom: 400px;
     left: 100px;
     font-size: 4em !important;
     color: #fff !important;
@@ -46,7 +46,7 @@ body{
 
 .carousel-caption h3 {
     position: relative;
-    bottom: 500px;
+    bottom: 400px;
     left: 100px;
     font-size: 2em !important;
     color: #fff !important;
@@ -118,21 +118,86 @@ body{
     right: 5px;
 }
 
-  @media only screen and (max-width : 1200px) {
+ .carousel-inner img {
+        
+            filter: grayscale(90%); /* make all photos black and white */
+            width: 100%; /* Set width to 100% */
+            margin: auto;
+            height: auto;
+        }
 
-    }
+ 
 
+        @media only screen and (max-width : 1700px) {
+            .carousel-caption h1 {
+                position: relative;
+                bottom: 300px;
+                left: 100px;
+                font-size: 3em !important;
+                color: #fff !important;
+            }
+            
+            .carousel-caption h3 {
+                position: relative;
+                bottom: 300px;
+                left: 100px;
+                font-size: 1.5em !important;
+                color: #fff !important;
+            }
+        }
     /* Medium Devices, Desktops */
-    @media only screen and (max-width : 992px) {
-
+    @media only screen and (max-width : 1200px) {
+        .carousel-caption h1 {
+            position: relative;
+            bottom: 150px;
+            left: 100px;
+            font-size: 3em !important;
+            color: #fff !important;
+        }
+        
+        .carousel-caption h3 {
+            position: relative;
+            bottom: 150px;
+            left: 100px;
+            font-size: 1.5em !important;
+            color: #fff !important;
+        }
     }
 
     /* Small Devices, Tablets */
     @media only screen and (max-width : 768px) {
-
+        .carousel-caption h1 {
+            position: relative;
+            bottom: 100px;
+            left: 100px;
+            font-size: 2em !important;
+            color: #fff !important;
+        }
+        
+        .carousel-caption h3 {
+            position: relative;
+            bottom: 100px;
+            left: 100px;
+            font-size: 1em !important;
+            color: #fff !important;
+        }
     }
 
     /* Extra Small Devices, Phones */ 
-    @media only screen and (max-width : 480px) {
-
+    @media only screen and (max-width : 600px) {
+        .carousel-caption h1 {
+            position: relative;
+            bottom: 50px;
+            left: 100px;
+            font-size: 2em !important;
+            color: #fff !important;
+        }
+        
+        .carousel-caption h3 {
+            position: relative;
+            bottom: 50px;
+            left: 100px;
+            font-size: 1em !important;
+            color: #fff !important;
+        }
     }
