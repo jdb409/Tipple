@@ -26,7 +26,7 @@ class Profile extends Component {
 
 
                 <h3>You can make:</h3>
-                <div className='container'>
+                <div className='container profile'>
                     <ul className='list-group-item'>
                         {exact.map(drink => {
                             return (

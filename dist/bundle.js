@@ -51955,7 +51955,7 @@ var Profile = function (_Component) {
                 ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'container' },
+                    { className: 'container profile' },
                     _react2.default.createElement(
                         'ul',
                         { className: 'list-group-item' },
