@@ -94,7 +94,7 @@ class SearchByInventory extends Component {
                                 <div className='col-4'>
                                     <button type='submit' className='btn btn-default' >Add Ingredient</button>
                                 </div>
-                                <div className='col-md-offset-5 col-sm-offset-3 searchBtn'>
+                                <div className='col-md-offset-5 col-sm-offset-3'>
                                     <ScrollLink to='result' smooth={true} offset={50} duration={500} className="navbar-brand" onClick={handleSubmit}> <button type='button' className='btn btn-default'>Search</button></ScrollLink>
                                 </div>
                             </div>

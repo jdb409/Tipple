@@ -51083,7 +51083,7 @@ var SearchByInventory = function (_Component) {
                                 ),
                                 _react2.default.createElement(
                                     'div',
-                                    { className: 'col-md-offset-5 col-sm-offset-3 searchBtn' },
+                                    { className: 'col-md-offset-5 col-sm-offset-3' },
                                     _react2.default.createElement(
                                         ScrollLink,
                                         { to: 'result', smooth: true, offset: 50, duration: 500, className: 'navbar-brand', onClick: handleSubmit },
