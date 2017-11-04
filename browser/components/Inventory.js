@@ -15,7 +15,7 @@ const Inventory = (props) => {
 
     return (
         <div className='row inventory'>
-            <p><small>*click to delete</small></p>
+            {barcart.length ? <p><small>*click to delete</small></p> : null }
             <Infinite containerHeight={350} elementHeight={30} className='list-group'>
                 {barcart && barcart.map(ing => {
                     return (

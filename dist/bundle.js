@@ -8401,7 +8401,7 @@ var Inventory = function Inventory(props) {
     return _react2.default.createElement(
         'div',
         { className: 'row inventory' },
-        _react2.default.createElement(
+        barcart.length ? _react2.default.createElement(
             'p',
             null,
             _react2.default.createElement(
@@ -8409,7 +8409,7 @@ var Inventory = function Inventory(props) {
                 null,
                 '*click to delete'
             )
-        ),
+        ) : null,
         _react2.default.createElement(
             _reactInfinite2.default,
             { containerHeight: 350, elementHeight: 30, className: 'list-group' },
