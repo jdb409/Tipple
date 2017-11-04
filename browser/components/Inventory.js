@@ -15,10 +15,11 @@ const Inventory = (props) => {
 
     return (
         <div className='row inventory'>
+            <p><small>*click to delete</small></p>
             <Infinite containerHeight={350} elementHeight={30} className='list-group'>
                 {barcart && barcart.map(ing => {
                     return (
-                        <li key={ing} className='list-group-item list-group-item-danger' onClick={() => filterBarCart(barcart, ing, user.id)}>
+                        <li key={ing} className='list-group-item list-group-item' onClick={() => filterBarCart(barcart, ing, user.id)}>
                             {ing}
                             <br />
                         </li>

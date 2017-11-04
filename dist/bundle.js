@@ -8402,12 +8402,21 @@ var Inventory = function Inventory(props) {
         'div',
         { className: 'row inventory' },
         _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+                'small',
+                null,
+                '*click to delete'
+            )
+        ),
+        _react2.default.createElement(
             _reactInfinite2.default,
             { containerHeight: 350, elementHeight: 30, className: 'list-group' },
             barcart && barcart.map(function (ing) {
                 return _react2.default.createElement(
                     'li',
-                    { key: ing, className: 'list-group-item list-group-item-danger', onClick: function onClick() {
+                    { key: ing, className: 'list-group-item list-group-item', onClick: function onClick() {
                             return filterBarCart(barcart, ing, user.id);
                         } },
                     ing,
