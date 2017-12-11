@@ -41,7 +41,8 @@ class SearchByInventory extends Component {
         const { query } = this.state
         const { barcart, user } = this.props
         const itemName = this.getItem(query);
-
+        
+        //either add ingredient to user or guest's cart
         if (barcart.indexOf(itemName.label) < 0) {
             if (user.id) {
                 this.props.addIngredientToServer(user, itemName.label)

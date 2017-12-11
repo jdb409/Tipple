@@ -4,16 +4,14 @@ import { connect } from 'react-redux'
 import { getSingleCocktail } from '../store/cocktail';
 import { likeCocktail } from '../store/user';
 
-
+//Cocktail Profile
 class FullPageCocktail extends Component {
-
     componentDidMount() {
-
         this.props.getSingleCocktail(this.props.match.params.id)
     }
+
     render() {
         const { cocktail, user } = this.props;
-
         const { ingredients } = cocktail || [];
 
         return (

@@ -12,12 +12,10 @@ class SignUp extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
-
     }
 
     handleChange(evt) {
         const obj = {};
-
         obj[evt.target.name] = evt.target.value
         this.setState(obj)
     }
@@ -51,5 +49,5 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
-// export default Login;
+
 export default connect(null, mapDispatchToProps)(SignUp);

@@ -4,9 +4,10 @@ import Infinite from 'react-infinite';
 
 export default function CanMake(props) {
     const { cocktails } = props;
+
+    //drinks you can make by available ingredient
     const exact = cocktails.exact;
     const oneOff = cocktails.oneOff;
-
 
     return (
         <div className='bg-1'>

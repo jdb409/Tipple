@@ -5,7 +5,6 @@ import { likeCocktail } from '../store/user';
 
 class SingleCocktail extends Component {
 
-
     render() {
         const { cocktail, user } = this.props;
         const { ingredients } = cocktail || [];

@@ -24,7 +24,6 @@ class Profile extends Component {
             <div className='container text-center bgSearch'>
                 <h1>Welcome Back {this.props.user.email}</h1>
 
-
                 <h3>You can make:</h3>
                 <div className='container profile'>
                     <ul className='list-group-item'>
@@ -34,7 +33,6 @@ class Profile extends Component {
                             );
                         })}
                     </ul>
-
 
                     <h3>Recommendations</h3>
                     <Infinite className="list-group-item" containerHeight={160} elementHeight={30} style={{ "width": "50rem" }}>
@@ -46,7 +44,6 @@ class Profile extends Component {
                             })}
                         </ul>
                     </Infinite>
-
 
                 </div>
             </div>

@@ -27,14 +27,7 @@ body{
     --styled-select-value__max-width: 100%;
 
  }
-/*  
- .carousel-inner img {
 
-    filter: grayscale(90%); 
-    width: 100%; 
-    margin: auto;
-    height: auto;
-} */
 
 .carousel-caption h1 {
     position: relative;
@@ -131,7 +124,7 @@ body{
 
  
 
-        @media only screen and (max-width : 1700px) {
+        @media only screen and (max-width : 2000px) {
             .carousel-caption h1 {
                 position: relative;
                 bottom: 300px;
@@ -176,7 +169,7 @@ body{
             color: #fff !important;
         }
     }
-    @media only screen and (min-width: 900px) and (max-width : 1500px) {
+    @media only screen and (min-width: 900px) and (max-width : 1900px) {
         .searchBtn{
             position: relative;
             right: 20px;

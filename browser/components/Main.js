@@ -15,9 +15,7 @@ import SignUp from './SignUp';
 
 
 class Main extends Component {
-    constructor() {
-        super();
-    }
+
     componentDidMount() {
         this.props.fetchUser();
     }

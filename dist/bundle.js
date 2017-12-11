@@ -50748,14 +50748,14 @@ var SearchBarCocktailIngredients = function (_Component) {
                             _react2.default.createElement('br', null),
                             _react2.default.createElement(
                                 'div',
-                                { className: 'col-md-offset-5 col-sm-offset-4 searchBtn' },
+                                { className: 'col-md-offset-5 col-sm-offset-4' },
                                 _react2.default.createElement(
                                     ScrollLink,
                                     { to: 'result', smooth: true, offset: 50, duration: 500, className: 'navbar-brand', onClick: handleSubmit },
                                     ' ',
                                     _react2.default.createElement(
                                         'button',
-                                        { className: 'btn btn-default' },
+                                        { className: 'btn btn-default searchBtn' },
                                         'Search'
                                     )
                                 )
@@ -51099,7 +51099,7 @@ var SearchByInventory = function (_Component) {
                                         ' ',
                                         _react2.default.createElement(
                                             'button',
-                                            { type: 'button', className: 'btn btn-default' },
+                                            { type: 'button', className: 'btn btn-default searchBar' },
                                             'Search'
                                         )
                                     )

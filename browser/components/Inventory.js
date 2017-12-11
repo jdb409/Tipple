@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { filterBarCart } from '../store/barcart'
 import Infinite from 'react-infinite';
 
+//Bar Cart Inventory
+
 const Inventory = (props) => {
     const { filterBarCart, user } = props;
     let { barcart } = props;
@@ -15,7 +17,7 @@ const Inventory = (props) => {
 
     return (
         <div className='row inventory'>
-            {barcart.length ? <p><small>*click to delete</small></p> : null }
+            {barcart.length ? <p><small>*click to delete</small></p> : null}
             <Infinite containerHeight={350} elementHeight={30} className='list-group'>
                 {barcart && barcart.map(ing => {
                     return (

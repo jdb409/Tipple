@@ -5,7 +5,6 @@ import Infinite from 'react-infinite';
 export default function CocktailList(props) {
     const { cocktails } = props;
 
-
     return (
         <div className='bg-1'>
             <div className='container' style={{ "font-size": "2em" }}>
