@@ -48,7 +48,6 @@ class SearchBarCocktailIngredients extends Component {
                                 placeholder="Search Cocktail by Ingredient"
                                 className='dark-theme'
                             />
-                            <br />
                             <div className='col-md-offset-5 col-sm-offset-4'>
                                 <ScrollLink to='result' smooth={true} offset={50} duration={500} className="navbar-brand" onClick={handleSubmit}> <button className='btn btn-default searchBtn'>Search</button></ScrollLink>
                             </div>

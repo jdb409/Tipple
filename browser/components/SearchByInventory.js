@@ -41,7 +41,7 @@ class SearchByInventory extends Component {
         const { query } = this.state
         const { barcart, user } = this.props
         const itemName = this.getItem(query);
-        
+
         //either add ingredient to user or guest's cart
         if (barcart.indexOf(itemName.label) < 0) {
             if (user.id) {
@@ -96,7 +96,9 @@ class SearchByInventory extends Component {
                                     <button type='submit' className='btn btn-default' >Add Ingredient</button>
                                 </div>
                                 <div className='col-md-offset-5 col-sm-offset-3'>
-                                    <ScrollLink to='result' smooth={true} offset={50} duration={500} className="navbar-brand" onClick={handleSubmit}> <button type='button' className='btn btn-default'>Search</button></ScrollLink>
+                                    <ScrollLink to='result' smooth={true} offset={50} duration={500} className="navbar-brand" onClick={handleSubmit}>
+                                        <button type='button' className='btn btn-default'>Search</button>
+                                    </ScrollLink>
                                 </div>
                             </div>
                         </form>

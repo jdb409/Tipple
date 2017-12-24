@@ -8386,6 +8386,8 @@ var _reactInfinite2 = _interopRequireDefault(_reactInfinite);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//Bar Cart Inventory
+
 var Inventory = function Inventory(props) {
     var filterBarCart = props.filterBarCart,
         user = props.user;
@@ -8665,7 +8667,6 @@ var SignUp = function (_Component) {
         key: 'handleChange',
         value: function handleChange(evt) {
             var obj = {};
-
             obj[evt.target.name] = evt.target.value;
             this.setState(obj);
         }
@@ -8713,7 +8714,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
         }
     };
 };
-// export default Login;
+
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(SignUp);
 
 /***/ }),
@@ -34055,7 +34056,7 @@ var Main = function (_Component) {
     function Main() {
         _classCallCheck(this, Main);
 
-        return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
+        return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
     }
 
     _createClass(Main, [{
@@ -34745,7 +34746,6 @@ var SearchBarCocktail = function (_Component) {
                                 placeholder: 'Search Cocktails',
                                 className: 'dark-theme'
                             }),
-                            _react2.default.createElement('br', null),
                             _react2.default.createElement(
                                 'div',
                                 { className: 'col-md-offset-5 col-sm-offset-4 searchBtn' },
@@ -50745,7 +50745,6 @@ var SearchBarCocktailIngredients = function (_Component) {
                                 placeholder: 'Search Cocktail by Ingredient',
                                 className: 'dark-theme'
                             }),
-                            _react2.default.createElement('br', null),
                             _react2.default.createElement(
                                 'div',
                                 { className: 'col-md-offset-5 col-sm-offset-4' },
@@ -51003,6 +51002,7 @@ var SearchByInventory = function (_Component) {
 
             var itemName = this.getItem(query);
 
+            //either add ingredient to user or guest's cart
             if (barcart.indexOf(itemName.label) < 0) {
                 if (user.id) {
                     this.props.addIngredientToServer(user, itemName.label);
@@ -51096,10 +51096,9 @@ var SearchByInventory = function (_Component) {
                                     _react2.default.createElement(
                                         ScrollLink,
                                         { to: 'result', smooth: true, offset: 50, duration: 500, className: 'navbar-brand', onClick: handleSubmit },
-                                        ' ',
                                         _react2.default.createElement(
                                             'button',
-                                            { type: 'button', className: 'btn btn-default searchBar' },
+                                            { type: 'button', className: 'btn btn-default' },
                                             'Search'
                                         )
                                     )
@@ -51770,6 +51769,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function CanMake(props) {
     var cocktails = props.cocktails;
 
+    //drinks you can make by available ingredient
+
     var exact = cocktails.exact;
     var oneOff = cocktails.oneOff;
 
@@ -51825,7 +51826,11 @@ function CanMake(props) {
                             );
                         })
                     )
-                ) : null
+                ) : _react2.default.createElement(
+                    'h1',
+                    null,
+                    'Loading'
+                )
             )
         )
     );
@@ -52069,6 +52074,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//Cocktail Profile
 var FullPageCocktail = function (_Component) {
     _inherits(FullPageCocktail, _Component);
 
@@ -52081,7 +52087,6 @@ var FullPageCocktail = function (_Component) {
     _createClass(FullPageCocktail, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-
             this.props.getSingleCocktail(this.props.match.params.id);
         }
     }, {
@@ -52448,7 +52453,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }
   };
 };
-// export default Login;
+
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(LogIn);
 
 /***/ }),
