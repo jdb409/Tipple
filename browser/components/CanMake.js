@@ -35,7 +35,7 @@ export default function CanMake(props) {
 
                         </div>
                         :
-                        <h1>Loading</h1>
+                        null
                     }
                 </div>
             </div>
